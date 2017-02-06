@@ -21,7 +21,7 @@
 
 .avia_transform3d .show_mobile_menu #mobile-advanced {
     transform: translate3d(0, 100%, 0); /* on transition, pull down the mobile menu container */
-}`
+}
 
 /** And then add the following script in the functions.php file. **/
 
