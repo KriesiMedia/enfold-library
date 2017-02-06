@@ -1,7 +1,7 @@
 /**
  * Advance Layout Builder Debug Mode
  *
- * Display the actual shortcodes of the builder elements below the advance layout builder. 
+ * Display the actual shortcodes of the elements below the advance layout builder. 
  * Documentation: http://www.kriesi.at/documentation/enfold/enable-advanced-layout-builder-debug/
  *
  **/
