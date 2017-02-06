@@ -25,7 +25,7 @@
 
 /** And then add the following script in the functions.php file. **/
 
-// remove the "show_mobile_menu" attribute when the orientation change
+// remove the "show_mobile_menu" attribute when the screen orientation change
 function ava_mobile_menu_animation(){
 ?>
 <script>
