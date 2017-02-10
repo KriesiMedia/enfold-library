@@ -1,7 +1,7 @@
 /**
  * Sticky Posts Query
  *
- * Use the "avia_post_slide_query" filter to alter the query and enable the sticky posts feature for the post slider and blog grid layout.
+ * Use the "avia_post_slide_query" filter to alter the query or enable the sticky posts feature for the post slider and blog grid layout.
  * Related thread: http://www.kriesi.at/support/topic/sticky-posts-in-b-og-grid/
  *
  **/
