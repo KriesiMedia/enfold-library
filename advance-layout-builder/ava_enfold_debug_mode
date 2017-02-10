@@ -10,7 +10,7 @@
 /** Add the following snippet in the child theme's functions.php file. **/
 
 // set the advance layout builder to debug mode 
-function ava_builder_set_debug() {
+function ava_enfold_debug_mode() {
   return "debug";
 }
-add_action("avia_builder_mode", "ava_builder_set_debug");
+add_action("avia_builder_mode", "ava_enfold_debug_mode");
