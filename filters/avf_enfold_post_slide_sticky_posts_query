@@ -9,8 +9,8 @@
 
 /** Add the following snippet in the  functions.php file. **/
 
-add_filter('avia_post_slide_query', 'avia_post_slide_query_mod', 10, 2);
-function avia_post_slide_query_mod($query, $params) {
+add_filter('avia_post_slide_query', 'avf_enfold_post_slide_sticky_posts_query', 10, 2);
+function avf_enfold_post_slide_sticky_posts_query($query, $params) {
 	$include = array();
 	$sticky = get_option( 'sticky_posts' );
 
