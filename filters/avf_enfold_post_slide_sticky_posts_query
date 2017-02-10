@@ -1,0 +1,42 @@
+/**
+ * Sticky Posts Query
+ *
+ * Use the "avia_post_slide_query" filter to alter the query and enable the sticky posts feature for the post slider and blog grid layout.
+ * Related thread: http://www.kriesi.at/support/topic/sticky-posts-in-b-og-grid/
+ *
+ **/
+
+
+/** Add the following snippet in the  functions.php file. **/
+
+add_filter('avia_post_slide_query', 'avia_post_slide_query_mod', 10, 2);
+function avia_post_slide_query_mod($query, $params) {
+	$include = array();
+	$sticky = get_option( 'sticky_posts' );
+
+	$args = array(
+	  'taxonomy' => $params['taxonomy'],
+	  'post__not_in' => $sticky,
+	);
+	$posts = get_posts( $args );
+
+	foreach($posts as $post) {
+		$include[] = $post->ID;
+	}
+
+	$include = array_merge($sticky, $include);
+
+	// convert values of the $include from string to int
+	function sti($n)
+	{
+		settype($n, 'int');
+		return $n ;
+	}
+
+	$include = array_map("sti", $include);
+
+	$query['post__in'] = $include;
+	$query['posts_per_page'] = 6;
+	$query['orderby'] = 'post__in'; // sort items based on the post__in value
+	return $query;
+}
