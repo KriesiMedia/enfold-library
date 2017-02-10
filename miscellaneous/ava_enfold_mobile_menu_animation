@@ -26,7 +26,7 @@
 /** And then add the following script in the functions.php file. **/
 
 // remove the "show_mobile_menu" attribute when the screen orientation change
-function ava_mobile_menu_animation(){
+function ava_enfold_mobile_menu_animation(){
 ?>
 <script>
 (function($){
@@ -40,7 +40,7 @@ function ava_mobile_menu_animation(){
 </script>
 <?php
 }
-add_action('wp_footer', 'ava_mobile_menu_animation');
+add_action('wp_footer', 'ava_enfold_mobile_menu_animation');
 
 
 
