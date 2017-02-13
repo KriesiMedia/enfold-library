@@ -1,7 +1,7 @@
 /**
  * Slider Ken Burns Effect
  *
- * Enable the "Ken Burns" effect for the full width easy slider.
+ * Enable the "Ken Burns" effect for the full screen and full width easy slider.
  * Credits to: http://www.kriesi.at/support/profile/alexanderduenchem/
  *
  **/
@@ -11,7 +11,7 @@
 3.) Add the following css code in the Quick CSS field.
 
 
-.kenslide .av_slideshow_full .active-slide img {
+.kenslide .active-slide {
      animation: kenburns 20s infinite;
  }
 
