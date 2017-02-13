@@ -1,0 +1,36 @@
+/**
+ * Slider Ken Burns Effect
+ *
+ * Enable the "Ken Burns" effect for the full width easy slider.
+ * Credits to: http://www.kriesi.at/support/profile/alexanderduenchem/
+ *
+ **/
+
+1.) Turn on the custom css class field (http://www.kriesi.at/documentation/enfold/turn-on-custom-css-field-for-all-alb-elements/).
+2.) Edit the slider, add a custom class attribute called "kenslide". 
+3.) Add the following css code in the Quick CSS field.
+
+
+.kenslide .av_slideshow_full .active-slide img {
+     animation: kenburns 20s infinite;
+ }
+
+ @keyframes kenburns {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+        transform: scale3d(1.5, 1.5, 1.5) translate3d(-190px, -120px, 0px);
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+    100% {
+        transform: scale3d(2, 2, 2) translate3d(-170px, -100px, 0px);
+        opacity: 0;
+    }
+}
+
+4.) Adjust the values as needed.
