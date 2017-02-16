@@ -10,27 +10,36 @@
 2.) Edit the slider, add a custom class attribute called "kenslide". 
 3.) Add the following css code in the Quick CSS field.
 
-
-.kenslide .active-slide {
-     animation: kenburns 20s infinite;
- }
-
- @keyframes kenburns {
+// the kenburns effect
+@keyframes kenburns {
     0% {
       opacity: 0;
     }
     5% {
       opacity: 1;
     }
-    95% {
-        transform: scale3d(1.5, 1.5, 1.5) translate3d(-190px, -120px, 0px);
+    100% {
+        transform: scale3d(1.1, 1.1, 1.1) translate3d(-50px, -120px, 0px);
         animation-timing-function: ease-in;
         opacity: 1;
     }
-    100% {
-        transform: scale3d(2, 2, 2) translate3d(-170px, -100px, 0px);
-        opacity: 0;
-    }
+    
+}
+
+// for the full width slider
+.kenslide .active-slide img {
+    animation: kenburns 30s infinite;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    -webkit-iteration-count:1;
+}
+
+// for the full screen slider without title and captions
+.kenslide .active-slide {
+    animation: kenburns 30s infinite;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    -webkit-iteration-count:1;
 }
 
 4.) Adjust the values as needed.
