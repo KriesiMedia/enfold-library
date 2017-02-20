@@ -10,8 +10,6 @@
 /** In the Quick CSS field or the child theme's style.css file, use the following css code. **/
 
 /* menu animation from top */
-ava_enfold_mobile_menu_animation
-
 #wrap_all {
     position: relative;
 }
