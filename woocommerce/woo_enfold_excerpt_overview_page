@@ -6,9 +6,8 @@
  *
  **/
  
-add_action( 'woocommerce_after_shop_loop_item_title', 'avia_category_page_new_div', 20);
-
-function avia_category_page_new_div() {
+add_action( 'woocommerce_after_shop_loop_item_title', 'woo_enfold_excerpt_overview_page', 20);
+function woo_enfold_excerpt_overview_page() {
 	global $post;
 	$desc = '<div class="category-desc">' .apply_filters( 'woocommerce_short_description', $post->post_excerpt ). '</div>';
 	echo $desc;
