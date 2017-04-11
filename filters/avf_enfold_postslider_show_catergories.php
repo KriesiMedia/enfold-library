@@ -11,13 +11,13 @@
  * 
  * @param string $show						
  * @param string $blogstyle						'' | 'elegant-blog' | 'elegant-blog modern-blog'
- * @param avia_sc_postslider $postslider		
+ * @param avia_post_slider $postslider		
  * @return string								'show_elegant' | 'show_business' | 'use_theme_default' | 'no_show_cats' 
  * 
  * @version 1.0.0
  * @requires Enfold 4.0.6
  */
-function custom_postslider_show_catergories( $show, $blogstyle, avia_sc_postslider $postslider )
+function custom_postslider_show_catergories( $show, $blogstyle, avia_post_slider $postslider )
 {
 	/*
 	 * Modify $show to your need - see @return - defaults to 'use_theme_default'
