@@ -17,7 +17,7 @@
  * @version 1.0.0
  * @requires Enfold 4.0.6
  */
-function custom_autoresponse_email( $show, $blogstyle, avia_sc_postslider $postslider )
+function custom_postslider_show_catergories( $show, $blogstyle, avia_sc_postslider $postslider )
 {
 	/*
 	 * Modify $show to your need - see @return - defaults to 'use_theme_default'
@@ -26,4 +26,4 @@ function custom_autoresponse_email( $show, $blogstyle, avia_sc_postslider $posts
 	return $show;
 }
 
-add_filter( 'avf_postslider_show_catergories', 'custom_autoresponse_email', 10, 4 );
+add_filter( 'avf_postslider_show_catergories', 'custom_postslider_show_catergories', 10, 3 );
