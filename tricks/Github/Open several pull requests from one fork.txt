@@ -1,0 +1,16 @@
+When forking a repositiory and creating pull requests all pull requests are collected into one long commit.
+
+To make independent pull request commits you have to use an individual branch for each commit in your fork.
+
+Follow the following steps:
+
+- Fork the repository (= master, keep this clean, do not make any pull requests to this main branch)
+- Clone this repo to your local machine
+
+- Make a new copy of this master directory on your local machine for each branch you need
+- Right click this directory -> TourtoiseGit -> Create Branch
+	- Select a unique name for this branch
+	- Check "Switch to new branch"
+
+- Make your changes and commit to server
+- On Server in your fork you can switch between the branches and make your pull requests
