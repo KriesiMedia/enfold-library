@@ -22,6 +22,7 @@ function my_fixed_footer() {
             width: 100%;
         }
     </style>
-<php
+<?php
  }
+ 
 add_action( 'wp_head', 'my_fixed_footer' );
