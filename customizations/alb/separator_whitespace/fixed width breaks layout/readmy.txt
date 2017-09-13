@@ -1,0 +1,16 @@
+Fixes problem when using a a custom fixed width in px and surrounding container gets to small for that width.
+In that case width will be adjusted to fit in the surrounding container.
+
+Needs: Enfold 4.1.2
+
+When using a child theme:
+
+1. Follow http://www.kriesi.at/documentation/enfold/add-new-or-replace-advanced-layout-builder-elements-from-child-theme/
+2. Copy hr.php into folder shortcodes
+3. Add content of hr.js at the end of enfold\js\shortcodes.js
+
+When using a parent theme only:
+
+1. Replace hr.php in enfold\config-templatebuilder\avia-shortcodes\ with this version of hr.php
+2. Add content of hr.js at the end of enfold\js\shortcodes.js
+
