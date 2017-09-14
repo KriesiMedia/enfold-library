@@ -1,7 +1,11 @@
 <?php
 /**
  * HORIZONTAL RULERS
- * Creates a horizontal ruler that provides whitespace for the layout and helps with content separation
+ * Creates a horizontal ruler that provides whitespace for the layout and helps with content separation.
+ * 
+ * When using fixed width for the seperator this changes to responsive when the container becomes too small
+ * 
+ * Based on avia_sc_hr class of enfold 
  */
  
 // Don't load directly
@@ -9,7 +13,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 
 
 
-if ( !class_exists( 'avia_sc_hr' ) ) 
+if ( ! class_exists( 'avia_sc_hr' ) ) 
 {
 	class avia_sc_hr extends aviaShortcodeTemplate{
 			
@@ -18,7 +22,7 @@ if ( !class_exists( 'avia_sc_hr' ) )
 			 */
 			function shortcode_insert_button()
 			{
-				$this->config['name']		= __('Separator / Whitespace', 'avia_framework' );
+				$this->config['name']		= __('Dynamic Separator / Whitespace', 'avia_framework' );
 				$this->config['tab']		= __('Content Elements', 'avia_framework' );
 				$this->config['icon']		= AviaBuilder::$path['imagesURL']."sc-hr.png";
 				$this->config['order']		= 94;
