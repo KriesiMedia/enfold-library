@@ -1,0 +1,345 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Flexible Mega Menu 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
+"POT-Creation-Date: 2016-05-21 00:41+0200\n"
+"PO-Revision-Date: 2016-05-21 00:41+0200\n"
+"Last-Translator: FULL NAME <email@example.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/api-endpoints/class-wp-rest-controller.php:8
+msgid "The register_routes() method must be overriden"
+msgstr ""
+
+#: includes/api-endpoints/class-wp-rest-controller.php:18
+#: includes/api-endpoints/class-wp-rest-controller.php:28
+#: includes/api-endpoints/class-wp-rest-controller.php:38
+#: includes/api-endpoints/class-wp-rest-controller.php:48
+#: includes/api-endpoints/class-wp-rest-controller.php:58
+#: includes/api-endpoints/class-wp-rest-controller.php:68
+#: includes/api-endpoints/class-wp-rest-controller.php:78
+#: includes/api-endpoints/class-wp-rest-controller.php:88
+#: includes/api-endpoints/class-wp-rest-controller.php:98
+#: includes/api-endpoints/class-wp-rest-controller.php:108
+#: includes/api-endpoints/class-wp-rest-controller.php:118
+#: includes/api-endpoints/class-wp-rest-controller.php:129
+#, php-format
+msgid "Method '%s' not implemented. Must be over-ridden in subclass."
+msgstr ""
+
+#: includes/api-endpoints/class-wp-rest-controller.php:251
+msgid ""
+"Scope under which the request is made; determines fields present in response."
+msgstr ""
+
+#: includes/api-endpoints/class-wp-rest-controller.php:471
+#, php-format
+msgid "%s is not one of %s"
+msgstr ""
+
+#: includes/api-endpoints/class-wp-rest-controller.php:476
+#: includes/api-endpoints/class-wp-rest-controller.php:480
+#, php-format
+msgid "%s is not of type %s"
+msgstr ""
+
+#: includes/api-endpoints/class-wp-rest-controller.php:487
+msgid "The date you provided is invalid."
+msgstr ""
+
+#: includes/api-endpoints/class-wp-rest-controller.php:493
+msgid "The email address you provided is invalid."
+msgstr ""
+
+#: includes/api-endpoints/class-wp-rest-layouts-controller.php:65
+msgid "Failed to display layouts data."
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-request.php:832
+#, php-format
+msgid "Missing parameter(s): %s"
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-request.php:850
+msgid "Invalid parameter."
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-request.php:860
+#, php-format
+msgid "Invalid parameter(s): %s"
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-server.php:274
+msgid "The REST API is disabled on this site."
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-server.php:279
+msgid "JSONP support is disabled on this site."
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-server.php:291
+msgid "The JSONP callback function is invalid."
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-server.php:803
+msgid "The handler for the route is invalid"
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-server.php:839
+msgid "You don't have permission to do this."
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-server.php:878
+msgid "No route was found matching the URL and request method"
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/class-wp-rest-server.php:965
+msgid "The specified namespace could not be found."
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/rest-functions.php:327
+#, php-format
+msgid "%1$s (since %2$s; use %3$s instead)"
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/rest-functions.php:330
+#: includes/api/wp-includes/rest-api/rest-functions.php:351
+#, php-format
+msgid "%1$s (since %2$s; no alternative available)"
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/rest-functions.php:348
+#, php-format
+msgid "%1$s (since %2$s; %3$s)"
+msgstr ""
+
+#: includes/api/wp-includes/rest-api/rest-functions.php:567
+msgid "Cookie nonce is invalid"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:6
+msgctxt "Post Type General Name"
+msgid "Layouts"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:7
+msgctxt "Post Type Singular Name"
+msgid "Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:8
+msgid "Layouts"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:9 includes/code-layouts-cpt.php:33
+msgid "Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:10
+msgid "Layout Archives"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:11
+msgid "Layout:"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:12
+msgid "All Layouts"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:13
+msgid "Add New Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:14
+msgid "Add New"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:15
+msgid "New Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:16
+msgid "Edit Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:17
+msgid "Update Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:18
+msgid "View Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:19
+msgid "Search Layout"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:20
+msgid "Not found"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:21
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:22 includes/code-layouts-cpt.php:99
+msgid "Featured Image"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:23
+msgid "Set featured image"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:24
+msgid "Remove featured image"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:25
+msgid "Use as featured image"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:26
+msgid "Insert into code patch"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:27
+msgid "Uploaded to this code patch"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:28
+msgid "Layouts list"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:29
+msgid "Layouts list navigation"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:30
+msgid "Filter layout list"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:34
+msgid "Layout Description"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:59
+msgctxt "Taxonomy General Name"
+msgid "Categories"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:60
+msgctxt "Taxonomy Singular Name"
+msgid "Category"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:61 includes/code-layouts-cpt.php:100
+msgid "Categories"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:62
+msgid "All Categories"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:63
+msgid "Parent Category"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:64
+msgid "Parent Category:"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:65
+msgid "New Category Name"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:66
+msgid "Add New Category"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:67
+msgid "Edit Category"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:68
+msgid "Update Category"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:69
+msgid "View Category"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:70
+msgid "Separate categories with commas"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:71
+msgid "Add or remove categories"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:72
+msgid "Choose from the most used"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:73
+msgid "Popular Categories"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:74
+msgid "Search Categories"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:75
+msgid "Not Found"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:76
+msgid "No categories"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:77
+msgid "Categories list"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:78
+msgid "Categories list navigation"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:98
+msgid "Theme Slug"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:101
+msgid "Layout code"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:102
+msgid "Shortcode"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:122
+msgid "Slug is missing"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:146
+msgid "Get code"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:160
+msgid "Layout data"
+msgstr ""
+
+#: includes/code-layouts-cpt.php:183
+msgid "Theme slug"
+msgstr ""

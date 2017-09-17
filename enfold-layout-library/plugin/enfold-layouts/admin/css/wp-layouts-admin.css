@@ -1,0 +1,38 @@
+ table.wp-list-table{
+	table-layout: auto;
+}
+.layout-data-wrap{
+	margin:2em 1em 0;
+}
+
+.layout-data-wrap .field{
+	margin:0 0 2em 0;
+}
+
+.layout-data-wrap label,
+.layout-data-wrap input,
+.layout-data-wrap select {
+	display: inline-block;
+	vertical-align: middle;
+	/* min-width:140px; */
+	margin-right:1em;
+}
+
+.layout-data-wrap label{
+	font-weight: 600;
+	/* text-align: right; */
+}
+
+.layout-data-wrap .field textarea{
+	resize: both;
+	min-width: calc(100% - 160px);
+	width: calc(100% - 160px);
+	max-width:100%;
+	max-width: calc(100% - 160px);
+	min-height:150px;
+}
+
+.error-msg{
+	color: #a00;
+	font-style: italic;
+}
