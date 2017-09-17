@@ -1,10 +1,10 @@
-## **WP Patcher**
+## **Enfold Layouts**
 
 ### **Install & activate**
 
 1. Go to "**Plugins > Add New**".
 2. Click on "**Upload Plugin**".
-3.  Click on "**Browse**", locate in your system and select "**WpPatcher**" zip file.
+3.  Click on "**Browse**", locate in your system and select "**enfold-layouts**" zip file.
 4.  Click on "**Install Now**".
 5.  When installation complete, click on "**Activate Plugin**".
 
