@@ -9,7 +9,20 @@
 5.  When installation complete, click on "**Activate Plugin**".
 
 
-For further information about WordPress plugins installation read in official [WordPress documentation](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
+To download the folder of the plugin, use the following link:
+http://bit.ly/enfold-library
+
+### **Minimum Requirements**
+
+    WordPress 4.5 or greater
+    PHP version 5.4 or greater
+    MySQL version 5.0 or greater
+
+### **We recommend your host supports:**
+
+    PHP version 5.6 or greater
+    MySQL version 5.6 or greater
+    WP Memory limit of 64 MB or greater (128 MB or higher is preferred)
 
 
 ***
