@@ -26,6 +26,9 @@ function custom_modified_thumb_sizes( $avia_config )
 {
 	/**
 	 * Example: Change sizes for 'masonry'
+	 * 
+	 * Remove // at beginning of the line and make your changes.
+	 * 
 	 */
 //	$avia_config['masonry']['width'] = 705;
 //	$avia_config['masonry']['height'] = 705;
