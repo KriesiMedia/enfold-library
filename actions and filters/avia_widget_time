@@ -1,5 +1,5 @@
 /**
- * Use the "avia_widget_time" action to adjust time and date of Enfold widgets
+ * Use the "avia_widget_time" filter to adjust time and date of Enfold widgets
  *
  **/
  
