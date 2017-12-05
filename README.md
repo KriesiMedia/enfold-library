@@ -30,6 +30,7 @@ If there is a snippet you are unable to find and would like to propose get writt
 
 ## Online Resources from Third Party Developers
 Enfold CSS Snippets from Ryan Logan - https://wpturnedup.com/enfold-css-snippets/
+Custom Enfold Advanced Layout Builder Elements - https://www.spiderflystudios.com/resources/spiderfly-enfold-elements/
 
 ## Notes
 
