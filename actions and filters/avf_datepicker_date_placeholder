@@ -3,7 +3,7 @@
  *
  **/
  
- add_filter('avf_datepicker_date_placeholder', 'new_date_placeholder');
+add_filter('avf_datepicker_date_placeholder', 'new_date_placeholder');
 function new_date_placeholder() {
 $placeholder = "MM / DD / YY";
 return $placeholder;
