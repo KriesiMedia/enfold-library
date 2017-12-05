@@ -29,7 +29,7 @@ Please refer to the [Contributing guidelines](https://github.com/KriesiMedia/lib
 If there is a snippet you are unable to find and would like to propose get written, please open a [thread in our support forum](http://www.kriesi.at/support/) and describe your need. Please be aware that we can only help with small snippets (a few lines of code) - if you need something more cpmplicated it might be necessary to [hire a developer](http://www.kriesi.at/contact/customization) for this.
 
 ## Online Resources from Third Party Developers
-Enfold CSS Snippets from Ryan Logan - https://wpturnedup.com/enfold-css-snippets/
+Enfold CSS Snippets from Ryan Logan - https://wpturnedup.com/enfold-css-snippets/ <br />
 Custom Enfold Advanced Layout Builder Elements - https://www.spiderflystudios.com/resources/spiderfly-enfold-elements/
 
 ## Notes
