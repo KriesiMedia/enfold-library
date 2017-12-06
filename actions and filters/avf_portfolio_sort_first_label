@@ -1,0 +1,10 @@
+/**
+ * Use the "avf_portfolio_sort_first_label" filter changes first label (All) in Portfolio Grid element
+ *
+ **/
+ 
+add_filter('avf_portfolio_sort_first_label','new_first_label');
+function new_first_label() {
+$first_item_name = "New All Text";
+return $first_item_name;
+}
