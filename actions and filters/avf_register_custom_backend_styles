@@ -1,0 +1,13 @@
+/**
+ * You can use “avf_register_custom_backend_styles” filter in Functions.php file to add more pre-defined color
+ * schemes. You can use enfold/includes/admin/register-backend-styles.php file as a reference and create your own file 
+ * and add it to your child theme and then add following code to functions.php file of your child theme. 
+ *
+ * Note: You should return full path of the file.
+ **/
+ 
+add_filter( 'avf_register_custom_backend_styles', 'avia_custom_backend_styles' );
+function avia_custom_backend_styles()
+{
+    return get_stylesheet_directory() . '/custom-backend-styles.php';
+}
