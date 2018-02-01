@@ -1,0 +1,123 @@
+/* 
+    Created on : 31.10.2017, 12:42:57
+    Author     : Guenter
+	Since	   : 4.2.1
+
+	Modified ALB contact form shortcode CSS from css\shortcodes.css
+*/
+
+#top .wpcf7 .avia_ajax_form input,
+#top .wpcf7 .avia_ajax_form textarea,
+#top .wpcf7 .avia_ajax_form select{
+	width: 100%;
+	margin-bottom: 0;
+	display: inline;
+	min-width: 50px;
+	padding: 13px;
+	border-radius: 2px;
+	margin-top: 7px;
+}
+
+/*   User puts a label before an input element   */
+#top .wpcf7 .avia_ajax_form > p > label + br{
+	display: none;
+}
+
+#top .wpcf7 .avia_ajax_form > p > label + br + span > input,
+#top .wpcf7 .avia_ajax_form > p > label + br + span > textarea,
+#top .wpcf7 .avia_ajax_form > p > label + br + span > select{
+	margin-top: 0px;
+}
+
+
+/*	see \css\base.css for "date"	*/
+#top .wpcf7 .avia_ajax_form p input[type="date"]{
+	-webkit-appearance: none;
+	outline: none;
+	font: 1em "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#top .wpcf7 .avia_ajax_form p input[type="date"]:focus{
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);
+}
+/*	End \css\base.css for "date"	*/
+
+
+#top .wpcf7 .avia_ajax_form select[multiple] option{
+	padding:5px;
+}
+
+/*     Styling checkbox and radio		*/
+#top .wpcf7 .avia_ajax_form span.wpcf7-list-item{ 
+	display: block; 
+	float: left;
+	width: 100%;
+	margin: 0 0 0 1em;
+	height: 1.6em;
+}
+
+#top .wpcf7 .avia_ajax_form span.wpcf7-list-item input[type='checkbox'],
+#top .wpcf7 .avia_ajax_form span.wpcf7-list-item input[type='radio'],
+#top .wpcf7 .avia_ajax_form span input.wpcf7-acceptance{
+	width: auto;
+	margin: 0;
+	position: relative;
+	float: none;
+}
+
+#top .wpcf7 .avia_ajax_form span.wpcf7-list-item > span.wpcf7-list-item-label,
+#top .wpcf7 .avia_ajax_form span.wpcf7-list-item > label > span.wpcf7-list-item-label{
+	min-width: 20%;
+	display: inline-block;
+}
+
+#top .wpcf7 .avia_ajax_form span.wpcf7-list-item-label{
+	font-weight: bold;
+	font-size: 0.92em;
+}
+
+#top .wpcf7 .avia_ajax_form span.wpcf7-quiz-label{
+	font-weight: bold;
+	font-size: 1.0em;
+}
+
+/*	Styling for Google reCaptcha    */
+#top .wpcf7 .avia_ajax_form div.wpcf7-form-control-wrap{
+	display: inline-block;
+	margin: 11px 0;
+	width: 100%;
+}
+
+#top .wpcf7 .avia_ajax_form input[type='submit']{
+	width: auto;
+	margin: 0;
+	padding: 16px 20px;
+	border-radius: 2px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	font-weight: normal;
+	font-size: 0.92em;
+	min-width: 142px;
+	outline: none;
+}
+
+#top .wpcf7 .avia_ajax_form input.wpcf7-submit{
+	-webkit-transition: all 0.3s ease-out;
+	transition:         all 0.3s ease-out;
+}
+
+#top .wpcf7 .avia_ajax_form .wpcf7-validation-errors{
+	border: none;
+	display: inline-block !important;
+	margin: 11px 0;
+	padding: 0;
+	color: #f00;
+	font-weight: 600;
+	font-size: 1.2em;
+}
+
+#top .wpcf7 .avia_ajax_form span.wpcf7-not-valid-tip{
+	font-weight: 600;
+	font-size: 1.2em;
+	color: #f00;
+}
