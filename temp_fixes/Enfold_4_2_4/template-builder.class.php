@@ -134,14 +134,6 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 		 */
 		protected $revision_id;
 
-		/**
-		 * Stores if we are in autosave or preview mode for revision handling
-		 * (is too early for is_preview() )
-		 * 
-		 * @since 4.2.5
-		 * @var boolean 
-		 */
-		protected $in_revision_autosave;
 		
 		/**
 		 * Flag if the ALB magic wand button had been added to tinyMCE buttons
@@ -198,7 +190,6 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 			$this->alb_builder_status = 'unknown';
 			$this->post_content = '';
 			$this->revision_id = 0;
-			$this->in_revision_autosave = false;
 			$this->alb_magic_wand_button = false;
 			$this->alb_nonce_added = false;
 			
@@ -1730,7 +1721,6 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 			}
 			
 			$this->revision_id = $post['ID'];
-			$this->in_revision_autosave = true;
 			
 			$this->do_alb_autosave( stripslashes( $post['post_content'] ) );
 		}
@@ -1770,16 +1760,6 @@ if ( !class_exists( 'AviaBuilder' ) ) {
 			 * Copy all metadata from original post
 			 */
 			$this->save_alb_revision_data();
-			
-			
-			/**
-			 * If in autosave or preview the post is not saved - we need to save actual postmeteta data here
-			 * to be able to restore correctly
-			 */
-			if( ! $this->in_revision_autosave )
-			{
-				return;
-			}
 			
 			
 			/**
