@@ -3,8 +3,8 @@
  *
  **/
  
-add_filter('avf_masonry_sort_first_label','new_first_label');
-function new_first_label() {
+add_filter('avf_masonry_sort_first_label','new_masonry_first_label');
+function new_masonry_first_label() {
 $first_item_name = "New All Text";
 return $first_item_name;
 }
