@@ -3,8 +3,8 @@
  *
  **/
  
-add_filter('avf_portfolio_sort_first_label','new_first_label');
-function new_first_label() {
-$first_item_name = "New All Text";
+add_filter('avf_portfolio_sort_first_label','new_portfolio_first_label');
+function new_portfolio_first_label() {
+$first_item_name = " NEW ALL TEXT ";
 return $first_item_name;
 }
