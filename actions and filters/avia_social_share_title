@@ -1,5 +1,5 @@
 /**
- * Use the "avia_social_share_title" filter to change title of Social Share Buttons element
+ * Use the "avia_social_share_title" filter to change Social Share title on blog post created without ALB
  *
  **/
 
