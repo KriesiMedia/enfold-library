@@ -5,6 +5,6 @@
  
 add_filter('avf_masonry_sort_first_label','new_masonry_first_label');
 function new_masonry_first_label() {
-$first_item_name = "New All Text";
+$first_item_name = "NEW ALL TEXT ";
 return $first_item_name;
 }
