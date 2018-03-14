@@ -1,0 +1,27 @@
+/* pt-sans-caption-regular - latin */
+@font-face {
+  font-family: 'PT Sans Caption';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/pt-sans-caption-v10-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('PT Sans Caption'), local('PTSans-Caption'),
+       url('../fonts/pt-sans-caption-v10-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/pt-sans-caption-v10-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/pt-sans-caption-v10-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/pt-sans-caption-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/pt-sans-caption-v10-latin-regular.svg#PTSansCaption') format('svg'); /* Legacy iOS */
+}
+
+/* pt-sans-caption-700 - latin */
+@font-face {
+  font-family: 'PT Sans Caption';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/pt-sans-caption-v10-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('PT Sans Caption Bold'), local('PTSans-CaptionBold'),
+       url('../fonts/pt-sans-caption-v10-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/pt-sans-caption-v10-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/pt-sans-caption-v10-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/pt-sans-caption-v10-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/pt-sans-caption-v10-latin-700.svg#PTSansCaption') format('svg'); /* Legacy iOS */
+}

@@ -1,0 +1,13 @@
+/* press-start-2p-regular - latin */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/press-start-2p-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Press Start 2P Regular'), local('PressStart2P-Regular'),
+       url('../fonts/press-start-2p-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/press-start-2p-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/press-start-2p-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/press-start-2p-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/press-start-2p-v6-latin-regular.svg#PressStart2P') format('svg'); /* Legacy iOS */
+}

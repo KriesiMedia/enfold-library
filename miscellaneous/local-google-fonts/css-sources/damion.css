@@ -1,0 +1,13 @@
+/* damion-regular - latin */
+@font-face {
+  font-family: 'Damion';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/damion-v7-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Damion'),
+       url('../fonts/damion-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/damion-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/damion-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/damion-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/damion-v7-latin-regular.svg#Damion') format('svg'); /* Legacy iOS */
+}

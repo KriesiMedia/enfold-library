@@ -1,0 +1,41 @@
+/* heebo-100 - latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../fonts/heebo-v3-latin-100.eot'); /* IE9 Compat Modes */
+  src: local('Heebo Thin'), local('Heebo-Thin'),
+       url('../fonts/heebo-v3-latin-100.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/heebo-v3-latin-100.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/heebo-v3-latin-100.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/heebo-v3-latin-100.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/heebo-v3-latin-100.svg#Heebo') format('svg'); /* Legacy iOS */
+}
+
+/* heebo-regular - latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/heebo-v3-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Heebo'), local('Heebo-Regular'),
+       url('../fonts/heebo-v3-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/heebo-v3-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/heebo-v3-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/heebo-v3-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/heebo-v3-latin-regular.svg#Heebo') format('svg'); /* Legacy iOS */
+}
+
+/* heebo-700 - latin */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/heebo-v3-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Heebo Bold'), local('Heebo-Bold'),
+       url('../fonts/heebo-v3-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/heebo-v3-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/heebo-v3-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/heebo-v3-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/heebo-v3-latin-700.svg#Heebo') format('svg'); /* Legacy iOS */
+}

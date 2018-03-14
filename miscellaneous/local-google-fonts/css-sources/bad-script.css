@@ -1,0 +1,13 @@
+/* bad-script-regular - latin */
+@font-face {
+  font-family: 'Bad Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bad-script-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Bad Script Regular'), local('BadScript-Regular'),
+       url('../fonts/bad-script-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/bad-script-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/bad-script-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/bad-script-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/bad-script-v6-latin-regular.svg#BadScript') format('svg'); /* Legacy iOS */
+}

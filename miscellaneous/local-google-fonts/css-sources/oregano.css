@@ -1,0 +1,27 @@
+/* oregano-regular - latin */
+@font-face {
+  font-family: 'Oregano';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/oregano-v5-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Oregano'), local('Oregano-Regular'),
+       url('../fonts/oregano-v5-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/oregano-v5-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/oregano-v5-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/oregano-v5-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/oregano-v5-latin-regular.svg#Oregano') format('svg'); /* Legacy iOS */
+}
+
+/* oregano-italic - latin */
+@font-face {
+  font-family: 'Oregano';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/oregano-v5-latin-italic.eot'); /* IE9 Compat Modes */
+  src: local('Oregano Italic'), local('Oregano-Italic'),
+       url('../fonts/oregano-v5-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/oregano-v5-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/oregano-v5-latin-italic.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/oregano-v5-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/oregano-v5-latin-italic.svg#Oregano') format('svg'); /* Legacy iOS */
+}

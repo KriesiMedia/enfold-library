@@ -1,0 +1,13 @@
+/* herr-von-muellerhoff-regular - latin */
+@font-face {
+  font-family: 'Herr Von Muellerhoff';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/herr-von-muellerhoff-v7-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Herr Von Muellerhoff Regular'), local('HerrVonMuellerhoff-Regular'),
+       url('../fonts/herr-von-muellerhoff-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/herr-von-muellerhoff-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/herr-von-muellerhoff-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/herr-von-muellerhoff-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/herr-von-muellerhoff-v7-latin-regular.svg#HerrVonMuellerhoff') format('svg'); /* Legacy iOS */
+}

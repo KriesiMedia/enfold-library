@@ -1,0 +1,13 @@
+/* righteous-regular - latin */
+@font-face {
+  font-family: 'Righteous';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/righteous-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Righteous'), local('Righteous-Regular'),
+       url('../fonts/righteous-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/righteous-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/righteous-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/righteous-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/righteous-v6-latin-regular.svg#Righteous') format('svg'); /* Legacy iOS */
+}

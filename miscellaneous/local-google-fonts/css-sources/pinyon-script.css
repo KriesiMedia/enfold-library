@@ -1,0 +1,13 @@
+/* pinyon-script-regular - latin */
+@font-face {
+  font-family: 'Pinyon Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/pinyon-script-v7-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Pinyon Script'), local('PinyonScript'),
+       url('../fonts/pinyon-script-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/pinyon-script-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/pinyon-script-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/pinyon-script-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/pinyon-script-v7-latin-regular.svg#PinyonScript') format('svg'); /* Legacy iOS */
+}
