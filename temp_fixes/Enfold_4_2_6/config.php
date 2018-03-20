@@ -590,13 +590,12 @@ if(!function_exists('avia_woocommerce_breadcrumb'))
 
 		if(is_woocommerce())
 		{
-			
 			$front_id	= avia_get_option('frontpage');
 			$home 		= isset( $trail[0] ) ? $trail[0] : '';
 			$last 		= array_pop($trail);
 			$shop_id 	= function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'shop' ) : woocommerce_get_page_id( 'shop' );
 			$taxonomy 	= "product_cat";
-
+			
 			// on the shop frontpage simply display the shop name, rather than shop name + "All Products"
 			if(is_shop())
 			{
@@ -663,18 +662,27 @@ if(!function_exists('avia_woocommerce_breadcrumb'))
 			}
 			
 			/**
-			 * Allow to hide "Home" in breadcrumb when shop page is frontpage
+			 * Allow to remove "Shop" in breadcrumb when shop page is frontpage
 			 * 
 			 * @since 4.2.7
 			 */
-			if( ( $front_id == $shop_id ) && ! empty( $home ) && ( count( $trail ) > 1 ) )
+			$trail_count = count( $trail );
+			if( ( $front_id == $shop_id ) && ! empty( $home ) && ( $trail_count > 1 ) )
 			{
-				$hide = apply_filters( 'avf_woocommerce_breadcrumb_hide_home', 'hide', $trail, $args );
+				$hide = apply_filters( 'avf_woocommerce_breadcrumb_hide_shop', 'hide', $trail, $args );
 				if( 'hide' == $hide )
 				{
-					$trail = array_merge( $trail );
-					unset( $trail[0] );
-					$trail[1] = str_replace( '<a href', '<a rel="home" class="trail-begin" href', $trail[1] );
+					$title = get_the_title( $shop_id );
+					
+					for( $i = 1; $i < $trail_count; $i++ )
+					{
+						if( false !== strpos( $trail[ $i ], $title ) )
+						{
+							unset( $trail[ $i ] );
+							break;
+						}
+					}
+					
 					$trail = array_merge( $trail );
 				}
 			}
