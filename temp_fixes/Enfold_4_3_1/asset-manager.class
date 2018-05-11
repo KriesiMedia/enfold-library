@@ -480,7 +480,8 @@ if ( !class_exists( 'aviaAssetManager' ) ) {
 					 * Check if we have already an absolute url
 					 * (localhost is a special url - starts with //localhost
 					 */
-					if( ( false !== stripos( $match[1], 'http://' ) ) || ( false !== stripos( $match[1], 'https://' ) ) )
+					$base_url = str_replace( array( 'http:', 'https:' ), '', get_home_url() );
+					if( ( false !== stripos( $match[1], 'http://' ) ) || ( false !== stripos( $match[1], 'https://' ) ) || ( false !== stripos( $match[0], $base_url ) ) )
 					{
 						return $match[0];
 					}
