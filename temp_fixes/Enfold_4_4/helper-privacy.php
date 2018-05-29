@@ -12,7 +12,7 @@
 	* [av_privacy_google_webfonts] -> to disable google webfonts
 	* [av_privacy_google_maps] -> to disable google maps
 	* [av_privacy_video_embeds] -> to disable video embeds
-	*
+	* [av_privacy_popup button_text='your custom text' wrapper_class='' id='' class=''] -> button to open the modal popup window 
 	*
 	* Allows to add a checkbox to the comment form
 	*
@@ -35,6 +35,8 @@ if(!class_exists('av_privacy_class'))
 			add_shortcode( 'av_privacy_google_webfonts', array($this, 'av_privacy_disable_google_webfonts') );
 			add_shortcode( 'av_privacy_google_maps', array($this, 'av_privacy_disable_google_maps') );
 			add_shortcode( 'av_privacy_video_embeds', array($this, 'av_privacy_disable_video_embeds') );
+			
+			add_shortcode( 'av_privacy_popup', array( $this, 'av_privacy_popup' ) );
 			
 			
 			
@@ -174,7 +176,39 @@ if(!class_exists('av_privacy_class'))
 			return $link;
 		}
 		
-		
+		/**
+		 * Returns a button to open the privacy popup window
+		 * 
+		 * @since 4.4
+		 * @added_by Günter
+		 * @param array $atts
+		 * @param type $content
+		 * @param type $shortcodename
+		 */
+		public function av_privacy_popup( $atts = array(), $content = "", $shortcodename = "" )
+		{
+			$atts = shortcode_atts(
+						array(	'button_text'	=> __( 'Learn more about our privacy policy', 'avia_framework' ), 
+								'wrapper_class'	=> '',
+								'id'			=> '',
+								'class'	=> ''
+							), $atts, $shortcodename );
+			
+			$out = '';
+			
+			$class = 'avia-button avia-cookie-consent-button avia-cookie-info-btn ' . $atts['class'];
+			$id = ! empty( $atts['id'] ) ? " id='{$atts['id']}'" : '';
+			
+			$out .=	"<div class='av-privacy-popup-button-wrap {$atts['wrapper_class']}'>";
+			$out .=		"<a href='#' class='{$class}' $id>{$atts['button_text']}</a>";
+			$out .= '</div>';
+			
+			return $out;
+		}
+
+
+
+
 		/**
 		 * Javascript that gets appended to pages that got a privacy shortcode toggle
 		 * 
