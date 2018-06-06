@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class handles adding options, privacy checkboxes to WooCommerce forms and checking
  *

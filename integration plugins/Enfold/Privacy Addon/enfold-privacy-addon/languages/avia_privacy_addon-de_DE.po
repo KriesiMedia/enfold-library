@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Enfold Privacy Addon\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-06 09:11+0000\n"
+"PO-Revision-Date: 2018-06-06 09:14+0000\n"
+"Last-Translator: admin <gs@schoenmann.at>\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: classes/class-av-privacy-addon.php:89
+msgid ""
+"Check to show the checkbox &quot;Save my name, email, and website in this "
+"browser for the next time I comment&quot; added by WP since 4.9.6"
+msgstr ""
+
+#. Name of the plugin
+msgid "Enfold Privacy Addon"
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:98
+msgid ""
+"Enter the text you want to display to the user - leave blank for WP default "
+"message."
+msgstr ""
+"Geben Sie den Text ein, den Sie dem Besucher zeigen wollen - leer lassen für "
+"Standard WP Meldung"
+
+#. Description of the plugin
+msgid ""
+"Extends Enfolds privacy support. Adds a shortcode for creating a button to "
+"open the modal privacy popup window, allows to customize WP Cookie Consent "
+"Checkbox for standard WP comment fields"
+msgstr ""
+
+#. Author of the plugin
+msgid "Guenter for www.kriesi.at"
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:74
+msgid ""
+"In case you deal with any EU customers/visitors this options allow you to "
+"make your site GDPR compliant."
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:138
+msgid "Learn more about our privacy policy"
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:108
+msgid "Link to Modal Window with Privacy and Cookie Info"
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:97
+msgid "Message to display"
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:88
+msgid "Show standard WordPress comment form checkbox ?"
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:77
+msgid "WordPress Cookie Consent Checkbox"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "www.kriesi.at"
+msgstr ""
+
+#: classes/class-av-privacy-addon.php:109
+msgid ""
+"You can add a button to open this window any time by using the following "
+"shortcode (all parameters are optional):<br /><p><strong>[av_privacy_popup "
+"button_text='your custom text' wrapper_class='' id='' class=''] </strong>"
+"or</p><p><strong>[av_privacy_popup wrapper_class='' id='' class='']your "
+"button text[/av_privacy_popup]</strong></p>"
+msgstr ""

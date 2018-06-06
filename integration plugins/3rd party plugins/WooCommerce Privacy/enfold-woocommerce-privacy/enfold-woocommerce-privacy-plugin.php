@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Enfold WooCommerce Privacy Extension Plugin
+Plugin Name: Enfold WooCommerce Privacy Extension
 Plugin URI: www.kriesi.at
 Description: Extends Enfolds support for WooCommerce privacy by adding checkboxes for Register, Login and Review forms. Message for these boxes can be set independently from standard Enfold privacy login messages.
 Version: 1.0.0
@@ -24,7 +24,7 @@ global $enfold_wc_privacy_globals;
 $enfold_wc_privacy_globals = array(
 		'plugin_version'			=>	'1.0.0',
 		'theme_name'				=>	'Enfold',
-		'min_version'				=>	'4.1.2',
+		'min_version'				=>	'4.4.2',
 		'plugin_path'				=>	str_replace( basename( __FILE__ ), '', __FILE__ ),
 		'plugin_url'				=>	trailingslashit( plugins_url( '', plugin_basename( __FILE__ ) ) ),
 		'can_use'					=>	'undefined',
@@ -43,7 +43,7 @@ final class Enfold_WC_Privacy_Plugin
 	 * Holds the instance of this class
 	 * 
 	 * @since 1.0.0
-	 * @var Enfold_WC_Privacy_Plugin
+	 * @var Enfold_Privacy_Addon_Plugin
 	 */
 	private static $_instance = null;
 	
@@ -53,7 +53,7 @@ final class Enfold_WC_Privacy_Plugin
 	 * @since 1.0.0
 	 * @var Av_WC_Privacy 
 	 */
-	protected $av_wc_privcy;
+	protected $av_wc_privacy;
 
 		
 	/**
@@ -80,7 +80,7 @@ final class Enfold_WC_Privacy_Plugin
 	 */
 	private function __construct() 
 	{
-		$this->av_wc_privcy = null;
+		$this->av_wc_privacy = null;
 		
 		if( $this->can_use_plugin() != 'yes' )
 		{
@@ -96,7 +96,7 @@ final class Enfold_WC_Privacy_Plugin
 	 */
 	public function __destruct() 
 	{
-		unset( $this->av_wc_privcy );
+		unset( $this->av_wc_privacy );
 	}
 
 	/**
@@ -131,8 +131,8 @@ final class Enfold_WC_Privacy_Plugin
 		return $enfold_wc_privacy_globals['can_use'];
 	}
 	
-		/**
-	 * Only when plugin contact form 7 has been loaded, we load our classes
+	/**
+	 * Only when plugin WooCommerce has been loaded, we load our classes
 	 * 
 	 * @since 1.0.0
 	 */
@@ -152,11 +152,9 @@ final class Enfold_WC_Privacy_Plugin
 		
 		require_once $enfold_wc_privacy_globals['plugin_path'] . 'classes/class-av-wc-privacy.php';
 		
-		$this->av_wc_privcy = new Av_WC_Privacy();
-		$this->plugin_path = $enfold_wc_privacy_globals['plugin_path'];
+		$this->av_wc_privacy = new Av_WC_Privacy();
+		$this->av_wc_privacy->plugin_path = $enfold_wc_privacy_globals['plugin_path'];
 	}
-	
-	
 }
 
 /**
