@@ -43,7 +43,7 @@ final class Enfold_WC_Privacy_Plugin
 	 * Holds the instance of this class
 	 * 
 	 * @since 1.0.0
-	 * @var Enfold_Privacy_Addon_Plugin
+	 * @var Enfold_WC_Privacy_Plugin
 	 */
 	private static $_instance = null;
 	
