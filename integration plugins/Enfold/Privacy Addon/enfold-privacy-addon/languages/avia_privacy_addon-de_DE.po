@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Enfold Privacy Addon\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-06 09:11+0000\n"
-"PO-Revision-Date: 2018-06-06 09:14+0000\n"
+"PO-Revision-Date: 2018-06-06 09:59+0000\n"
 "Last-Translator: admin <gs@schoenmann.at>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -50,11 +50,11 @@ msgstr ""
 
 #: classes/class-av-privacy-addon.php:138
 msgid "Learn more about our privacy policy"
-msgstr ""
+msgstr "Lernen Sie mehr über unseren Datenschutz"
 
 #: classes/class-av-privacy-addon.php:108
 msgid "Link to Modal Window with Privacy and Cookie Info"
-msgstr ""
+msgstr "Link zu modalen Fenster mit Datenschutz- und Cookie Informationen"
 
 #: classes/class-av-privacy-addon.php:97
 msgid "Message to display"

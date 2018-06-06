@@ -26,6 +26,7 @@ $enfold_privacy_addon_globals = array(
 		'theme_name'				=>	'Enfold',
 		'min_version'				=>	'4.4',
 		'plugin_path'				=>	str_replace( basename( __FILE__ ), '', __FILE__ ),
+		'plugin_base_name'			=>	plugin_basename( __FILE__ ),
 		'plugin_url'				=>	trailingslashit( plugins_url( '', plugin_basename( __FILE__ ) ) ),
 		'can_use'					=>	'undefined',
 	);
@@ -142,6 +143,7 @@ final class Enfold_Privacy_Addon_Plugin
 		
 		$this->av_privcy_addon = new Av_Privacy_AddOn();
 		$this->av_privcy_addon->plugin_path = $enfold_privacy_addon_globals['plugin_path'];
+		$this->av_privcy_addon->plugin_base_name = $enfold_privacy_addon_globals['plugin_base_name'];
 	}
 	
 	

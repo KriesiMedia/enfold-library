@@ -17,12 +17,22 @@ class Av_WC_Privacy
 	 */
 	public $plugin_path;
 	
+	
+	/**
+	 *
+	 * @since 1.0.0
+	 * @var string 
+	 */
+	public $plugin_base_name;
+
+
 	/**
 	 * @since 1.0.0
 	 */
 	public function __construct() 
 	{
 		$this->plugin_path = '';
+		$this->plugin_base_name= '';
 		
 		add_action( 'init', array( $this, 'handler_wp_load_textdomains' ), 1 );
 		add_filter( 'avf_option_page_data_init', array( $this, 'handler_option_page_data_init' ), 10, 1 );
@@ -73,7 +83,13 @@ class Av_WC_Privacy
 	 **/
 	public function handler_wp_load_textdomains()
 	{
-		$language_path = trailingslashit( $this->plugin_path ) . 'languages';	
+		$pos = strrpos( $this->plugin_base_name, '/' );
+		if( $pos === false )
+		{
+			$pos = strrpos( $this->plugin_base_name, '\\' );
+		}
+		
+		$language_path = ( $pos === false ) ? 'languages' : trailingslashit ( substr( $this->plugin_base_name, 0, $pos + 1 ) ) . 'languages';		
 		load_plugin_textdomain( 'avia_wc_privacy_ext', false, $language_path );
 	}
 	

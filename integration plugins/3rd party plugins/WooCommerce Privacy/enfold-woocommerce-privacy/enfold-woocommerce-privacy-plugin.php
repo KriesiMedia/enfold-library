@@ -26,6 +26,7 @@ $enfold_wc_privacy_globals = array(
 		'theme_name'				=>	'Enfold',
 		'min_version'				=>	'4.4.2',
 		'plugin_path'				=>	str_replace( basename( __FILE__ ), '', __FILE__ ),
+		'plugin_base_name'			=>	plugin_basename( __FILE__ ),
 		'plugin_url'				=>	trailingslashit( plugins_url( '', plugin_basename( __FILE__ ) ) ),
 		'can_use'					=>	'undefined',
 		'base_plugin_class'			=>	'Woocommerce',
@@ -154,6 +155,8 @@ final class Enfold_WC_Privacy_Plugin
 		
 		$this->av_wc_privacy = new Av_WC_Privacy();
 		$this->av_wc_privacy->plugin_path = $enfold_wc_privacy_globals['plugin_path'];
+		$this->av_wc_privacy->plugin_base_name = $enfold_wc_privacy_globals['plugin_base_name'];
+		
 	}
 }
 
