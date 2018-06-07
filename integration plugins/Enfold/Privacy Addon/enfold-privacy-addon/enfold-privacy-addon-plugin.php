@@ -3,7 +3,7 @@
 Plugin Name: Enfold Privacy Addon
 Plugin URI: www.kriesi.at
 Description: Extends Enfolds privacy support. Adds a shortcode for creating a button to open the modal privacy popup window, allows to customize WP Cookie Consent Checkbox for standard WP comment fields
-Version: 1.0.0
+Version: 1.0.1
 Author: Guenter for www.kriesi.at
 Author URI: www.kriesi.at
 Text Domain: avia_privacy_addon

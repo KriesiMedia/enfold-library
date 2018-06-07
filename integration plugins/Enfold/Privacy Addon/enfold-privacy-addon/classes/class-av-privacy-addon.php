@@ -41,6 +41,8 @@ class Av_Privacy_AddOn
 		add_filter( 'avf_option_page_data_init', array( $this, 'handler_option_page_data_init' ), 10, 1 );
 		
 		add_shortcode( 'av_privacy_popup', array( $this, 'handler_sc_privacy_popup' ) );
+		
+		add_filter( 'avf_disable_frontend_assets', array( $this, 'handler_disable_unused_assets' ), 20, 1 );
 			
 		/**
 		 * Hook to change WP default checkbox "Save my name, email, and website in this browser for the next time I comment"
@@ -126,6 +128,15 @@ class Av_Privacy_AddOn
 					"nodescription"	=> true
 				);
 		
+		$avia_elements[] =	array(
+					"slug"	=> "cookie",
+					"name" 	=> __( "Activate this shortcode", 'avia_privacy_addon' ),
+					"desc" 	=> __( "Check if you want to use this shortcode. If unchecked, shortcode will be ignored", 'avia_privacy_addon' ),
+					"id" 	=> "privacy_modal_popup_button",
+					"type" 	=> "checkbox",
+					"std"	=> false,
+				);
+		
 		return $avia_elements;
 	}
 	
@@ -140,6 +151,11 @@ class Av_Privacy_AddOn
 	 */
 	public function handler_sc_privacy_popup( $atts = array(), $content = "", $shortcodename = "" )
 	{
+		if( avia_get_option('privacy_modal_popup_button') != "privacy_modal_popup_button" )
+		{
+			return '';
+		}
+		
 		$atts = shortcode_atts( array( 
 							'wrapper_class'	=> '',
 							'id'			=> '',
@@ -158,6 +174,26 @@ class Av_Privacy_AddOn
 		$out .= '</div>';
 
 		return $out;
+	}
+	
+	/**
+	 * Load elements that are needed by popup window
+	 * 
+	 * @since 1.0.1
+	 * @param array $disabled
+	 */
+	public function handler_disable_unused_assets( array $disabled )
+	{
+		if( avia_get_option('privacy_modal_popup_button') != "privacy_modal_popup_button" )
+		{
+			return $disabled;
+		}
+		
+		unset( $disabled['av_heading'] );
+		unset( $disabled['av_hr'] );
+		unset( $disabled['av_tab_container'] );
+				
+		return $disabled;
 	}
 
 	/**
