@@ -63,6 +63,13 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 			add_filter( 'page_row_actions', array( $this, 'handler_add_edit_link' ), 10, 2 );
 			add_filter( 'post_row_actions', array( $this, 'handler_add_edit_link' ), 10, 2 );
 			add_filter('get_edit_post_link', array( $this, 'handler_edit_post_link' ), 999, 3 );
+			
+			/**
+			 * Add custom post types to WP REST API so they can be edited with Gutenberg
+			 * 
+			 * 3rd Party have a filter to add their post types
+			 */
+			add_action( 'init', array( $this, 'handler_post_type_rest_support' ), 25 );
 		}
 		
 		/**
@@ -207,6 +214,35 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 			return $link;
 		}
 		
+		/**
+		 * Add REST API support to an already registered post type.
+		 * 
+		 * @since 4.4.2
+		 */
+		public function handler_post_type_rest_support()
+		{
+			global $wp_post_types;
+			
+			/**
+			 * Add custom post types that can be edited by Gutenberg
+			 * 
+			 * @since 4.4.2
+			 * @param array
+			 * @return array
+			 */
+			$post_types = apply_filters( 'avf_gutenberg_rest_api_post_types', array(
+								'portfolio'
+							) );
+			
+			foreach( $post_types as $post_type_name ) 
+			{
+				if( isset( $wp_post_types[ $post_type_name ] ) )
+				{
+					$wp_post_types[$post_type_name]->show_in_rest = true;
+				}
+			}
+		}
+	
 	}
 	
 	/**
