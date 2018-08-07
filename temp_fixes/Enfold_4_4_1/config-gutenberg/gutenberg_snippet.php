@@ -104,7 +104,7 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 				/**
 				 * @since 4.4.2
 				 */
-				$this->edit_link_target = apply_filters( 'avf_edit_post_link_target', $this->edit_link_target );
+				$this->edit_link_target = apply_filters( 'avf_gutenberg_edit_post_link_target', $this->edit_link_target );
 			}
 			
 			return ( isset( $this->edit_link_target[ $post->post_type ] ) ) ? $this->edit_link_target[ $post->post_type ] : 'classic-editor';
