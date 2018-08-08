@@ -29,6 +29,7 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 		 */
 		protected $edit_link_target;
 		
+		
 		/**
 		 * Return the instance of this class
 		 * 
@@ -50,7 +51,7 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 		 * 
 		 * @since 4.4.2
 		 */
-		public function __construct() 
+		protected function __construct() 
 		{
 			$this->edit_link_target = array();
 			
@@ -59,11 +60,14 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 			 */
 			remove_action( 'admin_init', 'gutenberg_add_edit_link_filters' );
 			
-			
 			add_filter( 'page_row_actions', array( $this, 'handler_add_edit_link' ), 10, 2 );
 			add_filter( 'post_row_actions', array( $this, 'handler_add_edit_link' ), 10, 2 );
-			add_filter('get_edit_post_link', array( $this, 'handler_edit_post_link' ), 999, 3 );
+			add_filter( 'get_edit_post_link', array( $this, 'handler_edit_post_link' ), 999, 3 );
 			
+			/**
+			 * Adjust admin bar links frontend and backend. We hook after theme handler.
+			 */
+			add_action( 'admin_bar_menu', array( $this, 'handler_admin_bar_menu' ), 999, 1 );
 		}
 		
 		/**
@@ -198,6 +202,7 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 			}
 			
 			
+			
 			$target = $this->get_edit_link_target( $post );
 			
 			if( 'classic-editor' == $target )
@@ -206,6 +211,148 @@ if( ! class_exists( 'Avia_Gutenberg' ) && defined( 'GUTENBERG_VERSION' ) && is_a
 			}
 			
 			return $link;
+		}
+		
+		
+		/**
+		 * Adjust admin bar for classic editor. We hook after theme handler.
+		 * 
+		 * @since 4.4.2
+		 * @param WP_Admin_Bar $wp_admin_bar		(passed by reference)
+		 * @return WP_Admin_Bar
+		 */
+		public function handler_admin_bar_menu( WP_Admin_Bar $wp_admin_bar )
+		{
+				
+			if( ! current_user_can( 'manage_options' ) ) 
+			{
+				return;
+			}
+			
+			/**
+			 * Adjust "Edit Page" link in frontend
+			 */
+			if( ! is_admin() )
+			{
+				$viewed_id = avia_get_the_ID();
+				$set_front_id = avia_get_option( 'frontpage' );
+				$post = get_post( $viewed_id );
+				
+				if( $post instanceof WP_Post )
+				{
+					/**
+					 * If the page/post/... does not contain gutenberg we must create a link to classic editor
+					 */
+					$is_gutenberg = gutenberg_post_has_blocks( $post );
+					$is_alb = ( Avia_Builder()->get_alb_builder_status( $viewed_id ) == 'active' );
+
+					$edit_url = get_edit_post_link( $post->ID, 'av_gutenberg' );
+					
+					if( ! $is_gutenberg )
+					{
+						$edit_url = add_query_arg( 'classic-editor', '', $edit_url );
+					}
+
+					if( is_front_page() &&  ( $viewed_id == $set_front_id ) )
+					{
+						if( $is_gutenberg )
+						{
+							$title = __( 'Edit Frontpage ( Gutenberg )', 'avia_framework' );
+						}
+						else if( $is_alb )
+						{
+							$title = __( 'Edit Frontpage ( Advanced Layout Builder )', 'avia_framework' );
+						}
+						else
+						{
+							$title = __( 'Edit Frontpage ( Classic editor )', 'avia_framework' );
+						}
+						
+						$menu = array(
+									'id'	=> 'edit',
+									'title'	=> $title,
+									'href'	=> $edit_url,
+									'meta'	=> array( 'target' => 'blank' )
+								);
+
+						$wp_admin_bar->add_menu( $menu );
+					}
+					else
+					{
+						$obj = get_post_type_object( $post->post_type );
+						
+						if( $is_gutenberg )
+						{
+							$title = sprintf( __( 'Edit %s ( Gutenberg )', 'avia_framework' ), $obj->labels->singular_name );
+						}
+						else if( $is_alb )
+						{
+							$title = sprintf( __( 'Edit %s ( Advanced Layout Builder )', 'avia_framework' ), $obj->labels->singular_name );
+						}
+						else
+						{
+							$title = sprintf( __( 'Edit %s ( Classic editor )', 'avia_framework' ), $obj->labels->singular_name );
+						}
+						
+						$menu = array(
+									'id'	=> 'edit',
+									'title'	=> $title,
+									'href'	=> $edit_url,
+									'meta'	=> array( 'target' => 'blank' )
+								);
+
+						$wp_admin_bar->add_menu( $menu );
+					}
+				}
+			}
+	
+			/**
+			 * Adjust the "New" dropdown
+			 */
+			$nodes = $wp_admin_bar->get_nodes();
+			
+			$new_nodes = array();
+	
+			foreach( $nodes as $key => $node ) 
+			{
+				if( 0 !== strpos( $key, 'new-' ) )
+				{
+					continue;
+				}
+				
+				if( 'new-content' == $key )
+				{
+					continue;
+				}
+				
+				$post_type = str_replace( 'new-', '', $key );
+				
+				$wp_admin_bar->remove_node( $key );
+				
+				if ( ! gutenberg_can_edit_post_type( $post_type ) )
+				{
+					$new_nodes[] = $node;
+					continue;
+				}
+				
+				$classic = clone $node;
+
+				$node->title .= ' ( ' . __( 'Gutenberg', 'avia_framework' ) . ' )';
+				$new_nodes[] = $node;
+				
+				$classic->id .= '-classic';
+				$classic->title .= ' ( ' . __( 'Classic editor/Advanced Layout Builder', 'avia_framework' ) . ' )';
+				$classic->href = add_query_arg( 'classic-editor', '', $classic->href );
+				$new_nodes[] = $classic;
+			}
+			
+			/**
+			 * Save reordered menus
+			 */
+			foreach( $new_nodes as $key => $node ) 
+			{
+				$wp_admin_bar->add_menu( $node );
+			}
 		}
 		
 	}
