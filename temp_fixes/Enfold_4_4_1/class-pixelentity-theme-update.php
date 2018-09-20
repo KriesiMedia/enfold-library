@@ -45,17 +45,25 @@ if (!class_exists("PixelentityThemeUpdate")) {
 			/**
 			 * fixes a bug where $api->wp_list_themes returns several times the same theme/item data and breaks the envato update api 
 			 * because the theme updater tries to download the same theme several times and triggers a 429 error 
+			 * As Envato now also limits requests we only filter for current theme as a temp fix until we upgrade to nes API.
+			 *
 			 * (see https://build.envato.com/api/#rate-limit)
 			 * 
 			 * @since 4.4.2
 			 */
 			$filtered_purchased = array();
 			$purchased_ids = array();
+			$current_theme_name = strtolower( avia_auto_updates::get_themename() );
 
 			foreach ( $purchased as $current ) 
 			{
 				if ( ! in_array( $current->item_id, $purchased_ids ) ) 
 				{
+					if( ! isset( $current->theme_name ) || ( strtolower( $current->theme_name ) != $current_theme_name ) )
+					{
+						continue;
+					}
+					
 					$filtered_purchased[] = $current;
 					$purchased_ids[] = $current->item_id;
 				}
