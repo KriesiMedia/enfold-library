@@ -112,7 +112,7 @@ class Enfold_Recaptcha_Public {
 
 		$elements[] =	array(
 			"name" => __("Google ReCAPTCHA V2",'avia_framework'),
-			"desc" => __("Add a Google reCAPTCHA widget in the theme the contact form element.",'avia_framework'),
+			"desc" => __("Add a Google reCAPTCHA widget on the theme's contact form element.",'avia_framework'),
 			"id" => "recaptcha_enfold",
 			"std" => "",
 			"slug"	=> "google",
