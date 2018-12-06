@@ -124,7 +124,7 @@ class Enfold_Recaptcha_Public {
 			"name" 	=> __("Placeholder", 'avia_framework'),
 			"desc" 	=> __('Text to display after the captcha widget or before the widget validation.', 'avia_framework'),
 			"id" 	=> "recaptcha_enfold_desc",
-			"type" 	=> "textarea"
+			"type" 	=> "textarea",
 			"std" => __('Verification required.', 'avia_framework'),
 			);
 
