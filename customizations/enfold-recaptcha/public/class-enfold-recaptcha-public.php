@@ -184,7 +184,7 @@ class Enfold_Recaptcha_Public {
 
 	function avia_recaptcha_script(){
 		$public_key = avia_get_option( 'recaptcha_enfold_pkey' );
-		$desc = avia_get_options( 'recaptcha_enfold_desc' );
+		$desc = avia_get_option( 'recaptcha_enfold_desc' );
 
 		if( empty( $public_key ) || ! $public_key ) {
 			return new WP_Error( 'enfold-recaptcha-public-missing', __( "The recaptcha public key is missing.", "avia_framework" ) );
