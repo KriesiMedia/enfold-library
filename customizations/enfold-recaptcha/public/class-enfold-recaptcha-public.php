@@ -167,7 +167,7 @@ class Enfold_Recaptcha_Public {
 				return new WP_Error( 'enfold-recaptcha-secret-missing', __( "The recaptcha secret key is missing.", "avia_framework" ) );
 			}
 
-			$verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$gcaptcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+			$verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret_key."&response=".$gcaptcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
 			$response = json_decode( $verify, true);
 	
 			if( $response['success'] ) {
