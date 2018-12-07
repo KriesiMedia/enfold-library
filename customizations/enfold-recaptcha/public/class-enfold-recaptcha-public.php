@@ -163,7 +163,7 @@ class Enfold_Recaptcha_Public {
 		if( isset( $gcaptcha ) ) {
 			$secret_key = avia_get_option( 'recaptcha_enfold_skey' );
 			
-			if( empty( $public_key ) || ! $secret_key ) {
+			if( empty( $secret_key ) || ! $secret_key ) {
 				return new WP_Error( 'enfold-recaptcha-secret-missing', __( "The recaptcha secret key is missing.", "avia_framework" ) );
 			}
 
