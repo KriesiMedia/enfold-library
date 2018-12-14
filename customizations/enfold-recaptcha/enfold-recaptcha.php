@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Enfold Recaptcha
  * Plugin URI:        https://github.com/KriesiMedia/enfold-library/tree/master/miscellaneous/recaptcha
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Add a Google reCAPTCHA V2 widget to the Enfold theme's contact form element.
  * Version:           1.0.0
  * Author:            Enfold
  * Author URI:        kriesi.at

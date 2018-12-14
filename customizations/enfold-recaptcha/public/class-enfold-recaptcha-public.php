@@ -118,6 +118,15 @@ class Enfold_Recaptcha_Public {
 			"slug"	=> "google",
 			"type" => "heading",
 			"nodescription"=>true);
+		
+		$elements[] =	array(
+			"slug"	=> "google",
+			"name" 	=> __("Placeholder", 'avia_framework'),
+			"desc" 	=> __('Text to display after the captcha widget or before the widget validation.', 'avia_framework'),
+			"id" 	=> "recaptcha_enfold_desc",
+			"type" 	=> "textarea",
+			"std" => __('Verification required.', 'avia_framework'),
+			);
 
 		$elements[] =	array(
 			"slug"	=> "google",
@@ -154,11 +163,11 @@ class Enfold_Recaptcha_Public {
 		if( isset( $gcaptcha ) ) {
 			$secret_key = avia_get_option( 'recaptcha_enfold_skey' );
 			
-			if( empty( $public_key ) || ! $secret_key ) {
+			if( empty( $secret_key ) || ! $secret_key ) {
 				return new WP_Error( 'enfold-recaptcha-secret-missing', __( "The recaptcha secret key is missing.", "avia_framework" ) );
 			}
 
-			$verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$gcaptcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+			$verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret_key."&response=".$gcaptcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
 			$response = json_decode( $verify, true);
 	
 			if( $response['success'] ) {
@@ -175,6 +184,7 @@ class Enfold_Recaptcha_Public {
 
 	function avia_recaptcha_script(){
 		$public_key = avia_get_option( 'recaptcha_enfold_pkey' );
+		$desc = avia_get_option( 'recaptcha_enfold_desc' );
 
 		if( empty( $public_key ) || ! $public_key ) {
 			return new WP_Error( 'enfold-recaptcha-public-missing', __( "The recaptcha public key is missing.", "avia_framework" ) );
@@ -187,9 +197,9 @@ class Enfold_Recaptcha_Public {
 			var button = jQuery(form).find(".button");
 			var parent = button.parent(".form_element");
 			var captcha = jQuery("<p style='display: inline-block' data-callback='onloadCallback' data-sitekey='<?php echo $public_key; ?>' id='recaptcha-container'></p>");
-			var answer = jQuery("<p class='answer'>You have to pass reCAPTCHA before you can send the form.</p>");
+			var answer = jQuery("<p class='answer'><?php echo $desc; ?></p>");
 			var publickey = captcha.data('sitekey');
-	 
+		
 			var createCaptcha = function() {
 				button.attr("disabled", "disabled");
 				button.css("display", 'none');
@@ -197,8 +207,7 @@ class Enfold_Recaptcha_Public {
 				captcha.insertBefore(parent);
 				answer.insertAfter(parent);
 			};
-	 
-		   
+			   
 			createCaptcha();
 	 
 			var onloadCallback = function() {
