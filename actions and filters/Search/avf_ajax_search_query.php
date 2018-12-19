@@ -15,7 +15,7 @@ add_filter( 'avf_ajax_search_query', 'handler_avf_ajax_search_query', 10, 1 );
  * @param string $query_string
  * @return string|array
  */
-function handler_avf_ajax_search_exclude_pages( $query_string )
+function handler_avf_ajax_search_query( $query_string )
 {
 	$defaults = array();
 
