@@ -1,6 +1,6 @@
 ### Requirements
 
-You need the Google reCAPTCHA V2 Site key and Secret key.
+Generate the Google reCAPTCHA V2 Site key and Secret key.
 
 // https://www.google.com/recaptcha/admin
 
