@@ -2672,9 +2672,7 @@ if( ! class_exists('avia_instagram_widget') )
 			}
 			
 			$save = json_encode( $this->cache );
-
-			$ret = update_option( 'avia_instagram_widgets_cache', $save );
-			$i = 1;
+			update_option( 'avia_instagram_widgets_cache', $save );
 		}
 
 
