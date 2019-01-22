@@ -193,7 +193,7 @@ class Enfold_Recaptcha_Public {
 		?>
 		<script type="text/javascript">
 			var key = '<?php echo $public_key; ?>';
-			var form = jQuery(".avia_ajax_form");
+			var form = jQuery(".avia_ajax_form").not(".avia-mailchimp-form");
 			var button = jQuery(form).find(".button");
 			var parent = button.parent(".form_element");
 			var captcha = jQuery("<p style='display: inline-block' data-callback='onloadCallback' data-sitekey='<?php echo $public_key; ?>' id='recaptcha-container'></p>");
