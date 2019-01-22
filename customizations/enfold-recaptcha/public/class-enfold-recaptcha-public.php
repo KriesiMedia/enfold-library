@@ -219,7 +219,6 @@ class Enfold_Recaptcha_Public {
 	 
 			var onSuccessfullCallback = function(success) {
 				captcha.attr( 'data-capkey', grecaptcha.getResponse() );
-				console.log(captcha.data('capkey'));
 				onVerifyCallback(captcha.data('capkey'));
 			};
 	   
@@ -232,7 +231,6 @@ class Enfold_Recaptcha_Public {
 						action: 'avia_ajax_recaptcha'
 					},
 					success: function(response) {
-						console.log('success', response);
 						if(response == 'success') {
 							form.attr('action', window.location.href.replace("#", ""));
 							button.removeAttr('disabled');
@@ -241,10 +239,10 @@ class Enfold_Recaptcha_Public {
 						}
 					},
 					error: function() {
-						console.log('error');
+						console.log('verify recaptcha error');
 					},
 					complete: function() {
-						console.log('complete');
+						// onVerifyCallback complete
 					}
 				});
 			}
