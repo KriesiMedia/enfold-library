@@ -205,14 +205,16 @@ class Enfold_Recaptcha_Verify {
 		}
 
 		$public_key = $this->get_public_key();
-
+		$notice = $this->get_notice();
+		
+		$atts .= ' disabled=disabled';
+		$atts .= ' data-notice=' . urlencode( $notice );
 		$atts .= ' data-sitekey=' . $public_key;
 		$atts .= ' data-theme=light';
 		$atts .= ' data-size=normal';
 		$atts .= ' data-tabindex=' . $id;
 		$atts .= ' data-callback=aviaRecaptchaSuccess';
-		$atts .= ' disabled=disabled';
-
+		
 		return $atts;
 	} 
 
@@ -225,15 +227,6 @@ class Enfold_Recaptcha_Verify {
 			"slug"	=> "google",
 			"type" => "heading",
 			"nodescription"=>true);
-		
-		$elements[] =	array(
-			"slug"	=> "google",
-			"name" 	=> __("Widget Notice", 'avia_framework'),
-			"desc" 	=> __('Text to display before the widget validation.', 'avia_framework'),
-			"id" 	=> "recaptcha_enfold_notice",
-			"type" 	=> "text",
-			"std" => __('Verification required.', 'avia_framework'),
-			);
 
 		$elements[] =	array(
 			"slug"	=> "google",
@@ -249,6 +242,15 @@ class Enfold_Recaptcha_Verify {
 			"desc" 	=> __("Enter the secret key here.", 'avia_framework'),
 			"id" 	=> "recaptcha_enfold_skey",
 			"type" 	=> "text"
+			);
+
+		$elements[] =	array(
+			"slug"	=> "google",
+			"name" 	=> __("Widget Notice", 'avia_framework'),
+			"desc" 	=> __('Text to display before the widget validation.', 'avia_framework'),
+			"id" 	=> "recaptcha_enfold_notice",
+			"type" 	=> "text",
+			"std" => __('Verification required.', 'avia_framework'),
 			);
 
 		return $elements;
