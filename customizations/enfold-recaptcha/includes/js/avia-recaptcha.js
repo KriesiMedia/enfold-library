@@ -22,8 +22,10 @@ aviaRecaptchaDetectHuman = function( form, action ) {
     }, false );
 }
 
-var aviaRecaptchaNotice = function( el ) {
+var aviaRecaptchaNotice = function( el, notice ) {
     var p = document.createElement( 'p' );
+    var t = document.createTextNode( notice );
+    p.appendChild( t );
     p.classList.add( 'g-recaptcha-notice' );                           
     el.parentNode.insertBefore( p, el );
 };
@@ -44,6 +46,7 @@ var aviaRecaptchaRender = function() {
         if ( forms[ i ].classList && forms[ i ].classList.contains( 'avia-form-recaptcha' ) ) {		
             var submit = forms[ i ].querySelector( 'input[type="submit"]' );
             var sitekey = submit.getAttribute( 'data-sitekey' );
+            var notice = submit.getAttribute( 'data-notice' );
             var size = submit.getAttribute( 'data-size' );
             var theme = submit.getAttribute( 'data-theme' );
             var tabindex = submit.getAttribute( 'data-tabindex' );
@@ -53,7 +56,7 @@ var aviaRecaptchaRender = function() {
             submit.classList.add( 'avia-recaptcha-disabled' );
             
             aviaRecaptchaPlaceholder( submit );
-            aviaRecaptchaNotice( submit );
+            aviaRecaptchaNotice( submit, aviaRecaptchaTextDecode( notice ) );
             aviaRecaptchaDetectHuman( forms[ i ], action );
             aviaRecaptchaAlert( submit );
             
@@ -109,4 +112,8 @@ var aviaRecaptchaVerify = function( token ) {
         complete: function() {
         }
     } );
+}
+
+var aviaRecaptchaTextDecode = function( text ) {
+    return decodeURIComponent(text.replace(/\+/g, ' '));
 }
