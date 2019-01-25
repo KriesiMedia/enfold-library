@@ -59,15 +59,6 @@ class Enfold_Recaptcha_Verify {
 	private $verify_url;
 
 	/**
-	 * Are you human?
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string   
-	 */
-	public $is_human = false;
-
-	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -79,11 +70,14 @@ class Enfold_Recaptcha_Verify {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		session_start();
+
 		add_filter( 'avf_option_page_data_init', array( $this, 'register_admin_options' ), 10, 1 );
 		add_filter( 'avf_ajax_form_class', array( $this, 'modify_form_class' ), 10, 1 );
 
 		add_action( 'after_setup_theme', array( $this, 'get_api_keys' ), 10 );
 		
+		add_filter( 'avf_sc_contact_form_elements', array( $this, 'create_decoy' ), 10, 2 );
 		add_filter( 'avf_contact_form_submit_button_attr', array( $this, 'modify_button_attributes' ), 10, 3 );
 		
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_recaptcha_styles' ), 10 );
@@ -92,8 +86,6 @@ class Enfold_Recaptcha_Verify {
 		
 		add_action( 'wp_ajax_avia_ajax_recaptcha_verify', array( $this, 'verify_token' ), 10 );
 		add_action( 'wp_ajax_nopriv_avia_ajax_recaptcha_verify', array( $this, 'verify_token' ), 10 );
-
-		//add_filter( 'avf_form_send', array( $this, 'is_human' ), 10, 1 );
 	}
 
 	/**
@@ -123,7 +115,7 @@ class Enfold_Recaptcha_Verify {
 
 		wp_register_script(
 			'avia-recaptcha',
-			plugin_dir_url( __FILE__ ) . 'js/avia-recaptcha.js',
+			plugin_dir_url( __FILE__ ) . 'js/avia-recaptcha-min.js',
 			array( 'jquery' ),
 			$this->version,
 			false
@@ -271,15 +263,20 @@ class Enfold_Recaptcha_Verify {
 
 	public function verify_token()
 	{
-		$is_humanoid = false;
+		$is_human = false;
+		//$is_bot = ! $this->verify_session_token( 'avia_recaptcha' );
 		$g_recaptcha_token = $this->get_recaptcha_response();
 
+		// if( $is_bot ) {
+		// 	return $is_human;
+		// }
+
 		if( empty( $g_recaptcha_token ) ) {
-			return $is_humanoid;
+			return $is_human;
 		}
 
 		if( ! $this->is_recaptcha_active() ) {
-			return $is_humanoid;
+			return $is_human;
 		}
 
 		$verify_url = $this->verify_url;
@@ -294,22 +291,17 @@ class Enfold_Recaptcha_Verify {
 		) );
 		
 		if ( 200 != wp_remote_retrieve_response_code( $response ) ) {
-			return $is_humanoid;
+			return $is_human;
 		}
 
 		$response = wp_remote_retrieve_body( $response );
 		$response = json_decode( $response, true );
 
-		$is_humanoid = isset( $response['success'] ) && true == $response['success'];
+		if( isset( $response['success'] ) && true == $response['success'] ) {
+			$is_human = true;
+		}
 
-		$this->is_human = $is_humanoid;
-
-		wp_die($is_humanoid);
-	}
-
-	public function is_human( $human ) {
-		$human = $this->is_human;
-		return $human;
+		wp_die( $is_human );
 	}
 
 	public function get_recaptcha_response() {
@@ -318,6 +310,29 @@ class Enfold_Recaptcha_Verify {
 		}
 	
 		return false;
+	}
+
+	function create_decoy( $form_fields, $atts ) {
+		$token = $this->generate_token( 'avia_recaptcha' );
+		$decoy['avia_recaptcha'] = array('name' => 'token', 'label' => '', 'type' => 'hidden', 'value' => $token);
+		$form_fields = $decoy + $form_fields;
+
+		return $form_fields;
+	}
+
+	function generate_token( $form ) {
+		$token = md5( uniqid( microtime(), true ) );  
+		$_SESSION[$form.'_token'] = $token; 
+		
+		return $token;
+	}
+
+	function verify_session_token( $form ) {
+		if( ! isset( $_SESSION[$form.'_token'] ) ) { 
+			return false;
+		}
+		
+		return true;
 	}
 }
 
