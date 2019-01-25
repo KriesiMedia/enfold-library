@@ -93,7 +93,7 @@ class Enfold_Recaptcha_Verify {
 		add_action( 'wp_ajax_avia_ajax_recaptcha_verify', array( $this, 'verify_token' ), 10 );
 		add_action( 'wp_ajax_nopriv_avia_ajax_recaptcha_verify', array( $this, 'verify_token' ), 10 );
 
-		add_filter( 'avf_form_send', array( $this, 'is_human' ), 10, 1 );
+		//add_filter( 'avf_form_send', array( $this, 'is_human' ), 10, 1 );
 	}
 
 	/**
