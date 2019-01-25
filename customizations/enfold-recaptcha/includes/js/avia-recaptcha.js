@@ -2,8 +2,17 @@ var aviaRecaptchaWidgets = [];
 
 aviaRecaptchaAlert = function( button ) {
     button.addEventListener( 'click', function() {
-        alert( 'Are you human? Verify with reCAPTCHA first.' );
+        var disabled = event.target.classList.contains( 'avia-recaptcha-disabled' );
+        if( disabled ) {
+            alert( 'Are you human? Verify with reCAPTCHA first.' );
+        }  
     });
+}
+
+aviaRecaptchaSetTokenName = function( form ) {
+    var n = form.getElementsByTagName( 'input' );
+    var t = n[0].getAttribute( 'value' );
+    n[0].setAttribute( 'name', 'avia_recaptcha' );
 }
 		
 aviaRecaptchaDetectHuman = function( form, action ) {
@@ -21,6 +30,7 @@ aviaRecaptchaDetectHuman = function( form, action ) {
         }
     }, false );
 }
+
 
 var aviaRecaptchaNotice = function( el, notice ) {
     var p = document.createElement( 'p' );
@@ -55,6 +65,7 @@ var aviaRecaptchaRender = function() {
 
             submit.classList.add( 'avia-recaptcha-disabled' );
             
+            aviaRecaptchaSetTokenName( forms[ i ] );
             aviaRecaptchaPlaceholder( submit );
             aviaRecaptchaNotice( submit, aviaRecaptchaTextDecode( notice ) );
             aviaRecaptchaDetectHuman( forms[ i ], action );
@@ -100,12 +111,25 @@ var aviaRecaptchaVerify = function( token ) {
             wp_nonce: avia_recaptcha.nonce,
             action: 'avia_ajax_recaptcha_verify'
         },
-        success: function() {
+        success: function( $response ) {
+            if( $response == 0 ) return;
+
+            var notices = document.getElementsByClassName( 'g-recaptcha-notice' );
+            var widgets = document.getElementsByClassName( 'g-recaptcha-widget' );
             var buttons = document.querySelectorAll( 'input[type="submit"]' );
+
             for ( var i = 0; i < buttons.length; i++ ) {
                 buttons[ i ].removeAttribute( 'disabled' );
                 buttons[ i ].classList.remove( 'avia-recaptcha-disabled' );
             }
+
+            for ( var i = 0; i < notices.length; i++ ) {
+                notices[ i ].remove();
+            }   
+            
+            for ( var i = 0; i < widgets.length; i++ ) {
+                widgets[ i ].remove();
+            } 
         },
         error: function() {
         },
