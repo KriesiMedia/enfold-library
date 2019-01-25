@@ -1,5 +1,0 @@
-#top .avia-form-recaptcha input[type='submit'].avia-recaptcha-disabled {
-    background-color: #9a9a9a;
-    border-color: #737373;
-    pointer-events: none;
-}
