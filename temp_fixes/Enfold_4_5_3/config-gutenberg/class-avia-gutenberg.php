@@ -820,7 +820,7 @@ if( ! class_exists( 'Avia_Gutenberg' ) )
 			 * @return string			'show' | anything else to skip
 			 */
 			$show_info = apply_filters( 'avf_gutenberg_admin_bar_edit_page_info', 'show' );
-			$show_info = 'xxx';
+
 			/**
 			 * Adjust "Edit Page" link in frontend
 			 */
