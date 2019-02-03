@@ -920,7 +920,7 @@ if( ! class_exists( 'Avia_Gutenberg' ) )
 									'id'	=> 'edit',
 									'title'	=> $title,
 									'href'	=> $edit_url,
-									'meta'	=> array( 'target' => 'blank' )
+									'meta'	=> array( )
 								);
 
 					$wp_admin_bar->add_menu( $menu );
