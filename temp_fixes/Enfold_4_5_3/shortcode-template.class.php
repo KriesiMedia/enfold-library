@@ -497,7 +497,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 			 * @return string
 			 */
 			$args = array( $out, $this, $atts, $content, $shortcodename, $fake );
-			$out = apply_filters_ref_array( 'avf_in_shortcode_handler_prepare_content', array( &$args ) );
+			$out = apply_filters( 'avf_in_shortcode_handler_prepare_content', $out, $this, $atts, $content, $shortcodename, $fake );
 
             return $out;
 		}
