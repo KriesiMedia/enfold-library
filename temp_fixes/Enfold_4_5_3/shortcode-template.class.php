@@ -315,22 +315,24 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 		public function shortcode_handler_prepare( $atts, $content = '', $shortcodename = '', $fake = false )
 		{
 			/**
-			 * WP5.0 with gutenberg make REST_API calls to save post content which makes problems with $meta['index'].
-			 * As we do not need the output we can skip it.
 			 * 
-			 * @used_by				Avia_Gutenberg						10
+			 * @used_by				currently unused
 			 * @since 4.5.1
+			 * @return array
 			 */
 			$args = array( true, $this, $atts, $content, $shortcodename, $fake );
-			$continue = apply_filters_ref_array( 'avf_in_shortcode_handler_prepare', array( &$args ) );
-			if( ! $continue )
+			$continue = apply_filters_ref_array( 'avf_in_shortcode_handler_prepare_start', array( &$args ) );
+			if( ! $continue[0] )
 			{
 				return '';
 			}
 			
 			/**
-			 * Handle a fallback situation for 3-rd party plugins like YOAST which call shortcodes to execute for analysis and
-			 * no shortcode tree has been initialised (causes $meta['index] = undefined notices for some elements
+			 * Fixes 2 problems with $meta['index] = undefined notices because shortcode tree is not initialised
+			 * 
+			 *	- WP5.0 with Gutenberg make REST_API calls to save post content and activates shortcodes (via content filter)
+			 *	- A fallback situation for 3-rd party plugins like YOAST which call shortcodes to execute for analysis and
+			 *	  no shortcode tree has been initialised
 			 * 
 			 * @since 4.5.4
 			 */
@@ -494,12 +496,12 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 			 * Also allows to manipulate internal variables if necessary
 			 * 
 			 * @since 4.5.4
-			 * @return string
+			 * @return array
 			 */
 			$args = array( $out, $this, $atts, $content, $shortcodename, $fake );
-			$out = apply_filters( 'avf_in_shortcode_handler_prepare_content', $out, $this, $atts, $content, $shortcodename, $fake );
+			$out = apply_filters_ref_array( 'avf_in_shortcode_handler_prepare_content', array( &$args ) );
 
-            return $out;
+			return $out[0];
 		}
 
 
