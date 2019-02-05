@@ -464,7 +464,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 			
 			if( empty( $this->builder->disabled_assets[ $this->config['shortcode'] ] ) || empty( $this->config['disabling_allowed'] ) )
 			{
-				$content = $this->shortcode_handler($atts, $content, $shortcodename, $meta);
+				$out = $this->shortcode_handler($atts, $content, $shortcodename, $meta);
 			}
 			else if( current_user_can( 'edit_posts' ) )
 			{
@@ -474,22 +474,32 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 							   '<a target="_blank" href="'.admin_url( 'admin.php?page=avia#goto_performance' ).'">'.__( 'Performance Settings', 'avia_framework' )."</a>";
 				
 				$msg 		= isset( $this->config['shortcode_disabled_msg'] ) ? $this->config['shortcode_disabled_msg'] : $default_msg;
-				$content 	= "<span class='av-shortcode-disabled-notice'>{$msg}</span>";
+				$out		= "<span class='av-shortcode-disabled-notice'>{$msg}</span>";
 			}
 			else
 			{
-				$content 	= '';
+				$out		= '';
 			}
 			
 			/**
-			 * Fallback in case 3-rd party plugins start a pre analysis of content 
+			 * Fallback in case 3-rd party plugins started a pre analysis of content with initialised shortcode tree
+			 * In case end of shortcode tree is reached reset it to beginning for real output
 			 */
 			if( false === ShortcodeHelper::find_tree_item( ShortcodeHelper::$shortcode_index ) )
 			{
 				ShortcodeHelper::$shortcode_index = 0;
 			}
+			
+			/**
+			 * Also allows to manipulate internal variables if necessary
+			 * 
+			 * @since 4.5.4
+			 * @return string
+			 */
+			$args = array( $out, $this, $atts, $content, $shortcodename, $fake );
+			$out = apply_filters_ref_array( 'avf_in_shortcode_handler_prepare_content', array( &$args ) );
 
-            return $content;
+            return $out;
 		}
 
 
