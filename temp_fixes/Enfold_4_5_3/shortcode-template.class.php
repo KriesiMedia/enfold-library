@@ -333,6 +333,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 			 *	- WP5.0 with Gutenberg make REST_API calls to save post content and activates shortcodes (via content filter)
 			 *	- A fallback situation for 3-rd party plugins like YOAST which call shortcodes to execute for analysis and
 			 *	  no shortcode tree has been initialised
+			 *	- API calls to fetch content like REST API, GraphQL
 			 * 
 			 * @since 4.5.4
 			 */
@@ -347,7 +348,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 					$out = '';
 					
 					/**
-					 * In front we try to init if a REST API Call
+					 * In front we try to init if a REST API Call - else we return nothing
 					 */
 					if( defined( 'REST_REQUEST' ) && REST_REQUEST && ( $post instanceof WP_Post ) )
 					{
@@ -358,8 +359,6 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 							$return = false;
 						}
 					}
-					
-					
 				}
 				else
 				{
@@ -368,9 +367,12 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 					 * (e.g. YOAST calls shortcodes without content in ajax call wpseo_filter_shortcodes)
 					 */
 					$args = array();
-					foreach( $atts as $key => $value ) 
+					if( is_array( $atts ) )
 					{
-						$args[] = is_numeric( $key ) ? $value : "{$key}='{$value}'";
+						foreach( $atts as $key => $value ) 
+						{
+							$args[] = is_numeric( $key ) ? $value : "{$key}='{$value}'";
+						}
 					}
 					
 					$args = ! empty( $args ) ? ' ' . implode( ' ', $args ) : '';
@@ -465,7 +467,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 					$meta = array('el_class'=>'');
 				}
 				
-	            //fake is set when we manually call one shortcode inside another
+				//fake is set when we manually call one shortcode inside another
 				if( ! $fake ) 
 				{
 					ShortcodeHelper::$shortcode_index ++;
