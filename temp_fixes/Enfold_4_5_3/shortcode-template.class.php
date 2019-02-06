@@ -338,12 +338,28 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 			 */
 			if( ! is_array( ShortcodeHelper::$tree ) || empty( ShortcodeHelper::$tree ) )
 			{
+				$return = true;
+				
 				if( ! is_admin() )
 				{
-					/**
-					 * In front we return nothing
-					 */
+					global $post;
+					
 					$out = '';
+					
+					/**
+					 * In front we try to init if a REST API Call
+					 */
+					if( defined( 'REST_REQUEST' ) && REST_REQUEST && ( $post instanceof WP_Post ) )
+					{
+						$tree = Avia_Builder()->get_shortcode_tree( $post->ID );
+						if( ! empty( $tree ) )
+						{
+							ShortcodeHelper::$tree = $tree;
+							$return = false;
+						}
+					}
+					
+					
 				}
 				else
 				{
@@ -361,17 +377,20 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 					$out = "[{$shortcodename}{$args}]";
 				}
 				
-				/**
-				 * 
-				 * @since 4.5.4
-				 * @param string
-				 * @param array $atts
-				 * @param string $content
-				 * @param string $shortcodename
-				 * @param boolean $fake
-				 * @return string
-				 */
-				return apply_filters( 'avf_shortcode_handler_prepare_fallback', $out, $atts, $content, $shortcodename, $fake );
+				if( $return )
+				{
+					/**
+					 * 
+					 * @since 4.5.4
+					 * @param string
+					 * @param array $atts
+					 * @param string $content
+					 * @param string $shortcodename
+					 * @param boolean $fake
+					 * @return string
+					 */
+					return apply_filters( 'avf_shortcode_handler_prepare_fallback', $out, $atts, $content, $shortcodename, $fake );
+				}
 			}
 			
 			
@@ -447,23 +466,29 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 				}
 				
 	            //fake is set when we manually call one shortcode inside another
-	            if(!$fake) ShortcodeHelper::$shortcode_index ++;
-    		}
+				if( ! $fake ) 
+				{
+					ShortcodeHelper::$shortcode_index ++;
+				}
+			}
 			
-			if(isset($atts['custom_class'])) 
+			if( isset( $atts['custom_class'] ) ) 
 			{
-				$meta['el_class'] .= " ". $atts['custom_class'];
+				$meta['el_class'] .= ' ' . $atts['custom_class'];
 				$meta['custom_class'] = $atts['custom_class'];
 			}
 			
-			if(!isset($meta['custom_markup'])) $meta['custom_markup'] = "";
+			if( ! isset( $meta['custom_markup'] ) ) 
+			{
+				$meta['custom_markup'] = '';
+			}
+			
+			$meta = apply_filters( 'avf_template_builder_shortcode_meta', $meta, $atts, $content, $shortcodename );
 			
 			
-			$meta = apply_filters('avf_template_builder_shortcode_meta', $meta, $atts, $content, $shortcodename);
-			
-		
-			//if the element is disabled do load a notice for admins but do not show the info for other visitors)
-			
+			/**
+			 * if the element is disabled do load a notice for admins but do not show the info for other visitors)
+			 */
 			if( empty( $this->builder->disabled_assets[ $this->config['shortcode'] ] ) || empty( $this->config['disabling_allowed'] ) )
 			{
 				$out = $this->shortcode_handler($atts, $content, $shortcodename, $meta);
