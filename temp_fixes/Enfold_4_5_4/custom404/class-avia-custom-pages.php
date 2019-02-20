@@ -451,7 +451,6 @@ if( ! class_exists( 'Avia_Custom_Pages' ) )
 			 * @return boolean
 			 */
 			$show_inactive = apply_filters( 'avf_show_inactive_special_pages', true, $post_ids, $context ) === true ? true : false;
-			$show_inactive = false;
 			
 					// Maintenance Page
 			$active = in_array( avia_get_option( 'maintenance_mode' ), array( 'maintenance_mode', 'maintenance_mode_redirect' ) );
