@@ -445,7 +445,7 @@ if( ! class_exists( 'Avia_Custom_Pages' ) )
 		public function handler_get_special_pages_ids( $post_ids = array(), $context = '' )
 		{
 			/**
-			 * Return anything except true to show inactive special pages
+			 * Return anything except true to hide inactive special pages
 			 * 
 			 * @since 4.5.5
 			 * @return boolean
