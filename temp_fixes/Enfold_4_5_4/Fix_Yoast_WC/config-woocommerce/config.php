@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {  exit;  }    // Exit if accessed directly
 function avia_woocommerce_enabled()
 {
 	// if( !function_exists( 'wc_get_template_part' ) && class_exists( 'woocommerce' )) return "deprecated";
-	if ( class_exists( 'woocommerce' ) ){ return true; }
+	if ( class_exists( 'WooCommerce' ) ){ return true; }
 	return false;
 }
 
@@ -1225,7 +1225,7 @@ function avia_woocommerce_display_output_upsells()
 }
 
 
-if( ! function_exists( 'avia_before_get_sidebar_template_builder' ) )
+if( ! function_exists( 'avia_before_get_sidebar_template_builder' ) && avia_woocommerce_enabled() )
 {
 	/**
 	 * Single Product page on ALB: we need to change sidebar - otherwise we have blog or page resulting in a wrong output
@@ -1234,11 +1234,15 @@ if( ! function_exists( 'avia_before_get_sidebar_template_builder' ) )
 	 */
 	function avia_before_get_sidebar_template_builder()
 	{
-		global $avia_config;
+		global $avia_config, $post;
 		
 		if( is_product() ) 
 		{
 			$avia_config['currently_viewing'] = 'shop_single';
+		}
+		else if( get_option( 'woocommerce_shop_page_id' ) == $post->ID )
+		{
+			$avia_config['currently_viewing'] = 'shop';
 		}
 	}
 	
