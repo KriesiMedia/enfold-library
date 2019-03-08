@@ -1,0 +1,9 @@
+Following translations can be used:
+
+###lt###		=> <
+###gt###		=> >
+###amp###		=> &
+###91###		=> [
+###93###		=>']
+###quot###		=> "
+###34###		=> '
