@@ -364,16 +364,32 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 				 * In frontend we ignore requests to shortcodes before header is finished
 				 * Fixes problems with plugins that run shortcodes in header (like All In One SEO)
 				 * Running shortcodes twice might break the behaviour and layout.
+				 * 
+				 * But there are frontend requests that do not need of a header. To allow 3rd party plugins to hook
+				 * we add a filter (e.g. GraphQL).
+				 * 
+				 * @used_by					currently unused
+				 * @since 4.5.6
+				 * @param boolean
+				 * @param aviaShortcodeTemplate $this
+				 * @param array $atts
+				 * @param string $content
+				 * @param string $shortcodename
+				 * @param boolean $fake
+				 * @return boolean
 				 */
-				if( ! is_admin() && ! Avia_Builder()->wp_head_done && ( ! ( defined( 'REST_REQUEST' ) && true === REST_REQUEST ) ) )
+				$no_header_request = ( defined( 'REST_REQUEST' ) && true === REST_REQUEST ) || is_feed() || is_comment_feed();
+				$no_header_request = apply_filters( 'avf_shortcode_no_header_request', $no_header_request, $this, $atts, $content, $shortcodename, $fake );
+				
+				if( ! is_admin() && ! Avia_Builder()->wp_head_done && ! $no_header_request )
 				{
 					$meta = $this->default_shortcode_meta();
 					$out = '';
 					
-					
 					/**
-					 * Allow SEO plugins to get content of shortcodes - Styling might be broken
-					 * SEO plugins can filter shortcodes that make problems by returning ''.
+					 * Allow SEO plugins to get content of shortcodes - Styling might be broken, also elements that use filter 'avia_builder_precompile'
+					 * SEO plugins can filter shortcodes that make problems by returning anything != 'preprocess_shortcodes_in_header'.
+					 * To create their own output they can return a custom value and use 'avf_shortcode_handler_prepare_in_wp_head' later.
 					 * 
 					 * @used_by					currently unused
 					 * @since 4.5.6
@@ -393,6 +409,7 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 					}
 					
 					/**
+					 * Allow SEO plugins to manipulate the shortcodes to get their own content
 					 * 
 					 * @used_by					currently unused
 					 * @since 4.5.5
@@ -402,9 +419,10 @@ if ( !class_exists( 'aviaShortcodeTemplate' ) ) {
 					 * @param string $shortcodename
 					 * @param boolean $fake
 					 * @param aviaShortcodeTemplate $this		@added 4.5.6
+					 * @param string $preprocess				@added 4.5.6
 					 * @return string
 					 */
-					return apply_filters( 'avf_shortcode_handler_prepare_in_wp_head', $out, $atts, $content, $shortcodename, $fake, $this );
+					return apply_filters( 'avf_shortcode_handler_prepare_in_wp_head', $out, $atts, $content, $shortcodename, $fake, $this, $preprocess );
 				}
 				
 				/**
