@@ -234,7 +234,7 @@ if ( !class_exists( 'aviaAssetManager' ) ) {
 			
 			
 			//generate the name string for all the files included. store the data of those files so we can properly include them later and then dequeue them
-			foreach($enqueued->to_do as $enqueued_index => $file)
+			foreach( $enqueued->to_do as $enqueued_index => $file )
 			{
 				$force_print = in_array($file, $this->force_print_to_head[$file_type]);
 				
@@ -276,6 +276,7 @@ if ( !class_exists( 'aviaAssetManager' ) ) {
 						 * @return array
 						 */
 						$data = apply_filters( 'avf_asset_mgr_get_file_data', $data, $enqueued_index, $file_type, $file_group_name, $enqueued, $conditions );
+						
 						
 						//check if the file already exists in our database of stored files. if not add it for future re-use
 						if( !isset( $stored_assets[$key] ) || $this->testmode)
@@ -332,7 +333,15 @@ if ( !class_exists( 'aviaAssetManager' ) ) {
 			//try to retrieve the data by accessing the server
 			if( ! empty( $path ) )
 			{
-				$new_content = file_get_contents( trailingslashit( ABSPATH ) . $path  );
+				/**
+				 * @used_by				currently unused
+				 * @since 4.5.6
+				 * @return string
+				 */
+				$check_path = trailingslashit( ABSPATH ) . $path;
+				$check_path = apply_filters( 'avf_compress_file_content_path', $check_path, $path , $file_type , $fallback_url );
+				
+				$new_content = file_get_contents( $check_path );
 			}
 			
 			//we got a file that we cant read, lets try to access it via remote get
@@ -343,7 +352,14 @@ if ( !class_exists( 'aviaAssetManager' ) ) {
 					return '';
 				}
 				
-				$response = wp_remote_get( esc_url_raw( $fallback_url ) );
+				/**
+				 * @used_by				currently unused
+				 * @since 4.5.6
+				 * @return string
+				 */
+				$check_fallback_url = apply_filters( 'avf_compress_file_content_fallback_url', $fallback_url, $path , $file_type );
+				
+				$response = wp_remote_get( esc_url_raw( $check_fallback_url ) );
 				
 				if( ! is_wp_error( $response ) && ( $response['response']['code'] === 200 ) )
 				{
