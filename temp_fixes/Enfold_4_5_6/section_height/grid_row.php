@@ -386,10 +386,9 @@ if ( !class_exists( 'avia_sc_grid_row' ) )
 				
 				$params['class'] = "av-layout-grid-container entry-content-wrapper {$color} {$mobile} {$mobile_breaking} {$av_display_classes} {$border}".$meta['el_class'];
 				$params['open_structure'] = false; 
-				$params['id'] = !empty($id) ? AviaHelper::save_string($id,'-') : "av-layout-grid-".avia_sc_grid_row::$count;
+				$params['id'] = ! empty( $id ) ? AviaHelper::save_string( $id, '-' ) : "av-layout-grid-" . avia_sc_grid_row::$count;
 				$params['custom_markup'] = $meta['custom_markup'];
-				
-				
+				$params['data'] = '';
 				
 				if( $min_height_percent != '' )
 				{
