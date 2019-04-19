@@ -380,7 +380,9 @@ if ( !class_exists( 'avia_sc_grid_row' ) )
 				}
 				
 				extract( $atts );
-				$output  	= "";
+				
+				$output = '';
+				$params = array();
 				
 				$params['class'] = "av-layout-grid-container entry-content-wrapper {$color} {$mobile} {$mobile_breaking} {$av_display_classes} {$border}".$meta['el_class'];
 				$params['open_structure'] = false; 

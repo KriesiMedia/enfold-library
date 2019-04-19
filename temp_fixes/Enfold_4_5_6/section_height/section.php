@@ -741,9 +741,9 @@ array(
 			    $class       = "avia-section ".$color." avia-section-".$padding." avia-".$shadow;
 			    $background  = "";
 				$src		 = '';
+				$params	= array();
 				
-				
-				$params['id'] = !empty($id) ? AviaHelper::save_string($id,'-') :"av_section_".avia_sc_section::$section_count;
+				$params['id'] = ! empty( $id ) ? AviaHelper::save_string($id,'-') : "av_section_".avia_sc_section::$section_count;
 				$params['custom_markup'] = $meta['custom_markup'];
 				$params['attach'] = "";
 				
