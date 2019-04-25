@@ -125,12 +125,12 @@ if ( ! class_exists( 'avia_sc_upcoming_events' ) )
 		function shortcode_handler( $atts, $content = "", $shortcodename = "", $meta = "" )
 		{
 			$atts =  shortcode_atts(array(
-											'categories' 	=> "",
-											'items' 		=> "3",
-											'paginate'		=> "no",
+											'categories' 	=> '',
+											'items' 		=> '3',
+											'paginate'		=> 'no',
 										), $atts, $this->config['shortcode'] );
 			
-			$output = "";
+			$output = '';
 			$posts 	= $this->query_entries( $atts );
 			$entries = $posts->posts;
 			
@@ -147,7 +147,7 @@ if ( ! class_exists( 'avia_sc_upcoming_events' ) )
 				$default_id = $post->ID;
 				$output .= "<div class='av-upcoming-events " . $meta['el_class'] . "'>";
 				
-				foreach( $entries as $entry )
+				foreach( $entries as $index => $entry )
 				{	
 					$class  = "av-upcoming-event-entry";
 					$image  = get_the_post_thumbnail( $entry->ID, 'square', array( 'class' => 'av-upcoming-event-image' ) );
@@ -160,35 +160,48 @@ if ( ! class_exists( 'avia_sc_upcoming_events' ) )
 					$venue  = tribe_get_venue( $entry->ID );
 					$post->ID = $default_id;
 					
-					$output .=	"<a href='{$link}' class='{$class}'>";
+					$event = '';
+					
+					$event .=	"<a href='{$link}' class='{$class}'>";
 					
 					if( $image )  
 					{
-						$output .=	$image;
+						$event .=	$image;
 					}
 					
-					$output .=		"<span class='av-upcoming-event-data'>";
-					$output .=			"<h4 class='av-upcoming-event-title'>{$title}</h4>";
-					$output .=			"<span class='av-upcoming-event-meta'>";
-					$output .=				"<span class='av-upcoming-event-schedule'>" . tribe_events_event_schedule_details($entry) . "</span>";
+					$event .=		"<span class='av-upcoming-event-data'>";
+					$event .=			"<h4 class='av-upcoming-event-title'>{$title}</h4>";
+					$event .=			"<span class='av-upcoming-event-meta'>";
+					$event .=				"<span class='av-upcoming-event-schedule'>" . tribe_events_event_schedule_details($entry) . "</span>";
 					
 					if( $price )	
 					{
-						$output .=			"<span class='av-upcoming-event-cost'>{$price}</span>";
+						$event .=			"<span class='av-upcoming-event-cost'>{$price}</span>";
 					}
 					if( $price && $venue )	
 					{
-						$output .=				" - ";	
+						$event .=				" - ";	
 					}
 					if( $venue )	
 					{
-						$output .=			"<span class='av-upcoming-event-venue'>{$venue}</span>";
+						$event .=			"<span class='av-upcoming-event-venue'>{$venue}</span>";
 					}
 							
-					$output .=				apply_filters( 'avf_upcoming_event_extra_data', '', $entry );
-					$output .=			"</span>";
-					$output .=		"</span>";
-					$output .=	"</a>";
+					$event .=				apply_filters( 'avf_upcoming_event_extra_data', '', $entry );
+					$event .=			'</span>';
+					$event .=		'</span>';
+					$event .=	'</a>';
+					
+					/**
+					 * Allows to change the output 
+					 * 
+					 * @since 4.5.6.1
+					 * @param string $event
+					 * @param array $entries		WP_Post
+					 * @param int $index
+					 * @return string
+					 */
+					$output .= apply_filters( 'avf_single_event_upcoming_html', $event, $entries, $index );
 				}
 				
 				if( $atts['paginate'] == "yes" && $avia_pagination = avia_pagination( $posts->max_num_pages, 'nav' ) )
@@ -196,7 +209,7 @@ if ( ! class_exists( 'avia_sc_upcoming_events' ) )
 					$output .= "<div class='pagination-wrap pagination-" . Tribe__Events__Main::POSTTYPE . "'>{$avia_pagination}</div>";
 				}
 				
-				$output .= "</div>";
+				$output .= '</div>';
 			}
 			
 			if( class_exists( 'Tribe__Events__Pro__Main' ) )
@@ -270,7 +283,7 @@ if ( ! class_exists( 'avia_sc_upcoming_events' ) )
 			 */
 			$query = apply_filters( 'avia_tribe_events_upcoming', $query, $params );
 
-			return tribe_get_events( $query , true);
+			return tribe_get_events( $query , true );
 		}
 		
 	}
