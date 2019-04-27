@@ -15,14 +15,14 @@
  * we add a filter (e.g. GraphQL).
  * 
  * @param boolean $no_header_request
- * @param aviaShortcodeTemplate $this
+ * @param aviaShortcodeTemplate $class
  * @param array $atts
  * @param string $content
  * @param string $shortcodename
  * @param boolean $fake
  * @return boolean						false | true if no header is needed in request
  */
-function custom_shortcode_no_header_request( $no_header_request, $this, $atts, $content, $shortcodename, $fake )
+function custom_shortcode_no_header_request( $no_header_request, $class, $atts, $content, $shortcodename, $fake )
 {
 	if( ( defined( 'GRAPHQL_REQUEST' ) && true === GRAPHQL_REQUEST ) )
 	{
