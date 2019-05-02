@@ -8,6 +8,13 @@
  * ---> Remove filter in child theme functions.php does not work because too early
  * 
  * In this code we move comment box back to first position as in default WP
+ *
+ * Other default entries:
+ * 
+ * author
+ * email
+ * url
+ * cookies
  * 
  * @since 4.5.6.1
  * @param array $defaults
