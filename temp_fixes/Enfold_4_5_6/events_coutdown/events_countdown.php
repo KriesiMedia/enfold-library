@@ -118,7 +118,7 @@ if ( ! class_exists( 'avia_sc_events_countdown' ) )
 								'start_date'		=> date( 'Y-m-d' )
 							);
 				
-				$upcoming 	= Tribe__Events__Query::getEvents( $query, true );
+				$upcoming = Tribe__Events__Query::getEvents( $query, true );
 				
 				return $upcoming;
 			}
@@ -133,13 +133,13 @@ if ( ! class_exists( 'avia_sc_events_countdown' ) )
 			{
 				$this->start_date_utc = '';
 				
-				if( empty( $next->posts[0]->EventStartDate ) ) 
+				if( empty( $next->posts[0]->EventStartDate ) && empty( $next->posts[0]->event_date ) ) 
 				{
 					return true;
 				}
 				
 				/**
-				 * Compare UTC times
+				 * Compare UTC times ( https://www.php.net/manual/en/function.time.php#100220 )
 				 */
 				$today = date( 'Y-m-d H:i:s' );
 				$this->start_date_utc = get_post_meta( $next->posts[0]->ID, '_EventStartDateUTC', true );
@@ -153,10 +153,8 @@ if ( ! class_exists( 'avia_sc_events_countdown' ) )
 				{
 					return false;
 				}
-				else
-				{
-					return true;
-				}
+				
+				return true;
 			}
 		
 		
@@ -299,8 +297,20 @@ if ( ! class_exists( 'avia_sc_events_countdown' ) )
 					}
 				}
 				
+				if( ! empty( $next->posts[0]->EventStartDate ) )
+				{
+					$event_date = $next->posts[0]->EventStartDate;
+				}
+				else if( ! empty( $next->posts[0]->event_date ) )
+				{
+					$event_date = $next->posts[0]->event_date;
+				}
+				else
+				{
+					$event_date = '';
+				}
 				
-				if( empty( $next->posts[0] ) || empty( $next->posts[0]->EventStartDate ) || empty( $this->start_date_utc ) ) 
+				if( empty( $next->posts[0] ) || empty( $event_date ) || empty( $this->start_date_utc ) ) 
 				{
 					return '';
 				}
