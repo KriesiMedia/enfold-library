@@ -28,6 +28,15 @@ function my_avf_customize_heading_settings( array $args, $context, array $extra_
 		$args['extra_class'] = 'my-extra-class';		//	add an extra class for styling
 	}
 	
+	/**
+	 * This is an example of the usage for "avia_sc_icon_box"
+	 */
+	if( $context == 'avia_sc_icon_box' )
+	{
+		$args['heading'] = 'h1';						//	change heading from h3 to h1
+		$args['extra_class'] = 'my-icon-box-class';		//	add an extra class for styling
+	}
+	
 	return $args;
 }
 
