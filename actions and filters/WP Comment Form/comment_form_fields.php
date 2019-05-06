@@ -7,7 +7,7 @@
  * 
  * ---> Remove filter in child theme functions.php does not work because too early
  * 
- * In this code we move comment box back to first position as in default WP
+ * In this code we show some examples how to use the filter
  *
  * Other default entries:
  * 
@@ -22,12 +22,21 @@
  */
 function my_comment_form_fields( $defaults )
 {
-   $comment = $defaults['comment'];
+	//	To move comment box back to first position as in default WP
+   $comment = isset( $defaults['comment'] ) ? $defaults['comment'] : '';
    unset( $defaults['comment'] );
-
    $new = array_merge( array( 'comment' => $comment ), $defaults );
-
    return $new;
+   
+   // To make your own order and ensure that element exists before accessing  e.g.
+   $new = array(
+				'comment' => isset( $defaults['comment'] ) ? $defaults['comment'] : '',
+				'author' => isset( $defaults['author'] ) ? $defaults['author'] : '',
+				'email' => isset( $defaults['email'] ) ? $defaults['email'] : '',
+				'url' => isset( $defaults['url'] ) ? $defaults['url'] : '',
+				'cookies' => isset( $defaults['cookies'] ) ? $defaults['cookies'] : '',
+			);
+   
+    return $new;
 }
-
 add_filter( 'comment_form_fields', 'my_comment_form_fields', 80, 1 );
