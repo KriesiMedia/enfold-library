@@ -224,15 +224,19 @@ if( ! function_exists( 'avia_bbpress_before_page_in_footer_compile' ) )
 	function avia_bbpress_before_page_in_footer_compile( WP_Post $footer_page, $post_id )
 	{
 		$current = get_post( $post_id );
-		$user_page = false;
+		$forum_page = false;
 		
 		if( bbp_is_single_user() || bbp_is_single_user_edit() || bbp_is_user_home() || bbp_is_user_home_edit()  )
 		{
-			$user_page = true;
+			$forum_page = true;
 		}
 		else if( bbp_is_topics_created() || bbp_is_replies_created() || bbp_is_favorites() || bbp_is_subscriptions() )
 		{
-			$user_page = true;
+			$forum_page = true;
+		}
+		else if( bbp_is_forum_archive() )
+		{
+			$forum_page = true;
 		}
 		else
 		{
@@ -248,7 +252,7 @@ if( ! function_exists( 'avia_bbpress_before_page_in_footer_compile' ) )
 								bbp_get_reply_post_type()
 							);
 		
-		if( $user_page || in_array( $current->post_type, $bbp_post_types ) )
+		if( $forum_page || in_array( $current->post_type, $bbp_post_types ) )
 		{
 			bbp_restore_all_filters( 'the_content' );
 		}
@@ -256,5 +260,4 @@ if( ! function_exists( 'avia_bbpress_before_page_in_footer_compile' ) )
 	
 	add_action( 'ava_before_page_in_footer_compile', 'avia_bbpress_before_page_in_footer_compile', 10, 2 );
 }
-
 
