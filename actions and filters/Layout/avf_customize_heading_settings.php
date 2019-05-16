@@ -29,6 +29,15 @@ function my_avf_customize_heading_settings( array $args, $context, array $extra_
 	}
 	
 	/**
+	 * This is an example of the usage for "avia_content_slider" and slider title for the entries
+	 */
+	if( 'avia_content_slider' == $context && is_array( $extra_args ) && in_array( 'slider_entry', $extra_args ) )
+	{
+		$args['heading'] = 'h6';						//	change heading from h3 to h6
+		$args['extra_class'] = 'my-extra-class';		//	add an extra class for styling
+	}
+	
+	/**
 	 * This is an example of the usage for "avia_sc_icon_box"
 	 */
 	if( $context == 'avia_sc_icon_box' )
