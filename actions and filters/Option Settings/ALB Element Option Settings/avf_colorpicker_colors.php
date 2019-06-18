@@ -1,6 +1,6 @@
 <?php
 /**
- * Add your own predefined colors to the popup colorpicker in ALB elements
+ * Add or modify your own predefined palette colors to the popup colorpicker in ALB elements
  * 
  * @since 4.5.7.2
  * @param array $colors
