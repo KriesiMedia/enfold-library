@@ -7,7 +7,7 @@
 if ( ! defined( 'ABSPATH' ) ) {  exit;  }    // Exit if accessed directly
 
 
-if ( !class_exists( 'avia_sc_video' ) ) 
+if ( ! class_exists( 'avia_sc_video' ) ) 
 {
 	class avia_sc_video extends aviaShortcodeTemplate
 	{
@@ -18,18 +18,21 @@ if ( !class_exists( 'avia_sc_video' ) )
 			{
 				$this->config['self_closing']	=	'yes';
 				
-				$this->config['name']			= __('Video', 'avia_framework' );
+				$this->config['name']			= __( 'Video', 'avia_framework' );
 				$this->config['tab']			= __('Media Elements', 'avia_framework' );
 				$this->config['icon']			= AviaBuilder::$path['imagesURL']."sc-video.png";
 				$this->config['order']			= 90;
 				$this->config['target']			= 'avia-target-insert';
 				$this->config['shortcode'] 		= 'av_video';
-//				$this->config['modal_data']     = array('modal_class' => 'mediumscreen');
-				$this->config['tooltip']        = __('Display a video', 'avia_framework' );
+//				$this->config['modal_data']     = array( 'modal_class' => 'mediumscreen' );
+				$this->config['tooltip']        = __( 'Display a video', 'avia_framework' );
 				$this->config['disabling_allowed'] = false; //only allowed to be disabled by extra options
 				$this->config['disabled']		= array(
-				'condition' =>( avia_get_option('disable_mediaelement') == 'disable_mediaelement' && avia_get_option('disable_video') == 'disable_video' ), 
-				'text' => __( 'This element is disabled in your theme options. You can enable it in Enfold &raquo; Performance', 'avia_framework' ));
+													'condition'	=> ( avia_get_option( 'disable_mediaelement' ) == 'disable_mediaelement' && avia_get_option( 'disable_video' ) == 'disable_video' ), 
+													'text'		=> __( 'This element is disabled in your theme options. You can enable it in Enfold &raquo; Performance', 'avia_framework' )
+												);
+				$this->config['id_name']		= 'id';
+				$this->config['id_show']		= 'yes';
 			}
 			
 			
@@ -250,27 +253,27 @@ if ( !class_exists( 'avia_sc_video' ) )
 			 * @param string $shortcodename the shortcode found, when == callback name
 			 * @return string $output returns the modified html string 
 			 */
-			function shortcode_handler($atts, $content = "", $shortcodename = "", $meta = "")
+			function shortcode_handler( $atts, $content = "", $shortcodename = "", $meta = "" )
 			{
 				
-				extract(AviaHelper::av_mobile_sizes($atts)); //return $av_font_classes, $av_title_font_classes and $av_display_classes 
+				extract( AviaHelper::av_mobile_sizes( $atts ) ); //return $av_font_classes, $av_title_font_classes and $av_display_classes 
 				
-				extract(shortcode_atts(array(
-										'src'				=> '', 
-										'src_1'				=> '', 
-										'src_2'				=> '', 
-										'mobile_image'		=> '',
-										'fallback_link'		=> '',
-										'format'			=> '16:9', 
-										'height'			=> '9', 
-										'width'				=> '16',
-										'conditional_play'	=> '',
-										'attachment'		=> '',
-										'attachment_size'	=> '',
-										
-									), $atts, $this->config['shortcode'] ) );
+				extract( shortcode_atts( array(
+							'src'				=> '', 
+							'src_1'				=> '', 
+							'src_2'				=> '', 
+							'mobile_image'		=> '',
+							'fallback_link'		=> '',
+							'format'			=> '16:9', 
+							'height'			=> '9', 
+							'width'				=> '16',
+							'conditional_play'	=> '',
+							'attachment'		=> '',
+							'attachment_size'	=> '',
+
+					), $atts, $this->config['shortcode'] ) );
 				
-				$custom_class = ! empty($meta['custom_class']) ? $meta['custom_class'] : '';
+				$custom_class = ! empty( $meta['custom_class'] ) ? $meta['custom_class'] : '';
 				$style = '';
 				$html  = '';
 				$fallback_img = "";
@@ -284,7 +287,7 @@ if ( !class_exists( 'avia_sc_video' ) )
 					$style 			= "background-image:url(\"{$fallback_img}\");";
 				}
 				
-                if(current_theme_supports('avia_template_builder_custom_html5_video_urls'))
+                if( current_theme_supports( 'avia_template_builder_custom_html5_video_urls' ) )
                 {
                     $sources = array();
                     if(!empty($src)) $sources['src'] = array('url' => $src, 'extension' => substr($src, strrpos($src, '.') + 1));
@@ -292,12 +295,13 @@ if ( !class_exists( 'avia_sc_video' ) )
                     if(!empty($src_2)) $sources['src_2'] = array('url' => $src_2, 'extension' => substr($src_2, strrpos($src_2, '.') + 1));
 
                     $html5 = false;
+					$video_html_raw = '';
 
-                    if(!empty($sources))
+                    if( ! empty( $sources) )
                     {
-                        foreach($sources as $source)
+                        foreach( $sources as $source )
                         {
-                            if(in_array($source['extension'], array('ogv','webm','mp4'))) //check for html 5 video
+                            if( in_array( $source['extension'], array( 'ogv','webm','mp4' ) ) ) //check for html 5 video
                             {
                                 $html5 = true;
                             }
@@ -310,54 +314,61 @@ if ( !class_exists( 'avia_sc_video' ) )
                         }
                     }
 
-                    if($html5 && !empty($sources)) //check for html 5 video
+                    if( $html5 && ! empty( $sources ) ) //check for html 5 video
                     {
-	                    
-	                    $poster = "";
+	                    $poster = '';
 	                    if($fallback_img) $poster = "poster='{$fallback_img}'";
 	                    
                         $video = '';
-                        foreach($sources as $source)
+                        foreach( $sources as $source )
                         {
                             $video .= $source['extension'].'="'.$source['url'].'" ';
                         }
 
-                        $output = do_shortcode('[video ' . $video  . $poster . ']');
+						$video_html_raw = do_shortcode( '[video ' . $video  . $poster . ']' );
+						
+                        $output = $video_html_raw;
                         $html = "avia-video-html5";
                     }
-                    else if(!empty($video))
+                    else if( ! empty( $video ) )
                     {
                         global $wp_embed;
-                        $output = $wp_embed->run_shortcode("[embed]".trim($src)."[/embed]");
+						
+						$video_html_raw = $wp_embed->run_shortcode( "[embed]" . trim($src) . "[/embed]" );
+                        $output = $video_html_raw;
                     }
                 }
                 else
                 {
-                    $file_extension = substr($src, strrpos($src, '.') + 1);
+                    $file_extension = substr( $src, strrpos( $src, '.' ) + 1 );
 
-                    if(in_array($file_extension, array('ogv','webm','mp4'))) //check for html 5 video
+                    if( in_array( $file_extension, array( 'ogv','webm','mp4' ) ) ) //check for html 5 video
                     {
-                        $output = avia_html5_video_embed($src, $fallback_img);
+						$video_html_raw = avia_html5_video_embed( $src, $fallback_img );
+                        $output = $video_html_raw;
+						
                         $html = "avia-video-html5";
                     }
                     else
                     {
                     	global $wp_embed;
-						$output = $wp_embed->run_shortcode("[embed]".trim($src)."[/embed]");
+						
+						$video_html_raw = $wp_embed->run_shortcode( "[embed]" . trim($src) . "[/embed]" );
+						$output = $video_html_raw;
                         
-                        if(!empty($conditional_play))
+                        if( ! empty( $conditional_play ) )
                         {
 	                        //append autoplay so the user does not need to click 2 times
-	                        preg_match('!src="(.*?)"!', $output, $match);
-	                        if(isset($match[1]))
+	                        preg_match( '!src="(.*?)"!', $output, $match );
+	                        if( isset($match[1] ) )
 	                        {
-		                    	if(strpos($match[1], "?") === false)
+		                    	if( strpos( $match[1], "?" ) === false )
 		                    	{
-			                    	$output = str_replace($match[1], $match[1]."?autoplay=1", $output);
+			                    	$output = str_replace( $match[1], $match[1] . "?autoplay=1", $output );
 		                    	}
 		                    	else
 		                    	{
-			                    	$output = str_replace($match[1], $match[1]."&autoplay=1", $output);
+			                    	$output = str_replace( $match[1], $match[1] . "&autoplay=1", $output );
 		                    	}
 	                        }
 	                        
@@ -373,17 +384,6 @@ if ( !class_exists( 'avia_sc_video' ) )
 						$output .=  '<div class="avia_playpause_icon">';
 						$output .=	'</div>';
 						$output .=	'</div>';
-						
-						/**
-						 * @since 4.5.7.xx
-						 * @param string $output
-						 * @param array $atts
-						 * @param string $content
-						 * @param string $shortcodename
-						 * @param array|string $meta
-						 * @return string
-						 */
-						$output = apply_filters( 'avf_sc_video_video_content', $output, $atts, $content, $shortcodename, $meta );
 						
 						$custom_class .= " av-lazyload-video-embed ";
                         
@@ -403,22 +403,27 @@ if ( !class_exists( 'avia_sc_video' ) )
 					$style = "style='{$style}'";
 				}
 				
-				if(!empty($output))
+				if( ! empty( $output ) )
 				{
                     $markup = avia_markup_helper(array('context' => 'video','echo'=>false, 'custom_markup'=>$meta['custom_markup']));
 					$output = "<div class='avia-video avia-video-{$format} {$html} {$custom_class} {$av_display_classes}' {$style} {$markup} data-original_url='{$src}' >{$output}</div>";
 				}
 				
+				
 				/**
-				 * @since 4.5.7.xx
+				 * Allow plugins to change output in case they want to handle it by themself.
+				 * They must return the complete HTML structure.
+				 * 
+				 * @since 4.5.7.2
 				 * @param string $output
 				 * @param array $atts
 				 * @param string $content
 				 * @param string $shortcodename
 				 * @param array|string $meta
+				 * @param string $video_html_raw
 				 * @return string
 				 */
-				$output = apply_filters( 'avf_sc_video_output', $output, $atts, $content, $shortcodename, $meta );
+				$output = apply_filters( 'avf_sc_video_output', $output, $atts, $content, $shortcodename, $meta, $video_html_raw );
 				
 				return $output;
 			}
