@@ -1,8 +1,10 @@
 <?php
 
-
 /**
- * 
+ * Allows to alter $data content like:
+ * 	- path
+ * 	- url
+ *
  * @since 4.5.6
  * @param array $data
  * @param int $enqueued_to_do_index		$enqueued->to_do index
