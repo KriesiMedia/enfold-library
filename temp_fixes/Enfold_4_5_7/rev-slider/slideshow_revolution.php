@@ -114,12 +114,12 @@ if ( ! class_exists( 'avia_sc_revolutionslider' ) && function_exists( 'rev_slide
                 $slider = $wpdb->get_row( "SELECT * FROM $table_name WHERE id = '".(int)$atts['id']."'", ARRAY_A );
 
 
-				if(!empty($slider))
+				if( ! empty( $slider ) )
 				{		
-					$slides = json_decode($slider['params'], true);
-					$height = $slides['height'];
+					$slides = json_decode( $slider['params'], true );
+					$height = $slides['size']['minHeight'];
 
-					$params['style'] = " style='height: ".($height+1)."px;' ";
+					$params['style'] = " style='min-height: ".($height+1)."px;' ";
 				}
 				
 				$params['class'] = "avia-layerslider main_color avia-shadow " . $meta['el_class'];
