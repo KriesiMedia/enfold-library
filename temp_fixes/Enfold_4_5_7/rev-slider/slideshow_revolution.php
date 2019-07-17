@@ -49,16 +49,16 @@ if ( ! class_exists( 'avia_sc_revolutionslider' ) && function_exists( 'rev_slide
 			{	
 				//fetch all registered slides and save them to the slides array
 
-                $slider = new RevSlider();
-                $arrSliders = $slider->get_sliders_short();
-                $slides = array_flip( $arrSliders );
-				
+				$slider = new RevSlider();
+				$arrSliders = $slider->get_sliders_short();
+				$slides = array_flip( $arrSliders );
+
 				if( empty( $params['args']['id'] ) && is_array( $slides ) ) 
 				{
 					$params['args']['id'] = reset( $slides );
 				}
 
-                $element = array(
+				$element = array(
 							'subtype'	=> $slides, 
 							'type'		=>'select', 
 							'std'		=> $params['args']['id'],
@@ -99,30 +99,30 @@ if ( ! class_exists( 'avia_sc_revolutionslider' ) && function_exists( 'rev_slide
 			 */
 			function shortcode_handler( $atts, $content = "", $shortcodename = "", $meta = "" )
 			{
-				$output  = "";
+				$output  = '';
 				
 				$skipSecond = false;
-                avia_sc_revolutionslider::$slide_count++;
+				avia_sc_revolutionslider::$slide_count++;
 				
 				//check if we got a Revolution Slider
 				global $wpdb;
 
-                // Table name
-                $table_name = $wpdb->prefix . "revslider_sliders";
+				// Table name
+				$table_name = $wpdb->prefix . "revslider_sliders";
 
-                // Get slider
-                $slider = $wpdb->get_row( "SELECT * FROM $table_name WHERE id = '".(int)$atts['id']."'", ARRAY_A );
+				// Get slider
+				$slider = $wpdb->get_row( "SELECT * FROM $table_name WHERE id = '".(int)$atts['id']."'", ARRAY_A );
 
 
 				if( ! empty( $slider ) )
 				{		
 					$slides = json_decode( $slider['params'], true );
-					$height = $slides['size']['minHeight'];
+					$height = isset( $slides['size']['minHeight'] ) && is_numeric( $slides['size']['minHeight'] ) ? (int) $slides['size']['minHeight'] + 1 : 1;
 
-					$params['style'] = " style='min-height: ".($height+1)."px;' ";
+					$params['style'] = " style='min-height: {$height}px;' ";
 				}
 				
-				$params['class'] = "avia-layerslider main_color avia-shadow " . $meta['el_class'];
+				$params['class'] = "avia-layerslider main_color avia-shadow {$meta['el_class']} ";
 				$params['open_structure'] = false;
 				
 				//we dont need a closing structure if the element is the first one or if a previous fullwidth element was displayed before
