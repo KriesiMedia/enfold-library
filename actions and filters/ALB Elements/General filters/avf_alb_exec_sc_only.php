@@ -23,7 +23,15 @@ function my_custom_exec_sc_only( $exec_sc_only, $obj_sc, $atts, $content, $short
 		return $exec_sc_only;
 	}
 	
-	//	Make your checks here - make sure to return boolean true if you want to force execution
+	/**
+	 * Make your checks here - make sure to return boolean true if you want to force execution
+	 * 
+	 * Following is an example to allow it for all ajax calls.
+	 */
+	if( defined( 'DOING_AJAX' ) && DOING_AJAX )
+	{
+		return true;
+	}
 	
 	return $exec_sc_only;
 }
