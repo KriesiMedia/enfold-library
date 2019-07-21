@@ -50,7 +50,21 @@ if ( ! class_exists( 'avia_sc_revolutionslider' ) && function_exists( 'rev_slide
 				//fetch all registered slides and save them to the slides array
 
 				$slider = new RevSlider();
-				$arrSliders = $slider->get_sliders_short();
+				
+				if( method_exists( $slider, 'get_sliders_short' ) )
+				{
+					$arrSliders = $slider->get_sliders_short();
+				}
+				else if( method_exists( $slider, 'getArrSlidersShort' ) )
+				{
+					//	fallback for < 6.0
+					$arrSliders = $slider->getArrSlidersShort();
+				}
+				else
+				{
+					$arrSliders = array();
+				}
+					
 				$slides = array_flip( $arrSliders );
 
 				if( empty( $params['args']['id'] ) && is_array( $slides ) ) 
@@ -113,16 +127,29 @@ if ( ! class_exists( 'avia_sc_revolutionslider' ) && function_exists( 'rev_slide
 				// Get slider
 				$slider = $wpdb->get_row( "SELECT * FROM $table_name WHERE id = '".(int)$atts['id']."'", ARRAY_A );
 
-
 				if( ! empty( $slider ) )
 				{		
 					$slides = json_decode( $slider['params'], true );
-					$height = isset( $slides['size']['minHeight'] ) && is_numeric( $slides['size']['minHeight'] ) ? (int) $slides['size']['minHeight'] + 1 : 1;
+					
+					//	fallback for < 6.0
+					if( isset( $slides['height'] ) )
+					{
+						$height = is_numeric( $slides['height'] ) ? (int) $slides['height'] + 1 : 901;
+					}
+					else
+					{
+						//	provided by revslider support (https://kriesi.at/support/topic/revolution-slider-9/#post-1118183)
+						$height = ( isset( $slides['size']['height']['d'] ) && is_numeric( $slides['size']['height']['d'] ) ) ? (int) $slides['size']['height']['d'] + 1 : false;
+						if( false === $height )
+						{
+							$height = ( isset( $slides['size']['minHeight'] ) && is_numeric( $slides['size']['minHeight'] ) ) ? (int) $slides['size']['minHeight'] + 1 : 901;
+						}
+					}
 
 					$params['style'] = " style='min-height: {$height}px;' ";
 				}
 				
-				$params['class'] = "avia-layerslider main_color avia-shadow {$meta['el_class']} ";
+				$params['class'] = "avia-layerslider avia-revolutionslider main_color avia-shadow {$meta['el_class']} ";
 				$params['open_structure'] = false;
 				
 				//we dont need a closing structure if the element is the first one or if a previous fullwidth element was displayed before
@@ -130,12 +157,18 @@ if ( ! class_exists( 'avia_sc_revolutionslider' ) && function_exists( 'rev_slide
 				if(!empty($meta['siblings']['prev']['tag']) && in_array($meta['siblings']['prev']['tag'], AviaBuilder::$full_el_no_section )) $params['close'] = false;
 				
 				if($meta['index'] > 0) $params['class'] .= " slider-not-first";
-				$params['id'] = 'layer_slider_' . avia_sc_revolutionslider::$slide_count;
+				$params['id'] = 'revolutionslider_' . avia_sc_revolutionslider::$slide_count;
 				
 				
 				$output .= avia_new_section( $params );
-				$output .= do_shortcode( '[rev_slider '.$atts['id'].']' );
-				$output .= "</div>"; //close section
+				
+				if( ! empty( $slider ) )
+				{
+					$alias = $slider['alias'];
+					$output .= do_shortcode( '[rev_slider alias="' . $alias . '"][/rev_slider]' );
+				}
+				
+				$output .= '</div>'; //close section
 				
 				
 				//if the next tag is a section dont create a new section from this shortcode
@@ -152,7 +185,7 @@ if ( ! class_exists( 'avia_sc_revolutionslider' ) && function_exists( 'rev_slide
 				
 				if( empty( $skipSecond ) ) 
 				{
-					$output .= avia_new_section(array('close'=>false, 'id' => "after_layer_slider_".avia_sc_revolutionslider::$slide_count));
+					$output .= avia_new_section(array('close'=>false, 'id' => "after_revolutionslider_" . avia_sc_revolutionslider::$slide_count));
 				}
 				
 				return $output;
