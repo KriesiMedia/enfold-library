@@ -1,6 +1,10 @@
 <?php
 
 /**
+ * DEPRECATED WITH 4.6 - use theme option instead
+ * ==============================================
+ *
+ *
  * Unconditionally exclude Google Maps from site
  * 
  * @param boolean $no_load
