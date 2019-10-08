@@ -626,7 +626,7 @@ var avia_cookie_consent_modal_callback = avia_cookie_consent_modal_callback ||
 		
 		function check_doNotTrack()
 		{
-			if( window.doNotTrack || navigator.doNotTrack || navigator.msDoNotTrack || 'function' == typeof window.external.msTrackingProtectionEnabled ) 
+			if( window.doNotTrack || navigator.doNotTrack || navigator.msDoNotTrack ) 
 			{
 				// The browser supports Do Not Track!
 				if (window.doNotTrack == "1" || navigator.doNotTrack == "yes" || navigator.doNotTrack == "1" || navigator.msDoNotTrack == "1" || ( 'function' == typeof window.external.msTrackingProtectionEnabled && window.external.msTrackingProtectionEnabled() ) )
