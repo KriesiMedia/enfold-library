@@ -16,6 +16,7 @@
  * 
  * 
  * Use action 'ava_popup_register_dynamic_templates' to register additional templates needed by several of your shortcodes to avoid checking if a template exists.
+ * To override a core template register one with the same name.
  */
 
 abstract class frame_class extends aviaShortcodeTemplate
