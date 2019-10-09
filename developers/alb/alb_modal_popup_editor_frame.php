@@ -17,6 +17,7 @@
  * 
  * Use action 'ava_popup_register_dynamic_templates' to register additional templates needed by several of your ALB elements to avoid checking if a template exists.
  * To override a core template register one with the same name.
+ * In WP Debug Mode a notice is written to debug log if you override an already registeered dynamic template.
  */
 
 abstract class frame_class extends aviaShortcodeTemplate
