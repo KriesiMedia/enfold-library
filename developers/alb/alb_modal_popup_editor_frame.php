@@ -245,8 +245,8 @@ abstract class frame_class extends aviaShortcodeTemplate
 //							'type' 	=> 'template',
 //							'template_id'	=> 'toggle_container',
 //							'templates_include'	=> array( 
-//													$this->popup_key( 'group_layout_link' ),
-//													$this->popup_key( 'group_layout_text' ),
+//													$this->popup_key( 'modal_group_layout_link' ),
+//													$this->popup_key( 'modal_group_layout_text' ),
 //												),
 //							'nodescription' => true
 //						),
@@ -329,7 +329,7 @@ abstract class frame_class extends aviaShortcodeTemplate
 							),
 					);
 			
-			AviaPopupTemplates()->register_dynamic_template( $this->popup_key( 'content_iconfont' ), $template );
+			AviaPopupTemplates()->register_dynamic_template( $this->popup_key( 'modal_content_iconfont' ), $template );
 			
 		}
 
