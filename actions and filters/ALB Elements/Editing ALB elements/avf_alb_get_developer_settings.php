@@ -11,7 +11,8 @@
  * @param string $option_value		'show' | 'hide'
  * @return string|false				'deactivate' = hide and ignore input values  (is removed from options)
  *									'hide'       = hide input fields but use values
- *									'developer_options' | 'developer_id_attribute' | 'developer_seo_heading_tags'       = show input fields and use values
+ *									'developer_options' | 'developer_id_attribute' | 'developer_seo_heading_tags' | 'developer_aria_label'       
+ *									              = show input fields and use values
  */
 function custom_alb_get_developer_settings( $value, $setting, $option_value )
 {
@@ -41,6 +42,24 @@ function custom_alb_get_developer_settings( $value, $setting, $option_value )
 			 * allowed return values
 			 */
 //			$value = 'developer_seo_heading_tags';
+//			$value = 'hide';
+//			$value = 'deactivate';
+			
+			break;
+		case 'aria_label':
+			/**
+			 * allowed return values
+			 */
+//			$value = 'developer_aria_label';
+//			$value = 'hide';
+//			$value = 'deactivate';
+			
+			break;
+		case 'alb_desc_id':
+			/**
+			 * allowed return values
+			 */
+//			$value = 'developer_alb_desc_id';
 //			$value = 'hide';
 //			$value = 'deactivate';
 			
