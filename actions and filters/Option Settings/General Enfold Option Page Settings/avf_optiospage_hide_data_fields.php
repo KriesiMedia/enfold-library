@@ -12,6 +12,8 @@
 /**
  * Hide a data field specified in $context
  * 
+ * Example: Hide tab for non admins
+ * 
  * @since 4.6.4
  * @param boolean $hide 
  * @param string $context				only 'updates_envato_token' supported
@@ -21,7 +23,10 @@ function my_optiospage_hide_data_fields( $hide, $context )
 {
 	if( 'updates_envato_token' == $context )
 	{
-		$hide = true;
+		if( ! current_user_can( 'manage_options' ) )
+		{
+			$hide = true;
+		}
 	}
 	
 	return $hide;

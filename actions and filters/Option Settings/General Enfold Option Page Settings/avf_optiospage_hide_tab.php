@@ -12,6 +12,8 @@
 /**
  * Hide a tab specified in $context
  * 
+ * Example: Hide tab for non admins
+ * 
  * @since 4.6.4
  * @param boolean $hide 
  * @param string $context				only 'updates_theme_tab' supported
@@ -21,7 +23,10 @@ function my_optiospage_hide_tab( $hide, $context )
 {
 	if( 'updates_theme_tab' == $context )
 	{
-		$hide = true;
+		if( ! current_user_can( 'manage_options' ) )
+		{
+			$hide = true;
+		}
 	}
 	
 	return $hide;

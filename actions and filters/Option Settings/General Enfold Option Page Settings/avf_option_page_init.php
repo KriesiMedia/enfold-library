@@ -10,13 +10,18 @@
  */
 
 /**
- * Example: Hide Google tab
+ * Example: Hide Google tab for non admins
  * 
  * @param array $avia_pages
  * @return array
  */
 function my_custom_option_page_modify_tab( $avia_pages )
 {
+	if( current_user_can( 'manage_options' ) )
+	{
+		return $avia_pages;
+	}
+	
 	$found = -1;
 	
 	foreach( $avia_pages as $index => $page ) 
