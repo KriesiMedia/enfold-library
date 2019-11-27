@@ -5,8 +5,7 @@
  * 
  * Copy the required following snippets in functions.php and modify output to your need
  * 
- * @param array $avia_elements
- * @version 1.0.1
+ * @version 1.0.0
  * @requires Enfold 4.0.0
  */
 
