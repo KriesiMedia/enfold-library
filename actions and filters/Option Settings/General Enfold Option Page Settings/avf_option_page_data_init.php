@@ -1,6 +1,9 @@
 <?php
 /**
- * This file contains code snippets to add or alter elements of the option page:	
+ * This file contains code snippets to add or alter elements of the option page:
+ *
+ *	****** W A R N I N G: ******
+ * DO NOT REMOVE THEME DATA FIELDS. Only hide not needed fields with CSS. Otherwise unexpected results and notices may occur.
  * 
  * Copy the required following snippets in functions.php and modify output to your need
  * 
