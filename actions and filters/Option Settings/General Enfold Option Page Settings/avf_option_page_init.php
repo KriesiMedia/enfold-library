@@ -5,6 +5,9 @@
  * 
  * Copy the required following snippets in functions.php and modify output to your need
  * 
+ *		****** W A R N I N G: ******
+ * DO NOT REMOVE THEME TABS. Only hide not needed tabs with CSS. Otherwise unexpected results and notices may occur.
+ * 
  * @version 1.0.0
  * @requires Enfold 4.0.0
  */
