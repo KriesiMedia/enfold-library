@@ -620,11 +620,6 @@ if( ! class_exists( 'Avia_Config_LayerSlider' ) )
 			}
 
 			/**
-			 * Path to Enfold LayerSlider WP main PHP files - ensure Windows comp with drives
-			 */
-			$layerslider = str_replace( '\\', '/', get_template_directory() . '/config-layerslider/LayerSlider/layerslider.php' );
-
-			/**
 			 * Supress hiding update notification
 			 * 
 			 * @since 4.1.3
@@ -632,7 +627,20 @@ if( ! class_exists( 'Avia_Config_LayerSlider' ) )
 			 */
 			if( 'no' == apply_filters( 'avf_show_layerslider_update_notification', 'no' ) ) 
 			{
-				unset( $plugins->response[ $layerslider ] );
+				/**
+				 * To be independent of case sensitive directories we loop through the plugins and search for string
+				 */
+				$layerslider = '/config-layerslider/layerslider/layerslider.php';
+				
+				foreach( $plugins->response as $plugin => $value ) 
+				{
+					$remove = strtolower( $plugin );
+					if( false !== strpos( $remove, $layerslider ) )
+					{
+						unset( $plugins->response[ $plugin ] );
+					}
+				}
+				
 			}
 
 			return $plugins;
