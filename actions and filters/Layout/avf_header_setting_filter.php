@@ -3,6 +3,7 @@
 /**
  * WARNING: This is a filter for developers only. Be careful making modifications as this might break the output,
  * 
+ * @since 4.6.4 	$context added
  * @param array $header
  * @param string $context		'setting_header' | 'setting_sidebar'
  * @return array
