@@ -5,7 +5,7 @@
  */
 
 add_shortcode( 'sc_avia_test_head', 'avia_test_head' );
-add_filter( 'the_title', 'avia_add_shortcode', 999999, 1, 2 );
+add_filter( 'the_title', 'avia_add_shortcode', 999999, 2 );
 
 function avia_test_head( $atts, $content = '', $shortcodename = '' )
 {
