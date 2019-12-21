@@ -1,6 +1,9 @@
 <?php
 /* 
- * The following snippets shows an example how to use shortcodes with titles (and have a correct markup)
+ * The following snippets shows an example how to use shortcodes with titles (and have a correct markup).
+ *
+ * KEEP IN MIND: Caching plugins, SEO and translating plugins will have problems using dynamic titles.
+ * =============
  *
  * To pass post_id parameter from get_the_title() to shortcode use the following syntax :
  *		{{{-post_id-}}}	=> $post_id
