@@ -13,6 +13,7 @@ function my_custom_privacy_cookie_infos( $infos, $av_privacy_object )
 {
 	$user = get_current_user_id();
 	
+	$infos['wp-settings-time-' . $user ] = __( 'A WP settings time cookie', 'avia_framework' );
 	$infos['wp-settings-' . $user ] = __( 'A WP settings cookie', 'avia_framework' );
 			
 	return $infos;
