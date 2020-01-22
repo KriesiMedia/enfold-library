@@ -20,7 +20,7 @@
  * 
  * @since 4.5.7.2
  * @param array $infos
- * @param av_privacy_class $this
+ * @param av_privacy_class $av_privacy_object
  * @return array
  */
 
