@@ -1,5 +1,8 @@
 <?php
 /* 
+ * CURRENTLY NOT MERGED !!!!!
+ * ==========================
+ *
  * The following snippets shows an example how to use shortcodes with titles (and have a correct markup).
  *
  * KEEP IN MIND: Caching plugins, SEO and translating plugins will have problems using dynamic titles.
