@@ -28,7 +28,9 @@ function my_custom_merged_files_unique_id( $uniqid, $file_type, $data, $enqueued
 	return '';
 	
 	/**
-	 * If you want to return a custom value, add some logic
+	 * If you want to return a custom value, add some logic.
+	 * Make sure you return a valid filename value - there is no further check for that.
+	 * Returning an invalid string will break the filename and result in generating a new file on each pageload or breaking your site.
 	 */
 	$uniqid = 'your custom value';
 	return $uniqid;
