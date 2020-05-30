@@ -24,4 +24,4 @@ function custom_avf_cookie_consent_for_md5( $cookie_contents, $message, $buttons
 	return $cookie_contents;
 }
 
-apply_filters( 'avf_cookie_consent_for_md5', 'custom_avf_cookie_consent_for_md5', 10, 3 );
+add_filter( 'avf_cookie_consent_for_md5', 'custom_avf_cookie_consent_for_md5', 10, 3 );
