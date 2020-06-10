@@ -157,15 +157,12 @@ Avia Slideshow
 			{
 				//	data attribute is transformed to lower case, but js is case sensitive - transform key
 				var key = ( 'transition_speed' != i ) ? i :'transitionSpeed';
-				
-				// 4.7.4.1: Günter - in my opinion we should check newOptions[key], this is always true.
-				if( htmlData.hasOwnProperty( i ) )
-				{	
-					if( typeof htmlData[i] === "string" || typeof htmlData[i] === "number" || typeof htmlData[i] === "boolean" )
-					{
-						newOptions[key] = htmlData[i];
-					}
+
+				if( typeof htmlData[ i ] === "string" || typeof htmlData[ i ] === "number" || typeof htmlData[ i ] === "boolean" )
+				{
+					newOptions[ key ] = htmlData[ i ];
 				}
+
 			}
 
 			return newOptions;
