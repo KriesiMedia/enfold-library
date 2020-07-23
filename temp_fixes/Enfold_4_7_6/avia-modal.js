@@ -691,7 +691,7 @@
 					{
 						var clicked = $(this);
 						
-						if( null != group_element )
+						if( builder.activeStatus.val() == 'active' )
 						{
 							var option = group_element ? 'group_tab_text' : 'tab_text';
 							$.avia_builder.set_modal_popup_state( option, tab_title, modal_instance );
