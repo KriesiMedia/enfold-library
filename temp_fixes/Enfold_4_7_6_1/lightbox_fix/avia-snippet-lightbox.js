@@ -137,6 +137,35 @@
 					
 					
 				},
+				
+				markupParse: function( template, values, item ) 
+				{
+					if( typeof values.img_replaceWith == 'undefined' || typeof values.img_replaceWith.length == 'undefined' || values.img_replaceWith.length == 0 )
+					{
+						return;
+					}
+					
+					var img = $( values.img_replaceWith[0] );
+					
+					if( typeof img.attr( 'alt' ) != 'undefined' )
+					{
+						return;
+					}
+					
+					var alt = item.el.attr( 'alt' );
+					if( typeof alt == "undefined" )
+					{
+						alt = item.el.find('img').attr('alt');
+					}
+
+					if( typeof alt != "undefined" )
+					{
+						img.attr( 'alt', alt );
+					}
+
+					return;
+				},
+				
 				imageLoadComplete: function() 
 				{	
 					var self = this;
