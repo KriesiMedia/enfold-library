@@ -1633,13 +1633,9 @@ if( ! function_exists( 'avia_woocommerce_ajax_search_params' ) )
 			$params['tax_query'] = array();
 		}
 		
-		// if statement added with 4.7.6.3 because user 
-		if( isset( $params['tax_query'] ) )
+		foreach( $tax_query as $value ) 
 		{
-			foreach( $tax_query as $value ) 
-			{
-				$params['tax_query'][] = $value;
-			}
+			$params['tax_query'][] = $value;
 		}
 		
 		return $params;
