@@ -3,7 +3,7 @@
 Plugin Name: Avia Special Character Converter Plugin
 Plugin URI: www.kriesi.at
 Description: Replaces special characters that break layout or Enfold Advanced Layout Editor
-Version: 1.0.0
+Version: 1.0.1
 Author: Guenter for www.kriesi.at
 Author URI: www.kriesi.at
 Text Domain: avia_special_characters
@@ -41,11 +41,8 @@ if( ! class_exists( 'avia_special_characters' ) )
 			$this->translate = array(
 						'###lt###'		=> '<',
 						'###gt###'		=> '>',
-						'###amp###'		=> '&',
 						'###91###'		=> '[',
-						'###93###'		=> ']',
-						'###quot###'	=> '"',
-						'###34###'		=> "'"
+						'###93###'		=> ']'
 			);
 
 			add_filter( 'the_content', array( $this, 'handler_the_content' ), 9999999, 1 );
