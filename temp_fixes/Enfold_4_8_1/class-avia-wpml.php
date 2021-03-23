@@ -91,12 +91,13 @@ if( ! class_exists( 'avia_WPML' ) )
 			add_action( 'ava_theme_options_elements_tab', array( $this, 'handler_ava_theme_options_elements_tab' ), 10, 1 );
 			add_filter( 'avf_cet_additional_sc_action_btn', array( $this, 'handler_avf_cet_additional_sc_action_btn' ), 10, 2 );
 			add_filter( 'avf_alb_metabox_title_prefix_cet', array( $this, 'handler_avf_alb_metabox_title_prefix_cet' ), 10, 1 );
-			add_filter( 'avf_custom_element_load_modal_subtypes_array', array( $this, 'handler_avf_custom_element_load_modal_subtypes_array' ), 10, 3 );
 			add_filter( 'avf_custom_element_template_id', array( $this, 'handler_avf_custom_element_template_id' ), 10, 1 );
 			
 			add_filter( 'wpml_document_view_item_link', array( $this, 'handler_wpml_document_view_item_link' ), 10, 5 );
 			add_filter( 'wpml_document_edit_item_link', array( $this, 'handler_wpml_document_edit_item_link' ), 10, 5 );
 			add_action( 'icl_post_languages_options_after', array( $this, 'handler_icl_post_languages_options_after' ), 10, 0 );
+			
+			add_filter( 'avf_cookie_consent_for_md5', array( $this, 'handler_avf_cookie_consent_for_md5' ), 10, 1 );
 		}
 		
 		
@@ -524,20 +525,6 @@ if( ! class_exists( 'avia_WPML' ) )
 		{
 			return __( 'Translate Element Template:', 'avia_framework' );
 		}
-		
-		/**
-		 * Currently for WPML we always load it in backend. Need to wait for feedback from WPML
-		 * 
-		 * @since 4.8.1.1
-		 * @param boolean $load
-		 * @param aviaShortcodeTemplate $shortcode
-		 * @param boolean $item_element
-		 * @return boolean
-		 */
-		public function handler_avf_custom_element_load_modal_subtypes_array( $load, aviaShortcodeTemplate $shortcode, $item_element ) 
-		{
-			return true;
-		}
 
 		/**
 		 * Remove the 'View' link from translation jobs because CET don't have a link to 'View' them.
@@ -758,6 +745,52 @@ if( ! class_exists( 'avia_WPML' ) )
 			
 			wp_enqueue_style( 'avia-wpml', AVIA_BASE_URL . 'config-wpml/wpml-mod.css', array(), $version );
 			wp_enqueue_script( 'avia-wpml-script', AVIA_BASE_URL . 'config-wpml/wpml-mod.js', array( 'jquery' ), $version );
+		}
+		
+		/**
+		 * Fix provided by WPML comp. team https://wpml.org/forums/topic/issue-with-cookie-pop-up/
+		 * Cookie Consent Box pops up when language is changed but without changing anything.
+		 * 
+		 * Modified fix to invalidate $cookie_contents if a content part in any language changes.
+		 * 
+		 * @since 4.8.2
+		 * @param string $cookie_contents
+		 * @return string
+		 */
+		public function handler_avf_cookie_consent_for_md5( $cookie_contents )
+		{
+			$new_cookie_contents = '';
+			
+			$messages = $this->wpml_get_options( 'cookie_content' );
+			if( is_array( $messages ) )
+			{
+				foreach( $messages as $message_lang ) 
+				{
+					$new_cookie_contents .= do_shortcode( $message_lang );
+				}
+			}
+			
+			$buttons = avia_wpml_get_options( 'msg_bar_buttons' );
+			if( ! is_array( $buttons ) )
+			{
+				$buttons = array();
+			}
+			
+			foreach( $buttons as $buttons_lang )
+			{
+				if( is_array( $buttons_lang ) )
+				{
+					foreach( $buttons_lang as $button )
+					{
+						if( isset( $button['msg_bar_button_label'] ) )
+						{
+							$new_cookie_contents .= $button['msg_bar_button_label'];
+						}
+					}
+				}
+			}
+
+			return $new_cookie_contents;
 		}
 		
 		/**
@@ -1087,7 +1120,7 @@ if( ! class_exists( 'avia_WPML' ) )
 	}
 	
 	/**
-	 * Returns the main instance of aviaWPML_CET to prevent the need to use globals
+	 * Returns the main instance of aviaWPML to prevent the need to use globals
 	 *
 	 * @since 4.8
 	 * @return avia_WPML
