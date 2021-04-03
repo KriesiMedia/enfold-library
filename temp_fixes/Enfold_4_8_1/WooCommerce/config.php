@@ -311,7 +311,7 @@ remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_ad
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 remove_action( 'woocommerce_pagination', 'woocommerce_catalog_ordering', 20 );
 remove_action( 'woocommerce_pagination', 'woocommerce_pagination', 10 );
-//remove_action( 'woocommerce_before_single_product', array($woocommerce, 'show_messages'), 10);
+remove_action( 'woocommerce_before_single_product', array($woocommerce, 'show_messages'), 10);
 
 
 
@@ -2268,14 +2268,14 @@ if( ! function_exists( 'avia_woocommerce_add_to_cart_fragments' ) )
 	add_filter( 'woocommerce_add_to_cart_fragments', 'avia_woocommerce_add_to_cart_fragments');
 }
 
-if( ! function_exists( $function_name ) )
+if( ! function_exists( 'avia_wc_print_single_product_notices' ) )
 {
 	/**
 	 * Print WC notices on single product pages
 	 * 
 	 * @since 4.8.2
 	 */
-	function avia_woocommerce_print_single_product_notices()
+	function avia_wc_print_single_product_notices()
 	{	
 		if( ! is_single() || ! is_product() )
 		{
@@ -2302,7 +2302,7 @@ if( ! function_exists( $function_name ) )
 		echo apply_filters( 'avf_wc_single_product_notice_box', $output, $notices );
 	}
 	
-	add_action( 'ava_before_content_templatebuilder_page', 'avia_woocommerce_print_single_product_notices', 10 );
+	add_action( 'ava_before_content_templatebuilder_page', 'avia_wc_print_single_product_notices', 10 );
 }
 
 
