@@ -217,7 +217,7 @@
 				if(this.$data.saturation == "fill")
 				{
 					   
-					style_color = this.$data.hue || "#242424";
+					style_color = this.$data.hue || "#242424";
 					
 					var c = style_color.substring(1);      // strip #
 					var rgb = parseInt(c, 16);   // convert rrggbb to decimal
@@ -345,13 +345,14 @@
 					content: info
 				});
 				
-				google.maps.event.addListener(marker, 'click', function() {
+				google.maps.event.addListener( marker, 'click', function()
+				{
 				    infowindow.open( { anchor: marker, map, shouldFocus: false } );
 				});
 				
 				if( data.tooltip_display ) 
 				{
-					infowindow.open(map,marker);
+					infowindow.open( { anchor: marker, map, shouldFocus: false } );
 				}
 			}
 		}
@@ -383,4 +384,5 @@
 	$('body').trigger('avia-google-maps-api-script-loaded');
     
 })( jQuery );
+
 
