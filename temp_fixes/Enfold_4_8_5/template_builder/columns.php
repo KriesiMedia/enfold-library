@@ -498,7 +498,7 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 							'id'		=> 'padding',
 							'type'		=> 'multi_input',
 							'sync'		=> true,
-							'std'		=> '0px',
+							'std'		=> '',
 							'lockable'	=> true,
 							'multi'		=> array(	
 											'top'		=> __( 'Padding-Top', 'avia_framework' ), 
@@ -578,7 +578,7 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 							'id'		=> 'radius',
 							'type'		=> 'multi_input',
 							'sync'		=> true,
-							'std'		=> '0px',
+							'std'		=> '',
 							'lockable'	=> true,
 							'multi'		=> array(	
 											'top'		=> __( 'Top-Left-Radius', 'avia_framework' ), 
@@ -1195,14 +1195,17 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 			
 			if( trim( $atts['padding'] ) != '' )
 			{
-				//	original verification - seems to be obsolete
+				//	fallback - prior 4.8.4 '0px' was default
 				if( $atts['padding'] == '0px' || $atts['padding'] == '0' || $atts['padding'] == '0%' )
 				{
 					$element_styling->add_classes( 'flex-column', 'av-zero-column-padding' );
+					$atts['padding'] = '';
 				}
-				
-				$padding_info = AviaHelper::multi_value_result_lockable( $atts['padding'] );
-				$element_styling->add_styles( 'flex-column', array( 'padding' => $padding_info['css_rules'] ) );
+				else
+				{
+					$padding_info = AviaHelper::multi_value_result_lockable( $atts['padding'] );
+					$element_styling->add_styles( 'flex-column', array( 'padding' => $padding_info['css_rules'] ) );
+				}
 			}
 			
 			if( ! empty( $atts['column_boxshadow'] ) )
