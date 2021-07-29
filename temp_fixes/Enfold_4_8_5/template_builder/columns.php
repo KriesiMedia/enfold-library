@@ -1135,11 +1135,11 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 
 				if( ! empty( avia_sc_columns::$first_atts['min_height'] ) )
 				{
-					$element_styling->add_styles( 'flex-column-table', $margins );
+					$element_styling->add_styles( 'flex-column-table-margin', $margins );
 				}
 				else
 				{
-					$element_styling->add_styles( 'flex-column', $margins );
+					$element_styling->add_styles( 'flex-column-margin', $margins );
 				}
 			}
 
@@ -1390,8 +1390,10 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 			}
 			
 			$selectors = array(
-							'flex-column-table'			=> "#top .flex_column_table.{$element_id}",
-							'flex-column'				=> "#top .flex_column.{$element_id}",
+							'flex-column-table-margin'	=> "#top .flex_column_table.av-equal-height-column-flextable.{$element_id}",
+							'flex-column-table'			=> ".flex_column_table.av-equal-height-column-flextable.{$element_id}",
+							'flex-column-margin'		=> "#top .flex_column.{$element_id}",
+							'flex-column'				=> ".flex_column.{$element_id}",
 							'divider-top-div'			=> ".flex_column.{$element_id} .avia-divider-svg-top",
 							'divider-bottom-div'		=> ".flex_column.{$element_id} .avia-divider-svg-bottom",
 							'divider-top-svg'			=> ".flex_column.{$element_id} .avia-divider-svg-top svg",
