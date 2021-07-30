@@ -999,8 +999,8 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 			$default = array(
 						'padding'						=> '',
 						'min_col_height'				=> '',
-						'background'					=> '',
-						'background_color'				=> 'bg_color',
+						'background'					=> 'bg_color',
+						'background_color'				=> '',
 						'background_gradient_color1'	=> '',
 						'background_gradient_color2'	=> '',
 						'background_gradient_direction'	=> '',
@@ -1190,7 +1190,7 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 			if( ! empty( $atts['radius'] ) )
 			{
 				$radius_info = AviaHelper::multi_value_result_lockable( $atts['radius'] );
-				$element_styling->add_styles( 'flex-column', $element_styling->border_radius_rules( $radius_info['css_rules'] ) );
+				$element_styling->add_styles( 'flex-column', $element_styling->border_radius_rules( $radius_info['fill_with_0_style'] ) );
 			}
 			
 			if( trim( $atts['padding'] ) != '' )
@@ -1204,7 +1204,7 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 				else
 				{
 					$padding_info = AviaHelper::multi_value_result_lockable( $atts['padding'] );
-					$element_styling->add_styles( 'flex-column', array( 'padding' => $padding_info['css_rules'] ) );
+					$element_styling->add_styles( 'flex-column', array( 'padding' => $padding_info['fill_with_0_style'] ) );
 				}
 			}
 			
@@ -1267,7 +1267,7 @@ if ( ! class_exists( 'avia_sc_columns' ) )
 				$bg_image = "url({$atts['fetch_image']}) {$atts['background_position']} {$atts['background_repeat']} {$atts['background_attachment']}";
 			}
 
-			if( $atts['background'] == 'bg_color' )
+			if( $atts['background'] != 'bg_gradient' )
 			{
 				if( ! empty( $bg_image ) )
 				{
