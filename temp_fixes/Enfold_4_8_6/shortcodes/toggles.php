@@ -486,6 +486,18 @@ if( ! class_exists( 'avia_sc_toggle' ) )
 												__( 'Define Custom Colors', 'avia_framework' )	=> 'custom'
 											),
 						),
+				
+						array(
+							'name' 	=> __( 'Custom Hover Font Color', 'avia_framework' ),
+							'desc' 	=> __( 'Select a custom hover font color. Leave empty to use the default', 'avia_framework' ),
+							'id' 	=> 'hover_font_color',
+							'type' 	=> 'colorpicker',
+							'std' 	=> '',
+							'rgba' 	=> true,
+							'lockable'	=> true,
+							'container_class' => 'av_third av_third_first',
+							'required'	=> array( 'hover_colors', 'equals', 'custom' )
+						),
 
 						array(
 							'name' 	=> __( 'Custom Hover Background Color', 'avia_framework' ),
@@ -495,20 +507,20 @@ if( ! class_exists( 'avia_sc_toggle' ) )
 							'std' 	=> '',
 							'rgba' 	=> true,
 							'lockable'	=> true,
-							'container_class' => 'av_third av_half_first',
+							'container_class' => 'av_third',
 							'required'	=> array( 'hover_colors', 'equals', 'custom')
 						),
-
+				
 						array(
-							'name' 	=> __( 'Custom Hover Font Color', 'avia_framework' ),
-							'desc' 	=> __( 'Select a custom hover font color. Leave empty to use the default', 'avia_framework' ),
-							'id' 	=> 'hover_font_color',
+							'name' 	=> __( 'Custom Hover +/- Icon Color', 'avia_framework' ),
+							'desc' 	=> __( 'Select a custom hover color for the toggle icon. Leave empty to use &quot;Custom Hover Font Color&quot;', 'avia_framework' ),
+							'id' 	=> 'hover_toggle_icon_color',
 							'type' 	=> 'colorpicker',
 							'std' 	=> '',
 							'rgba' 	=> true,
 							'lockable'	=> true,
 							'container_class' => 'av_third',
-							'required'	=> array( 'hover_colors', 'equals', 'custom' )
+							'required'	=> array( 'hover_colors', 'equals', 'custom')
 						)
 
 				);
@@ -829,7 +841,10 @@ if( ! class_exists( 'avia_sc_toggle' ) )
 																	'background-color'	=> $atts['hover_background_color']
 																) );
 
-				$element_styling->add_styles( 'toggle-icon-hover-not', array( 'border-color' => $atts['hover_font_color'] . ' !important' ) );
+				$icon_color = ! empty( $atts['hover_toggle_icon_color'] ) ? $atts['hover_toggle_icon_color'] : $atts['hover_font_color'];
+				
+				//	must be important due to shortcode.css !!
+				$element_styling->add_styles( 'toggle-icon-hover-not', array( 'border-color' => $icon_color . ' !important' ) );
 			}
 
 			//	#top needed when placed inside section
