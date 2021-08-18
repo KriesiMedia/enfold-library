@@ -3173,7 +3173,7 @@ if( ! class_exists( 'AviaHtmlHelper' ) )
 		{
 			$final = array();
 			
-			if( preg_match( '/^.*\.(jpg|jpeg|png|gif)$/i', $img ) )
+			if( preg_match( '/^.*\.(jpg|jpeg|png|gif|svg|webp)$/i', $img ) )
 			{
 				$final[] = '<img src="' . $img . '" />';
 			}
