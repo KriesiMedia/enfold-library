@@ -3,7 +3,7 @@
 //Auszug aus Enfold.php von Borlabs Cookie
 function modifyVideoOutput( $output, $atts, $content, $shortcodename, $meta, $video_html_raw )
 {
-    if( ! empty( $atts['src'] ) ) 
+	if( ! empty( $atts['src'] ) ) 
 	{
 		$style = '';
 		$class = '';
@@ -15,20 +15,20 @@ function modifyVideoOutput( $output, $atts, $content, $shortcodename, $meta, $vi
 			{
 				$fallback_img = $fallback[0];
 				$style .= " background-image:url(\"{$fallback_img}\");";
-				
-				if( false !== strpos( $fallback_img, 'https://vimeo.com' ) )
-				{
-					$class .= 'av-video-vimeo';
-				}
-				else if( false !== strpos( $fallback_img, 'https://www.youtube.com' ) )
-				{
-					$class .= 'av-video-youtube';
-				}
-				else
-				{
-					$class .= 'av-video-custom';
-				}
 			}
+		}
+		
+		if( false !== strpos( $atts['src'], 'https://vimeo.com' ) )
+		{
+			$class .= 'avia-video-external-service av-video-vimeo';
+		}
+		else if( false !== strpos( $atts['src'], 'https://www.youtube.com' ) )
+		{
+			$class .= 'avia-video-external-service av-video-youtube';
+		}
+		else
+		{
+			$class .= 'av-video-custom';
 		}
 
 		if( ! empty( $atts['format'] ) && $atts['format'] == 'custom' ) 
