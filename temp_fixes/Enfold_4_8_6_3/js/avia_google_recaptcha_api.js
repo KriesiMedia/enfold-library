@@ -187,13 +187,13 @@
 			}
 			
 			//	added 4.8.6.4 https://kriesi.at/support/topic/google-analytics-on-click-bug/
-			var analytics_ckeck = new_submit.prop( 'onclick' );
+			var analytics_ckeck = new_submit.attr( 'onclick' );
 			if( 'undefined' != typeof analytics_ckeck )
 			{
 				analytics_ckeck = analytics_ckeck.toLowerCase();
 				if( analytics_ckeck.indexOf( 'gtag(' ) >= 0 )
 				{
-					new_submit.prop( 'onclick', null );
+					new_submit.attr( 'onclick', null );
 				}
 			}
 			
