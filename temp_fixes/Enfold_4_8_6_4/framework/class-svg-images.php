@@ -171,8 +171,8 @@ if( ! class_exists( 'aviaSVGImages' ) )
 					{
 						throw new Exception();
 					}
-
-					$svg = file_get_contents( $filename );
+					
+					$svg = ( file_exists( $filename ) ) ? file_get_contents( $filename ) : false;
 					if( false === $svg )
 					{
 						throw new Exception();
@@ -222,7 +222,7 @@ if( ! class_exists( 'aviaSVGImages' ) )
 						throw new Exception();
 					}
 					
-					$svg = file_get_contents( $url );
+					$svg = ( file_exists( $url ) ) ?  file_get_contents( $url ) : false;
 					if( false === $svg )
 					{
 						throw new Exception();
