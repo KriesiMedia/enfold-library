@@ -171,8 +171,8 @@ if( ! class_exists( 'aviaSVGImages' ) )
 					{
 						throw new Exception();
 					}
-
-					$svg = file_get_contents( $filename );
+					
+					$svg = ( file_exists( $filename ) ) ? file_get_contents( $filename ) : false;
 					if( false === $svg )
 					{
 						throw new Exception();
@@ -222,7 +222,23 @@ if( ! class_exists( 'aviaSVGImages' ) )
 						throw new Exception();
 					}
 					
-					$svg = file_get_contents( $url );
+					//	check if we can find the file in local file structure
+					$new_file = $url;
+					if( ! file_exists( $new_file ) )
+					{
+						$new_file = ABSPATH . ltrim( $url, '/\\' );
+						if( ! file_exists( $new_file ) )
+						{
+							$new_file = false;
+						}
+					}
+					
+					if( false === $new_file )
+					{
+						throw new Exception();
+					}
+					
+					$svg = file_get_contents( $new_file );
 					if( false === $svg )
 					{
 						throw new Exception();
