@@ -76,6 +76,8 @@ if( ! class_exists( 'aviaSVGImages' ) )
 		public function handler_upload_mimes( $mimes = array() )
 		{
 			/**
+			 * Disallow upload of svg files for non admins
+			 *
 			 * @since 4.8.7
 			 * @param boolean $allow_upload
 			 * @return boolean            true to allow upload
@@ -129,7 +131,12 @@ if( ! class_exists( 'aviaSVGImages' ) )
 		 */
 		public function is_svg( $filename )
 		{
-			$filetype = wp_check_filetype( $filename );
+			$mimes = array(
+						'svg'	=> 'image/svg+xml',
+						'svgz'	=> 'image/svg+xml'
+					);
+
+			$filetype = wp_check_filetype( $filename, $mimes );
 
 			return strpos( $filetype['ext'], 'svg' ) !== false;
 		}
