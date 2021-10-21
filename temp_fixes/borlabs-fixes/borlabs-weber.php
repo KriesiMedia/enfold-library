@@ -51,7 +51,7 @@ function modifyVideoOutput( $output, $atts, $content, $shortcodename, $meta, $vi
 		// Hier verändern die das originale Elternelement !
 		else 
 		{
-			$output = "<div class='avia-video avia-video-{$atts['format']} {$class}' {$style}>'{$video_html_raw}</div>";
+			$output = "<div class='avia-video avia-video-{$atts['format']} {$class}' {$style}>{$video_html_raw}</div>";
 		}
     }
 	
