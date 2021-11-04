@@ -11,6 +11,16 @@
  */
 if( ! defined( 'ABSPATH' ) ) { exit; }		// Don't load directly
 
+/**
+ * Currently only in BETA
+ * ======================
+ * 
+ */
+if( ! current_theme_supports( 'avia_template_builder_page_split_element' ) )
+{
+	return;
+}
+
 
 if( ! class_exists( 'av_sc_page_split' ) )
 {
