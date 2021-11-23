@@ -20,4 +20,4 @@ function custom_post_featured_image_link( $image_link, array $current_post, $siz
 	return $image_link;
 }
 
-add_filter( 'avf_post_featured_image_link', 10, 3 );
+add_filter( 'avf_post_featured_image_link', 'custom_post_featured_image_link', 10, 3 );
