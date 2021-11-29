@@ -17,7 +17,7 @@
  *
  * @since 4.8.7.2
  * @param array $meta_info
- * @param string $context		'loop-index' | 'loop-author'
+ * @param string $context		'loop-index' | 'loop-author' | 'loop-search'
  * @return array
  */
 function avf_post_metadata_array( array $meta_info, $context )
