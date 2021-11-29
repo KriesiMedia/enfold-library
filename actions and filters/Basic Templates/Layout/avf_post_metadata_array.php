@@ -32,7 +32,7 @@ function avf_post_metadata_array( array $meta_info, $context )
 
 	//	e.g. modify date output
 	$meta_time  = '<span class="date-container minor-meta updated">';
-	$meta_time .=		__( 'Created: ', 'avia_framework' ) . the_time( get_option( 'date_format' ) );
+	$meta_time .=		__( 'Created: ', 'avia_framework' ) . get_the_time( get_option( 'date_format' ) );
 	$meta_time .= '</span>';
 
 	$meta_info['date'] = $meta_time;
