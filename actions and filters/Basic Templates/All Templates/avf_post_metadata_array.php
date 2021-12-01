@@ -20,7 +20,7 @@
  * @param string $context		'loop-index' | 'loop-author' | 'loop-search'
  * @return array
  */
-function avf_post_metadata_array( array $meta_info, $context )
+function custom_avf_post_metadata_array( array $meta_info, $context )
 {
 	//	Add logic to check if you want to change
 	$no_change = true;
