@@ -1,6 +1,8 @@
 <?php
 /**
- * Skip default font size handling for an option of an ALB element
+ * Skip default font size handling for an option of an ALB element.
+ * Filter is only available for ALB elements that support post CSS files.
+ * Other elements still use "old" style with class override.
  *
  * Search for $element_styling->add_responsive_font_sizes in php code of shortcodes to locate usage and parameter values
  * to check for conditions
