@@ -392,7 +392,10 @@ if( ! class_exists( 'av_privacy_class' ) )
 							setcookie( $cookie, 'false', $args );
 						}
 					}
-					catch( Error | Exception $ex )
+					catch( Error $ex )
+					{
+					}
+					catch( Exception $ex )
 					{
 					}
 				}
