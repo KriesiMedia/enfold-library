@@ -63,7 +63,7 @@ if( ! class_exists( 'AviaHtmlHelper' ) )
  * @param string $file
  * @return boolean
  */
-function custom_avf_load_builder_core_files( $loaded, $file )
+function custom_avf_load_single_builder_core_file( $loaded, $file )
 {
 	// check for ...\php\class-html-helper.php
 	if( false === strpos( $file, 'class-html-helper.php' ) )
@@ -78,4 +78,4 @@ function custom_avf_load_builder_core_files( $loaded, $file )
 	return true;
 }
 
-add_filter( 'avf_load_builder_core_files', 'custom_avf_load_builder_core_files', 10, 2 );
+add_filter( 'avf_load_single_builder_core_file', 'custom_avf_load_single_builder_core_file', 10, 2 );
