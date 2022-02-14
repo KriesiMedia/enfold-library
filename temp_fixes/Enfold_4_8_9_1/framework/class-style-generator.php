@@ -336,8 +336,8 @@ if( ! class_exists( 'avia_style_generator' ) )
 					}
 
 					//first of all we need to build the selector string
-					$selectorArray = $this->stylewizard[$style['id']]['selector'];
-					$sectionCheck = $this->stylewizard[$style['id']]['sections'];
+					$selectorArray = $this->stylewizard[ $style['id'] ]['selector'];
+					$sectionCheck = $this->stylewizard[ $style['id'] ]['sections'];
 
 					foreach( $selectorArray as $selector => $ruleset )
 					{
@@ -726,6 +726,37 @@ if( ! class_exists( 'avia_style_generator' ) )
 				return '';
 			}
 
+			/**
+			 * Allow to change default behaviour of browsers when loading external fonts
+			 * https://developers.google.com/web/updates/2016/02/font-display
+			 *
+			 * @since 4.9
+			 * @param string $font_display
+			 * @return string			auto | block | swap | fallback | optional
+			 */
+			$font_display = apply_filters( 'avf_font_display_google_fonts', avia_get_option( 'custom_font_display', '' ) );
+			$font_display = empty( $font_display ) ? 'auto' : $font_display;
+
+			/**
+			 * https://kriesi.at/support/topic/enfold-fontdisplay/
+			 *
+			 * @since 4.9
+			 */
+			$google_fontlist = $this->google_fontlist;
+			$google_fontlist .= '&display=' . $font_display;
+
+			/**
+			 *
+			 * @since ???
+			 * @since 4.9							added $this->google_fontlist, $font_display
+			 * @param string $google_fontlist
+			 * @param string $this->google_fontlist,
+			 * @param string $font_display
+			 * @return string
+			 */
+			$google_fontlist = apply_filters( 'avf_google_fontlist', $google_fontlist, $this->google_fontlist, $font_display );
+
+
 			$output  = '';
 			$output .= "\n<!-- google webfont font replacement -->\n";
 			$output .= "
@@ -768,7 +799,7 @@ if( ! class_exists( 'avia_style_generator' ) )
 
 						f.type 	= 'text/css';
 						f.rel 	= 'stylesheet';
-						f.href 	= '//fonts.googleapis.com/css?family=" . apply_filters( 'avf_google_fontlist', $this->google_fontlist ) . "';
+						f.href 	= '//fonts.googleapis.com/css?family={$google_fontlist}';
 						f.id 	= 'avia-google-webfont';
 
 						document.getElementsByTagName('head')[0].appendChild(f);
