@@ -82,7 +82,7 @@ if( ! class_exists( __NAMESPACE__ . '\aviaSubItemQueryBase' ) )
 		{
 			$this->atts = $atts;
 			$this->default_atts = $sc_context != null && method_exists( $sc_context, 'get_default_sc_args' ) ? $sc_context->get_default_sc_args() : array();
-			$this->default_item_atts = $sc_context != null && method_exists( $sc_context, 'get_default_sc_args' ) ? $sc_context->get_default_modal_group_args() : array();
+			$this->default_item_atts = $sc_context != null && method_exists( $sc_context, 'get_default_modal_group_args' ) ? $sc_context->get_default_modal_group_args() : array();
 			$this->sc_context = $sc_context;
 			$this->outer_defaults = $outer_defaults;
 
