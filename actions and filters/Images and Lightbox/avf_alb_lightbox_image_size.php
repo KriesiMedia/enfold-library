@@ -23,4 +23,4 @@ function custom_alb_lightbox_image_size( $size, $context, $args1 = null, $args2 
 	return $size;
 }
 
-add_filter( 'avf_alb_lightbox_image_size', 'my_alb_lightbox_image_size', 10, 4 );
+add_filter( 'avf_alb_lightbox_image_size', 'custom_alb_lightbox_image_size', 10, 4 );
