@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Slider Video Controls Fix ===
 Contributors: kriesi.at
 Donate link: kriesi.at
 Tags: enfold, slider, video
