@@ -123,7 +123,11 @@ function avia_slider_video_controls_fix(avia_slider)
             avia_slider.$slider.on('avia_slider_navigate_slide', function() 
             {
                 permanent_caption.appendTo(slideshow);
-            })
+            });
+            
+            permanent_caption.on('click', function() {
+                click_overlay.trigger('click');
+            });
         }
     });
 }
