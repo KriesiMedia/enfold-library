@@ -126,6 +126,7 @@ function avia_slider_video_controls_fix(avia_slider)
             });
             
             permanent_caption.on('click', function() {
+                click_overlay = slideshow.find('.active-slide:not(".av-slideshow-caption")').find('.av-click-overlay');
                 click_overlay.trigger('click');
             });
         }
