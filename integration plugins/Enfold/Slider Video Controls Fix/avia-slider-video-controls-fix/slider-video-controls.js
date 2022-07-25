@@ -62,14 +62,15 @@
                 var active_target = $(event.target),
                     active_slide = self.active_slide,
                     mejs_inner = active_slide.find('.mejs-inner'),
+                    mejs_el = active_slide.find('.mejs-mediaelement'),
                     mejs_volume_slider = active_slide.find('.mejs-volume-slider');
 
-                // if (active_slide.is('.av-hide-video-controls') ||
-                //     active_slide.not('.av-video-slide') ||
-                //     self.slider.isAnimating) 
-                // {
-                //     return;
-                // }
+                self.click_overlay = self.active_slide.find('.av-click-overlay');
+
+                if(mejs_inner.length == 0)
+                {
+                    mejs_inner = mejs_el;
+                }
 
                 // permanent caption has to be appended to the current slide to get access to mejs controls
                 if (self.permacaption.length && mejs_inner.find('>.av-slideshow-caption').length == 0) 
@@ -99,7 +100,7 @@
                 }
 
                 // hide the click overlay when user is trying to access a button (caption buttons, controls)
-                if (self.is_overlay(active_target)) 
+                if (!self.is_overlay(active_target)) 
                 {
                     if (self.click_overlay.is(':visible'))
                     {
@@ -126,14 +127,17 @@
                     click_overlay = slide.find('.av-click-overlay'),
                     section_overlay = slide.find('.av-section-color-overlay'),
                     slide_caption = slide.find('.av-slideshow-caption'),
+                    mejs = slide.find('.mejs-container'),
                     mejs_el = slide.find('.mejs-mediaelement'),
-                    mejs_inner = mejs_el.find('.mejs-inner'),
-                    mejs_controls = mejs_el.find('.mejs-controls');
+                    mejs_inner = mejs.find('.mejs-inner'),
+                    mejs_controls = mejs.find('.mejs-controls');
 
-                [section_overlay, click_overlay, slide_caption, mejs_controls].map(function (el, i) 
+                [mejs_el, section_overlay, click_overlay, slide_caption, mejs_controls].map(function (el, i) 
                 {
+                    var appendto = mejs_inner.length ? mejs_inner : mejs_el;
+                    
                     if (el.length) 
-                    {
+                    {                   
                         if (el.is('av-slideshow-caption'))
                         {
                             var slide_caption_title = el.find('.avia-caption-title'),
@@ -143,7 +147,11 @@
                             slide_caption_content.css(self.body_styles);
                         }
 
-                        el.prependTo(mejs_inner);
+                        if (el.not('.mejs-mediaelement'))
+                        {
+                            el.prependTo(appendto);
+                        }
+
                         el.css('z-index', i + 1);
                     }
                 });
