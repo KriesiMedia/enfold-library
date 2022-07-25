@@ -1,134 +1,219 @@
+/* Fix Video Controls */
+
+(function ($)
+{
+    "use strict";
+
+    $.AviaSliderVideoControls = function (slider)
+    {
+        console.log(slider);
+
+        this.slideshow = slider;
+        this.slider = this.slideshow.$slider;
+        this.slides = null;
+        this.active_slide = null;
+        this.permacaption = null;
+        this.click_overlay = null;
+        this.slide_arrows = null;
+        this.goto_buttons = null;
+
+        this.heading_styles = {
+            'font-weight': $('body h2').css('font-weight'),
+            'font-family': $('body h2').css('font-family'),
+        }
+
+        this.body_styles = {
+            'font-weight': $('body p').css('font-weight'),
+            'font-family': $('body p').css('font-family'),
+        }
+
+        this.kickoff();
+    }
+
+    $.AviaSliderVideoControls.prototype = {
+        kickoff()
+        {
+            var self = this;
+
+            this.slider.on('_kickOff', function () 
+            {
+                self.slides = self.slideshow.$slides;
+                self.active_slide = $(self.slides[self.slideshow.current]);
+                self.permacaption = self.slideshow.permaCaption;
+                self.click_overlay = self.active_slide.find('.av-click-overlay');
+                self.slide_arrows = self.slideshow.slide_arrows;
+                self.goto_buttons = self.slideshow.gotoButtons;
+
+                self.set_stack_order();
+                self.toggle_click_overlay();
+                self.register_listeners();
+            });
+        },
+
+        /**
+         * Add event listener to the slider and toggle the visibility of av-click-overlay element when necessary
+         *
+         * @returns {void}
+         */
+        toggle_click_overlay()
+        {
+            var self = this;
+
+            this.slider.on('mouseover', function (event)
+            {
+                var active_target = $(event.target),
+                    active_slide = self.active_slide,
+                    mejs_inner = active_slide.find('.mejs-inner'),
+                    mejs_volume_slider = active_slide.find('.mejs-volume-slider');
+
+                // if (active_slide.is('.av-hide-video-controls') ||
+                //     active_slide.not('.av-video-slide') ||
+                //     self.slider.isAnimating) 
+                // {
+                //     return;
+                // }
+
+                // permanent caption has to be appended to the current slide to get access to mejs controls
+                if (self.permacaption.length && mejs_inner.find('>.av-slideshow-caption').length == 0) 
+                {
+                    var permanent_caption_title = self.permacaption.find('.avia-caption-title'),
+                        permanent_caption_content = self.permacaption.find('.avia-caption-content'),
+                        permanent_caption_buttons = self.permacaption.find('.avia-slideshow-button');
+
+                    permanent_caption_title.add(permanent_caption_content).add(permanent_caption_buttons).css({
+                        'visibility': 'visible',
+                        'animation': 'none',
+                        'transition': 'none',
+                        'opacity': 1,
+                    });
+
+                    permanent_caption_title.css(self.heading_styles);
+                    permanent_caption_content.add(permanent_caption_buttons).css(self.body_styles);
+
+                    if (mejs_inner.length > 0) 
+                    {
+                        setTimeout(function ()
+                        {
+                            self.permacaption.appendTo(mejs_inner);
+                            self.permacaption.css('z-index', 3);
+                        }, 100);
+                    }
+                }
+
+                // hide the click overlay when user is trying to access a button (caption buttons, controls)
+                if (self.is_overlay(active_target)) 
+                {
+                    if (self.click_overlay.is(':visible'))
+                    {
+                        self.click_overlay.hide();
+                    }
+                }
+                else 
+                {
+                    if (!self.click_overlay.is(':visible') && !mejs_volume_slider.is(':visible'))
+                    {
+                        self.click_overlay.show();
+                    }
+                }
+            });
+        },
+
+        set_stack_order()
+        {
+            var self = this;
+
+            this.slider.find('.av-video-slide').each(function () 
+            {
+                var slide = $(this),
+                    click_overlay = slide.find('.av-click-overlay'),
+                    section_overlay = slide.find('.av-section-color-overlay'),
+                    slide_caption = slide.find('.av-slideshow-caption'),
+                    mejs_el = slide.find('.mejs-mediaelement'),
+                    mejs_inner = mejs_el.find('.mejs-inner'),
+                    mejs_controls = mejs_el.find('.mejs-controls');
+
+                [section_overlay, click_overlay, slide_caption, mejs_controls].map(function (el, i) 
+                {
+                    if (el.length) 
+                    {
+                        if (el.is('av-slideshow-caption'))
+                        {
+                            var slide_caption_title = el.find('.avia-caption-title'),
+                                slide_caption_content = el.find('.avia-caption-content');
+
+                            slide_caption_title.css(self.heading_styles);
+                            slide_caption_content.css(self.body_styles);
+                        }
+
+                        el.prependTo(mejs_inner);
+                        el.css('z-index', i + 1);
+                    }
+                });
+            });
+        },
+
+        register_listeners()
+        {
+            var self = this;
+
+            if (this.slider.isMobile) return;
+
+            this.slider.on('avia_slider_navigate_slide avia_slider_first_slide avia_slider_last_slide avia-transition-done', function () 
+            {
+                self.active_slide = $(self.slides[self.slideshow.current]);
+                self.click_overlay = self.active_slide.find('.av-click-overlay');
+
+                self.move_permacaption_back();
+            });
+
+            // bring permanent caption back to its original position
+            this.slide_arrows.add(self.goto_buttons).on('click', function ()
+            {
+                self.move_permacaption_back();
+            });
+
+            this.permacaption.on('click', function (e)
+            {
+                var active_target = $(e.target);
+
+                if(self.is_overlay(active_target))
+                {
+                    self.click_overlay = self.slider.find('.active-slide:not(".av-slideshow-caption")').find('.av-click-overlay');
+                    self.click_overlay.trigger('click');
+                }
+            });
+        },
+
+        move_permacaption_back()
+        {
+            var self = this,
+                slider = $(this.slider);
+
+            if (slider.find('>.av-slideshow-caption').length) return;
+
+            this.permacaption.css("z-index", '');
+            this.permacaption.appendTo(self.slider);
+        },
+
+        is_overlay(target)
+        {
+            // hide the click overlay when user is trying to access a button (caption buttons, controls)
+            if (target.is('.mejs-volume-button') ||
+                target.is(":button") ||
+                target.is('.avia-slideshow-button')) 
+            {
+                return false;
+            }
+
+            return true;
+        }
+    }
+})(jQuery);
+
 function avia_slider_video_controls_fix(avia_slider)
 {
-    var $ = jQuery,
-        body_font = $('body').css('font-family'),
-        heading_font = $('body h2').css('font-family');
-
-    avia_slider.$slider.find('.av-video-slide').each(function () 
+    jQuery(document).ready(function () 
     {
-        var current = $(this),
-            current_wrap = current.find('.avia-slide-wrap'),
-            slideshow = current.parents('.avia-slideshow'),
-            slideshow_arrows = slideshow.find('.avia-slideshow-arrows a'),
-            goto_buttons = slideshow.find('.avia-slideshow-dots a'),
-            permanent_caption = slideshow.find('>.av-slideshow-caption'),
-            permanent_caption_title = permanent_caption.find('.avia-caption-title'),
-            permanent_caption_content = permanent_caption.find('.avia-caption-content'),
-            click_overlay = current.find('.av-click-overlay'),
-            section_overlay = current.find('.av-section-color-overlay'),
-            slide_caption = current.find('.av-slideshow-caption'),
-            slide_caption_title = slide_caption.find('.avia-caption-title'),
-            slide_caption_content = slide_caption.find('.avia-caption-content'),
-            mejs_el = current.find('.mejs-mediaelement'),
-            mejs = current.find('.mejs-container'),
-            mejs_inner = current.find('.mejs-inner'),
-            mejs_controls = current.find('.mejs-controls'),
-            mejs_volume_slider = current.find('.mejs-volume-slider');
-
-        var is_video_slide = current.is('.av-video-slide'),
-            is_mejs = mejs_el.length > 0;
-
-        // check if there is a mejs element and if it is still a video slide
-        if (is_mejs == false || !is_video_slide) return;
-
-        if (is_video_slide) 
-        {
-            var video_iframe = mejs_el.find('>iframe');
-
-            // if (video_iframe.length > 0)
-            // {
-            //     mejs_inner = mejs_el;
-            //     video_iframe.css('z-index', 1);
-            // }
-
-            if (section_overlay.length)
-            {
-                section_overlay.prependTo(mejs_inner);
-                section_overlay.css('z-index', 1);
-            }
-
-            if (click_overlay.length) 
-            {
-                click_overlay.prependTo(mejs_inner);
-                click_overlay.css('z-index', 2);
-            }
-
-            if (slide_caption.length)
-            {
-                // mejs element applies its own default text, so we have to apply the font inline
-                slide_caption_title.css('font-family', heading_font);
-                slide_caption_content.css('font-family', body_font);
-                slide_caption.prependTo(mejs_inner);
-                slide_caption.css('z-index', 3);
-            }
-        }
-
-        mejs_controls.css('z-index', 5);
-
-        slideshow.on('mouseover', function (event)
-        {
-            var target = $(event.target);
-            var active_slide = $(this).find('.active-slide:not(".av-slideshow-caption")');
-            
-            mejs_inner = active_slide.find('.mejs-inner');
-            
-            if (active_slide.is('.av-video-slide') == false || avia_slider.isAnimating) return;
-
-            // permanent caption has to be appended to the current slide to get access to mejs controls
-            if (permanent_caption.length && mejs_inner.find('>.av-slideshow-caption').length == 0) 
-            {
-                permanent_caption_title.add(permanent_caption_content).css({
-                    'visibility': 'visible',
-                    'animation': 'none',
-                    'opacity': 1
-                });
-
-                permanent_caption_title.css('font-family', heading_font);
-                permanent_caption_content.css('font-family', body_font);
-                
-                if(mejs_inner.length > 0) 
-                {
-                    setTimeout(function ()
-                    {
-                        permanent_caption.appendTo(mejs_inner);
-                        permanent_caption.css('z-index', 1);
-                    }, 100);
-                }
-            }
-
-            if (target.is('.mejs-volume-button') || target.is(":button")) 
-            {
-                if (click_overlay.is(':visible'))
-                {
-                    click_overlay.hide();
-                }
-            }
-            else 
-            {
-                if (!click_overlay.is(':visible') && !mejs_volume_slider.is(':visible'))
-                {
-                    click_overlay.show();
-                }
-            }
-        });
-
-        if (avia_slider.isMobile == false) 
-        {
-            // bring permanent caption back to its original position
-            slideshow_arrows.add(goto_buttons).on('click', function ()
-            {
-                permanent_caption.appendTo(slideshow);
-            });
-
-            avia_slider.$slider.on('avia_slider_navigate_slide', function() 
-            {
-                permanent_caption.appendTo(slideshow);
-            });
-            
-            permanent_caption.on('click', function() {
-                click_overlay = slideshow.find('.active-slide:not(".av-slideshow-caption")').find('.av-click-overlay');
-                click_overlay.trigger('click');
-            });
-        }
+        new jQuery.AviaSliderVideoControls(avia_slider);
     });
 }
