@@ -6,8 +6,6 @@
 
     $.AviaSliderVideoControls = function (slider)
     {
-        console.log(slider);
-
         this.slideshow = slider;
         this.slider = this.slideshow.$slider;
         this.slides = null;
