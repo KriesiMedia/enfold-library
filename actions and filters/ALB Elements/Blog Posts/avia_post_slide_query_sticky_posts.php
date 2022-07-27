@@ -13,10 +13,8 @@ if( ! function_exists( 'avia_check_sticky_posts' ) )
 		$paged = $query['paged'];
 
 		// unset posts_per_page and paged var to retrieve all stickies
-		$query = array_diff_key(
-			$query, 
-			array_flip(['posts_per_page', 'paged'])
-		);
+		unset($query['posts_per_page']);
+		unset($query['paged']);
 
 		$query['fields'] = 'ids';
 
@@ -39,15 +37,15 @@ if( ! function_exists( 'avia_check_sticky_posts' ) )
 		// if there is at least one sticky post, set query parameters accordingly
 		if ($has_sticky) {			
 			// remove unnecessary parameters from the main query
-			$query = array_diff_key(
-				$query, 
-				array_flip(['post_type', 'meta_query', 'date_query'])
-			);
+			unset($query['post_type']);
+			unset($query['meta_query']);
+			unset($query['date_query']);
 
 			$query['post__in'] = array_merge($stickies, $entries_sorted);
 			$query['orderby'] = 'post__in';
 		}
 
+		// set the query parameters back to reflect the element settings
 		$query['posts_per_page'] = $params['items'];
 		$query['paged'] = $paged;
 		$query['fields'] = 'all';
