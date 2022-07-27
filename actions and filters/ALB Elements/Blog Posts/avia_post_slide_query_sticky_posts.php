@@ -18,7 +18,7 @@ if( ! function_exists( 'avia_check_sticky_posts' ) )
 			array_flip(['posts_per_page', 'paged'])
 		);
 
-		$query['fields'] = 'id';
+		$query['fields'] = 'ids';
 
 		// do the initial WP_Query and return all posts ids
 		$entries = new WP_Query($query);
@@ -27,13 +27,13 @@ if( ! function_exists( 'avia_check_sticky_posts' ) )
 		$has_sticky = false;
 
 		foreach ($entries->posts as $entry) {
-			if (is_sticky($entry->ID)) {		
+			if (is_sticky($entry)) {		
 				$has_sticky = true;	
-				array_push($stickies, $entry->ID);
+				array_push($stickies, $entry);
 				continue;
 			}
 
-			array_push($entries_sorted, $entry->ID);
+			array_push($entries_sorted, $entry);
 		}
 
 		// if there is at least one sticky post, set query parameters accordingly
