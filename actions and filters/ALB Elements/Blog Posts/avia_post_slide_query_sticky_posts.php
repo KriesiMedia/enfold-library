@@ -1,6 +1,7 @@
 if( ! function_exists( 'avia_check_sticky_posts' ) )
 {
 	add_filter('avia_post_slide_query', 'avia_check_sticky_posts', 10, 2);
+
 	/**
 	 * Fetch sticky entries
 	 *
