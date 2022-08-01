@@ -1,0 +1,71 @@
+function avia_fixed_el_tab_animation()
+{
+    ?>
+    <script>
+        (function($) {
+            function debounce(method, delay) {
+                clearTimeout(method._tId);
+                method._tId= setTimeout(function(){
+                    method();
+                }, delay);
+            }
+
+            window.addEventListener('DOMContentLoaded', (event) => {
+                var position = '200px',
+                    wrapper = $('.avia-builder-main-wrap');
+
+                setTimeout(function() {
+                    var controls = document.querySelector('.avia-fixed-controls');
+                        
+                    document.querySelector('.interface-interface-skeleton__content').addEventListener('scroll', function () {  
+                        var scrollpos = $(this).scrollTop();
+
+                        if( scrollpos > 200 ) {
+                            position = '60px';
+                            wrapper.addClass('avia-fixed-controls-sticked');
+                        } else {
+                            position = '200px';
+                            wrapper.removeClass('avia-fixed-controls-sticked');
+                        }        
+
+                        debounce(
+                            function() {
+                                setTimeout(function() {
+                                    controls.animate(
+                                        { top: position }, 
+                                        { 
+                                            duration: 400,                      
+                                            easing: 'ease-in-out',     
+                                            iterations: 1,        
+                                        }, 
+                                    );   
+                                }, 100);
+
+                                setTimeout(function() {
+                                    controls.style.top = position;  
+                                }, 500);
+                            }
+                        , 100);
+                    }, false);
+                }, 500);
+            }); 
+        })(jQuery);
+    </script>
+    <?php
+}
+add_action( 'admin_head', 'avia_fixed_el_tab_animation' );
+
+
+Additional CSS:
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded .avia-hotkey-info, body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded #avia-sort-list-dropdown{
+	transition: top 0.29s ease-in-out 0.09s;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded .avia-fixed-controls-sticked #avia-sort-list-dropdown {
+	top: 97px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded .avia-fixed-controls-sticked .avia-hotkey-info {
+	top: 105px;
+}
