@@ -21,14 +21,14 @@ Related thread: https://kriesi.at/support/topic/add-support-for-enfold-recaptcha
 Code executed on opt-in:
 
 <script type="module">
-Cookies.set('enableAviaRecaptchaRCB', 1, { expires : 30, path: '/' });
+	Cookies.set('enableAviaRecaptchaRCB', 1, { expires : 30, path: '/' });
 </script>
 
 
 Code executed on opt-out:
 
 <script type="module">
-Cookies.remove('enableAviaRecaptchaRCB', 1, { path: '/' });
+	Cookies.remove('enableAviaRecaptchaRCB', 1, { path: '/' });
 </script>
 
 
@@ -48,20 +48,21 @@ Code executed on page load:
         
         if (recaptchaEnabled)
         {
-            recaptchaFront.remove();
-            recaptchaAPI.remove();
-			recaptchaArea.remove();
-			
-			$('#top').removeClass('av-recaptcha-enabled av-recaptcha-extended-errors');
+            	recaptchaFront.remove();
+            	recaptchaAPI.remove();
+	    	recaptchaArea.remove();
+		
+		$('#top').removeClass('av-recaptcha-enabled av-recaptcha-extended-errors');
         } 
 		
 		return false;
-    }
+    	}
     
-    $(document).ready(function() {
-		if(Cookies.get('enableAviaRecaptchaRCB')) return;
+    	$(document).ready(function() 
+		{
+			if(Cookies.get('enableAviaRecaptchaRCB')) return;
 
-        disableRecaptchaJS();
-    });
+        	disableRecaptchaJS();
+    	});
 })(jQuery);
 </script>
