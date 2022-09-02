@@ -43,25 +43,25 @@
 <script type="module">
 (function ($)
 {
-    function disableRecaptchaJS()
-    {
+	function disableRecaptchaJS()
+	{
 		var recaptchaEnabled = $("body").is(".av-recaptcha-enabled");
 		var recaptchaFront = $("#avia_google_recaptcha_front_script-js");
 		var recaptchaAPI = $("#avia_google_recaptcha_api_script")
 		var recaptchaArea = $(".av-recaptcha-area");
-        
-        if (recaptchaEnabled)
-        {
-            recaptchaFront.remove();
-            recaptchaAPI.remove();
-	    	recaptchaArea.remove();
-		
+
+		if (recaptchaEnabled)
+		{
+			recaptchaFront.remove();
+			recaptchaAPI.remove();
+			recaptchaArea.remove();
+
 			$('#top').removeClass('av-recaptcha-enabled av-recaptcha-extended-errors');
-        } 
-		
+		} 
+
 		return false;
-    }
-    
+	}
+
 	$(document).ready(function() 
 	{
 		if(Cookies.get('enableAviaRecaptchaRCB')) return;
