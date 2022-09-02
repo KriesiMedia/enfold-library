@@ -46,7 +46,7 @@
     function disableRecaptchaJS()
     {
 		var recaptchaEnabled = $("body").is(".av-recaptcha-enabled");
-        var recaptchaFront = $("#avia_google_recaptcha_front_script-js");
+		var recaptchaFront = $("#avia_google_recaptcha_front_script-js");
 		var recaptchaAPI = $("#avia_google_recaptcha_api_script")
 		var recaptchaArea = $(".av-recaptcha-area");
         
@@ -59,7 +59,7 @@
 			$('#top').removeClass('av-recaptcha-enabled av-recaptcha-extended-errors');
         } 
 		
-			return false;
+		return false;
     }
     
 	$(document).ready(function() 
