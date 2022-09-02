@@ -1,5 +1,7 @@
 Disable Enfold Google ReCAPTCHA using Real Cookie Banner (RCB) Content Blocker.
 
+Related thread: https://kriesi.at/support/topic/add-support-for-enfold-recaptcha-real-cookie-banner/
+
 - In the RCB panel, go to the Services (Cookies) tab and click the Add service button.
 
 - Create a new service from scratch and input the following service configuration.
@@ -12,11 +14,9 @@ Disable Enfold Google ReCAPTCHA using Real Cookie Banner (RCB) Content Blocker.
  Privacy policy link: https://policies.google.com/privacy?hl=en-GB
  Legal basis: Consent (Opt-in)
  
- -  Enable the "This service does not set any technical cookies on the client of the visitor, but e.g. integrates a script"
+-  Enable the "This service does not set any technical cookies on the client of the visitor, but e.g. integrates a script"
 
-In the Technical handling section, place the following scripts in their respective fields.
-
-https://kriesi.at/support/topic/add-support-for-enfold-recaptcha-real-cookie-banner/
+- In the Technical handling section, place the following scripts in their respective fields.
 
 Code executed on opt-in:
 
@@ -66,13 +66,3 @@ Code executed on page load:
 })(jQuery);
 </script>
 
-
-
-
-
-
-
-The script will disable the reCAPTCHA API on load and only enable it once the user opt-in to the custom statistics service or once the <em>enableAviaRecaptchaRCB</em> cookie is set.
-
-Best regards,
-Ismael
