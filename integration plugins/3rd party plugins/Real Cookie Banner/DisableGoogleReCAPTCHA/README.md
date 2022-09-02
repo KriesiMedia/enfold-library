@@ -2,9 +2,9 @@
 
 Related thread: _https://kriesi.at/support/topic/add-support-for-enfold-recaptcha-real-cookie-banner/_
 
-## - In the RCB panel, go to the Services (Cookies) tab and click the Add service button.
+## In the RCB panel, go to the Services (Cookies) tab and click the Add service button.
 
-## - Create a new service from scratch and input the following service configuration.
+## Create a new service from scratch and input the following service configuration.
 
  - Name: Google Services
  - Status: Enabled
