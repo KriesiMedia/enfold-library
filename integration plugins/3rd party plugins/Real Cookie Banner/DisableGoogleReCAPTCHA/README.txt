@@ -48,21 +48,21 @@ Code executed on page load:
         
         if (recaptchaEnabled)
         {
-            	recaptchaFront.remove();
-            	recaptchaAPI.remove();
+            recaptchaFront.remove();
+            recaptchaAPI.remove();
 	    	recaptchaArea.remove();
 		
-		$('#top').removeClass('av-recaptcha-enabled av-recaptcha-extended-errors');
+			$('#top').removeClass('av-recaptcha-enabled av-recaptcha-extended-errors');
         } 
 		
-		return false;
-    	}
+			return false;
+    }
     
-    	$(document).ready(function() 
-		{
-			if(Cookies.get('enableAviaRecaptchaRCB')) return;
+	$(document).ready(function() 
+	{
+		if(Cookies.get('enableAviaRecaptchaRCB')) return;
 
-        	disableRecaptchaJS();
-    	});
+		disableRecaptchaJS();
+	});
 })(jQuery);
 </script>
