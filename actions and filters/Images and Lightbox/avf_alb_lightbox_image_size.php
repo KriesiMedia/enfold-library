@@ -9,6 +9,7 @@
  * @param string $context			'avia_masonry' | 'avia_slideshow' | $this->config['shortcode']
  * @param mixed $args1				depend on $context
  * @param mixed $args2				depend on $context
+ * @return string				WP image size - return non existing size to use original non cropped file
  */
 function custom_alb_lightbox_image_size( $size, $context, $args1 = null, $args2 = null )
 {
@@ -17,7 +18,7 @@ function custom_alb_lightbox_image_size( $size, $context, $args1 = null, $args2 
 	 */
 	if( 'av_gallery' == $context )
 	{
-		return 'full';
+		return 'full';			//	'original'  if not defined as image size will return original uncropped image
 	}
 
 	return $size;
