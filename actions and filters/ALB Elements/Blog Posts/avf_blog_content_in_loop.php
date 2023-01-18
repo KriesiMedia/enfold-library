@@ -3,6 +3,12 @@
  * Allows especially for ALB posts to change output to 'content'
  * Supported since 4.5.5
  *
+ * ATTENTION:
+ * ==========
+ *
+ * Displaying ALB content may lead to nested shortcodes which is not allowed and circular reference
+ * breaking the layout and/or displaying the page. 
+ *
  * @since 4.5.5
  * @added by Günter
  * @param string $blog_content
