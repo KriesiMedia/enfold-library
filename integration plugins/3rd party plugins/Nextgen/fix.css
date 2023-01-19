@@ -1,0 +1,9 @@
+/* 
+To fix "Gallery could not load” error: https://kriesi.at/support/topic/enfold-and-nextgen-on-cell-phone-gallery-could-not-load/
+
+Please add following code to WordPress admin panel > Enfold theme options > General Styling > Quick CSS field
+*/
+
+.galleria-stage { 
+  height:calc(100% – 95px) !important; 
+}
