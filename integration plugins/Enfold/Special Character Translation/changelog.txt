@@ -1,0 +1,10 @@
+
+23.2.2023 - Version 1.1
+
+added: support for ALB contact form filters
+
+
+
+Version 1.0, 1.0.1
+
+initial release
