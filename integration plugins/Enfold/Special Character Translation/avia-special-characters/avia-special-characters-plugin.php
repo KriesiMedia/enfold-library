@@ -3,7 +3,7 @@
 Plugin Name: Avia Special Character Converter Plugin
 Plugin URI: www.kriesi.at
 Description: Replaces special characters that break layout or Enfold Advanced Layout Editor
-Version: 1.1
+Version: 1.1.1
 Author: Guenter for www.kriesi.at
 Author URI: www.kriesi.at
 Text Domain: avia_special_characters
@@ -76,6 +76,7 @@ if( ! class_exists( 'avia_special_characters' ) )
 			 */
 			add_filter( 'avf_form_subject', array( $this, 'handler_the_content' ), 9999999, 1 );
 			add_filter( 'avf_form_mail_form_field', array( $this, 'handler_the_content' ), 9999999, 1 );
+			add_filter( 'avf_contact_form_autoresponder_mail', array( $this, 'handler_avf_autoresponder_mail' ), 9999999, 4 );
 		}
 
 		/**
@@ -113,6 +114,29 @@ if( ! class_exists( 'avia_special_characters' ) )
 			return $new_content;
 		}
 
+		/**
+		 *
+		 * @since 1.1.1
+		 * @param array $mail_array
+		 * @param array $new_post
+		 * @param array $form_params
+		 * @param avia_form $form
+		 * @return array
+		 */
+		public function handler_avf_autoresponder_mail( array $mail_array, array $new_post, array $form_params, avia_form $form )
+		{
+			$check = [ 'Subject', 'Message' ];
+
+			foreach( $check as $key )
+			{
+				if( isset( $mail_array[ $key ] ) )
+				{
+					$mail_array[ $key ] = $this->handler_the_content( $mail_array[ $key ] );
+				}
+			}
+
+			return $mail_array;
+		}
 	}
 
 	/**
