@@ -8,11 +8,10 @@
 * @param string $copyright_text
 * @return string
 */
-add_filter('avf_alb_image_copyright_text', 'new_avf_alb_image_copyright_text');
 
-function new_avf_alb_image_copyright_text($copyright_text)
-{
-  
-	return html_entity_decode($copyright_text);
-  
+add_filter('avf_alb_image_copyright_text', 'new_avf_alb_image_copyright_text', 10, 2 );    
+   
+function new_avf_alb_image_copyright_text( $copyright_text_escaped, $copyright_text )
+{    
+      return  $copyright_text;
 }
