@@ -32,3 +32,31 @@ function custom_avf_widget_loader_widget_classes( array $default_widgets )
 
 add_filter( 'avf_widget_loader_widget_classes', 'custom_avf_widget_loader_widget_classes', 10, 1 );
 
+
+
+/*
+ * Snippet to replace Newsbox widget with your custom widget
+ *
+ * @since 5.5
+ */
+
+function custom_avf_widget_loader_widget_classes_newsbox( array $default_widgets )
+{
+	$namespace = '\\aviaFramework\widgets\\';
+
+	//	create a folder widgets in enfold-child:     enfold-child/widgets
+	$path = trailingslashit( get_stylesheet_directory() ) . 'widgets/';
+
+
+	// Replace link to original file with your child theme modified newsbox widget
+	$default_widgets['newsbox'] = array(
+												'class'	=> $namespace . 'avia_newsbox',
+												'file'	=> $path . 'class-avia-newsbox.php'
+											);
+
+	
+	return $default_widgets;
+}
+
+add_filter( 'avf_widget_loader_widget_classes', 'custom_avf_widget_loader_widget_classes_newsbox', 10, 1 );
+
