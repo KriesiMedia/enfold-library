@@ -9,19 +9,19 @@ function custom_avf_widget_loader_widget_classes( array $default_widgets )
 {
 	$namespace = '\\aviaFramework\widgets\\';
 
-	//	create a folder widgets in enfold-child
+	// Create a folder widgets in enfold-child:     enfold-child/widgets
 	$path = trailingslashit( get_stylesheet_directory() ) . 'widgets/';
 
-	//	remove portfoliobox widget (= a default widget)
+	// Remove portfoliobox widget (= a default widget)
 	unset( $default_widgets['portfoliobox'] );
 
-	// add your child theme modified portfoliobox widget
+	// Add your child theme modified portfoliobox widget
 	$default_widgets['portfoliobox'] = array(
 												'class'	=> $namespace . 'avia_portfoliobox',
 												'file'	=> $path . 'class-avia-portfoliobox.php'
 											);
 
-	//	add a new custom widget, wrap in namespace aviaFramework\widgets
+	// Add a new custom widget, wrap in namespace aviaFramework\widgets
 	$default_widgets['your-widget'] = array(
 												'class'	=> $namespace . 'your_widget',
 												'file'	=> $path . 'class-your-widget.php'
@@ -35,7 +35,7 @@ add_filter( 'avf_widget_loader_widget_classes', 'custom_avf_widget_loader_widget
 
 
 /*
- * Snippet to replace Newsbox widget with your custom widget
+ * Snippet to replace Newsbox widget with your custom Newsbox widget
  *
  * @since 5.5
  */
@@ -44,7 +44,7 @@ function custom_avf_widget_loader_widget_classes_newsbox( array $default_widgets
 {
 	$namespace = '\\aviaFramework\widgets\\';
 
-	//	create a folder widgets in enfold-child:     enfold-child/widgets
+	// Create a folder widgets in enfold-child:     enfold-child/widgets
 	$path = trailingslashit( get_stylesheet_directory() ) . 'widgets/';
 
 
