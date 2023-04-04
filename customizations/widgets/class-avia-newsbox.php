@@ -252,14 +252,6 @@ if( ! class_exists( __NAMESPACE__ . '\avia_newsbox' ) )
 
 								echo '<br /><span class="news-time news-cats">' . __( 'in:', 'avia_framework' ) . ' ' . implode( ', ', $names ) . '</span>';
 							}
-
-
-							$args = [
-									'taxonomy'	=> $this->avia_term,
-									'orderby'	=> 'name',
-									'order'		=> 'ASC'
-								];
-							get_categories( $args );
 						}
 
 						if( $time_format )
