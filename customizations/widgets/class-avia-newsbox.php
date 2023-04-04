@@ -51,7 +51,7 @@ if( ! class_exists( __NAMESPACE__ . '\avia_newsbox' ) )
 
 			if( empty( $name ) )
 			{
-				$name = THEMENAME . ' ' . __( 'Latest News', 'avia_framework' );
+				$name = THEMENAME . ' ' . __( 'Latest News (modified)', 'avia_framework' );
 			}
 
 			if( empty( $widget_options ) )
