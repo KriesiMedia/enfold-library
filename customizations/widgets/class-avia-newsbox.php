@@ -9,6 +9,8 @@ use WP_Query;
  * Widget that creates a list of latest news entries
  * Displays categories and portfolio categories
  *
+ * for usage see https://github.com/KriesiMedia/enfold-library/blob/master/actions%20and%20filters/Widgets/avf_widget_loader_widget_classes.php
+ *
  * Additional:
  * ===========
  *
