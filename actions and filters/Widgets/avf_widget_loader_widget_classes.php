@@ -8,6 +8,9 @@
 function custom_avf_widget_loader_widget_classes( array $default_widgets )
 {
 	$namespace = '\\aviaFramework\widgets\\';
+	
+	// can be used starting with Enfold v5.6 instead of line above
+//	$namespace = \aviaFramework\widgets\AviaWidgetLoader()->get_default_namespace();
 
 	// Create a folder widgets in enfold-child:     enfold-child/widgets
 	$path = trailingslashit( get_stylesheet_directory() ) . 'widgets/';
