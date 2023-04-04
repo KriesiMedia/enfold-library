@@ -61,7 +61,7 @@ if( ! class_exists( __NAMESPACE__ . '\avia_newsbox' ) )
 		public function __construct( $id_base = '', $name = '', $widget_options = array(), $control_options = array() )
 		{
 			//	set to true !!!!
-			$this->use_blog_meta_settings = true;
+			$this->use_blog_meta_settings = false;
 
 			if( empty( $id_base ) )
 			{
