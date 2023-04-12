@@ -9,6 +9,16 @@ use WP_Query;
  * Widget that creates a list of latest news entries
  * Displays categories and portfolio categories
  *
+ * for usage see https://github.com/KriesiMedia/enfold-library/blob/master/actions%20and%20filters/Widgets/avf_widget_loader_widget_classes.php
+ *
+ * Additional:
+ * ===========
+ *
+ * Set to true to use theme options from blog layout in __construct
+ *
+ * $this->use_blog_meta_settings = true;
+ *
+ *
  * @since 5.5
  */
 if( ! defined( 'AVIA_FW' ) ) {  exit( 'No direct script access allowed' );  }
@@ -36,6 +46,14 @@ if( ! class_exists( __NAMESPACE__ . '\avia_newsbox' ) )
 		protected $avia_new_query;
 
 		/**
+		 * Set to true to use theme options from blog layout in __construct
+		 *
+		 * @since 5.5
+		 * @var boolean
+		 */
+		protected $use_blog_meta_settings;
+
+		/**
 		 * @since 4.9						added parameters $id_base, ... $control_options
 		 * @param string $id_base
 		 * @param string $name
@@ -44,6 +62,9 @@ if( ! class_exists( __NAMESPACE__ . '\avia_newsbox' ) )
 		 */
 		public function __construct( $id_base = '', $name = '', $widget_options = array(), $control_options = array() )
 		{
+			//	set to true !!!!
+			$this->use_blog_meta_settings = false;
+
 			if( empty( $id_base ) )
 			{
 				$id_base = 'newsbox';
@@ -51,7 +72,11 @@ if( ! class_exists( __NAMESPACE__ . '\avia_newsbox' ) )
 
 			if( empty( $name ) )
 			{
-				$name = THEMENAME . ' ' . __( 'Latest News', 'avia_framework' );
+				$name = THEMENAME . ' ' . __( 'Latest News (modified)', 'avia_framework' );
+			}
+			else
+			{
+				$name .= ' ' . __( '(modified)', 'avia_framework' );
 			}
 
 			if( empty( $widget_options ) )
@@ -217,50 +242,36 @@ if( ! class_exists( __NAMESPACE__ . '\avia_newsbox' ) )
 					{
 						echo '<strong class="news-headline">' . get_the_title();
 
-						if( empty( $this->avia_term ) )
+						$names = [];
+						$query_term = ! empty( $this->avia_term ) ? $this->avia_term : 'category';
+
+
+						$terms = get_the_terms( $the_id, $query_term );
+
+						if( is_array( $terms ) && count( $terms ) > 0 )
 						{
-							$cats = get_the_category();
+							$names = [];
 
-							if( count( $cats ) > 0 )
+							foreach ( $terms as $term )
 							{
-								$names = [];
-
-								foreach ( $cats as $cat )
-								{
-									$names[] = $cat->cat_name;
-								}
-
-								echo '<br /><span class="news-time news-cats">' . __( 'in:', 'avia_framework' ) . ' ' . implode( ', ', $names ) . '</span>';
+								$names[] = $term->name;
 							}
 						}
-						else
+
+						if( ! empty( $names ) )
 						{
-							$terms = get_the_terms( $the_id, $this->avia_term );
-
-							if( is_array( $terms ) && count( $terms ) > 0 )
+							if( ! $this->use_blog_meta_settings || 'blog-meta-category' == avia_get_option( 'blog-meta-category' ) )
 							{
-								$names = [];
-
-								foreach ( $terms as $term )
-								{
-									$names[] = $term->name;
-								}
-
 								echo '<br /><span class="news-time news-cats">' . __( 'in:', 'avia_framework' ) . ' ' . implode( ', ', $names ) . '</span>';
 							}
-
-
-							$args = [
-									'taxonomy'	=> $this->avia_term,
-									'orderby'	=> 'name',
-									'order'		=> 'ASC'
-								];
-							get_categories( $args );
 						}
 
 						if( $time_format )
 						{
-							echo '<span class="news-time">' . get_the_time( $time_format ) . '</span>';
+							if( ! $this->use_blog_meta_settings || 'blog-meta-date' == avia_get_option( 'blog-meta-date' ) )
+							{
+								echo '<span class="news-time">' . get_the_time( $time_format ) . '</span>';
+							}
 						}
 
 						echo '</strong>';
