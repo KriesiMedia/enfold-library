@@ -7,11 +7,6 @@
  */
 function custom_selective_post_type_search( $query )
 {
-	if( is_admin() || ! $query->is_main_query() )
-	{
-		return;
-	}
-
 	if( $query->is_search )
 	{
 		//	include the post types you want to query
