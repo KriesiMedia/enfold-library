@@ -49,7 +49,6 @@ jQuery( function($)
 
 			var	max = parseFloat( number.attr( 'max' ) ),
 				min = parseFloat( number.attr( 'min' ) ),
-				step = parseInt( number.attr( 'step' ), 10 ),
 				newNum = cloned.insertAfter( number );
 				newNum.addClass('no-spin-num');
 				number.remove();
@@ -72,6 +71,7 @@ jQuery( function($)
 
 				minus.on( 'click', function()
 				{
+					var step = parseInt( newNum.attr( 'step' ), 10 );
 					var the_val = parseInt( newNum.val(), 10 );
 					if( isNaN( the_val ) )
 					{
@@ -86,6 +86,7 @@ jQuery( function($)
 
 				plus.on( 'click', function()
 				{
+					var step = parseInt( newNum.attr( 'step' ), 10 );
 					var the_val = parseInt( newNum.val(), 10 );
 					if( isNaN( the_val ) )
 					{
