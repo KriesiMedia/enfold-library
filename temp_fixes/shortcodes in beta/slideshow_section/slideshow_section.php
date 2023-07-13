@@ -113,7 +113,7 @@ if( ! class_exists( 'avia_sc_slide_section' ) )
 			$this->config['layout_children']	= array( 'av_slide_sub_section' );
 
 			$this->config['name']				= __( 'Slideshow Section', 'avia_framework' );
-			$this->config['icon']				= AviaBuilder::$path['imagesURL'] . 'sc-slideshow-section.png';
+			$this->config['icon']				= AviaBuilder::$path['imagesURL'] . 'sc-tabsection.png';
 			$this->config['tab']				= __( 'Layout Elements', 'avia_framework' );
 			$this->config['order']				= 13;
 			$this->config['shortcode']			= 'av_slide_section';
