@@ -12,7 +12,7 @@
  */
 function custom_avf_avia_logo_link_title( $link_title, $title, $alt )
 {
-	if( ! $some_condition )
+	if( ! $add_your_condition )
 	{
 		return $link_title;
 	}
