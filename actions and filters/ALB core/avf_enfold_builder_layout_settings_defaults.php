@@ -1,3 +1,4 @@
+<?php
 /**
  * Page Layout Settings Defaults
  *
@@ -14,9 +15,12 @@
 /** Add the following filter in the child theme's functions.php file. **/
 
 add_action( 'after_setup_theme', 'ava_enfold_builder_layout_mod' );
-function ava_enfold_builder_layout_mod(){
+
+function ava_enfold_builder_layout_mod()
+{
 	add_filter('avf_builder_elements', 'avf_enfold_builder_layout_settings_mod');
 }
+
 
 function avf_enfold_builder_layout_settings_mod($elements)
 {
