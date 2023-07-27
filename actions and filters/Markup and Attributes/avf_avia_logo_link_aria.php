@@ -8,7 +8,7 @@
  */
 function custom_avf_avia_logo_link_aria( $aria )
 {
-	if( ! $some_condition )
+	if( ! $add_your_condition )
 	{
 		return $aria;
 	}

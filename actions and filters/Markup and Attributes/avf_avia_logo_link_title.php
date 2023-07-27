@@ -12,7 +12,7 @@
  */
 function custom_avf_avia_logo_link_title( $link_title, $title, $alt )
 {
-	if( ! $some_condition )
+	if( ! $add_your_condition )
 	{
 		return $link_title;
 	}
@@ -20,5 +20,5 @@ function custom_avf_avia_logo_link_title( $link_title, $title, $alt )
 	return 'title="your custom link title"';
 }
 
-add_filter( 'avf_avia_logo_link_title', 'custom_avf_avia_logo_link_title', 10, 1 );
+add_filter( 'avf_avia_logo_link_title', 'custom_avf_avia_logo_link_title', 10, 3 );
 
