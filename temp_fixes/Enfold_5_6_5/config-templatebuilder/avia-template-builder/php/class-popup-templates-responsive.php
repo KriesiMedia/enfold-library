@@ -691,7 +691,7 @@ if( ! class_exists( __NAMESPACE__ . '\aviaPopupTemplatesResppnsive', false ) )
 								'std'		=> '',
 								'lockable'	=> $lockable,
 								'required'	=> array( $resp_size_key . $id. '_parallax', 'parent_not_in_array', ',none' ),
-								'subtype'	=> AviaHtmlHelper::number_array( -30, 200, 10, array( __( 'Default (= 50%)', 'avia_framework' ) => '' ), ' %' )
+								'subtype'	=> AviaHtmlHelper::number_array( -30, 200, 2, array( __( 'Default (= 50%)', 'avia_framework' ) => '' ), ' %' )
 						);
 
 
