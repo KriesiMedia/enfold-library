@@ -1,7 +1,7 @@
 <?php
 /**
  * Filter to force usage of ALB for a specific post. This will also hide the switch button with CSS.
- * Also works for Block Editor.
+ * Also works for Block Editor. When true, <body> gets class avia-force-alb.
  *
  * If you do not want to force all posts of a post type to use ALB (e.g. because you have old posts using classic editor)
  * you must use a more specific logic.
