@@ -1,3 +1,4 @@
+<?php
 /*    
 * Load Style.css file of child theme after minification so it overrides minification scripts 
 *

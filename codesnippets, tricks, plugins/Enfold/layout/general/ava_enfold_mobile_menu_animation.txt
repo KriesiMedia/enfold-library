@@ -36,6 +36,7 @@
     transform: 			translate(0, 100%)!important;
 }
 
+<?php
 /** And then add the following script in the functions.php file. **/
 
 // remove the "show_mobile_menu" attribute when the screen orientation change
