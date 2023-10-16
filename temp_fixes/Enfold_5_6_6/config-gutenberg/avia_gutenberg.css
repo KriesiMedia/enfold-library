@@ -1,0 +1,294 @@
+/*
+	Backend CSS for Block Editor
+
+    Created on : 15.10.2018, 15:32:20
+    Author     : günter
+*/
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-wp54-fix .block-editor-editor-skeleton__content,
+body.block-editor-page.avia-advanced-editor-enabled.avia-wp55-fix .interface-interface-skeleton__content {
+	position: relative;
+}
+
+body.block-editor-page .edit-post-meta-boxes-area #avia_alb_actions {
+	display: none;
+}
+
+body.block-editor-page .edit-post-header__settings .avia-builder-button {
+	margin: 0 10px 0 3px;
+	padding: 0 12px 2px;
+	font-size: 13px;
+	height: 33px;
+	line-height: 32px;
+}
+
+body.block-editor-page #avia_alb_actions h2:hover {
+	cursor: pointer;
+}
+
+body.block-editor-page #avia_builder #postdivrich_wrap_builder_meta {
+	display: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .edit-post-visual-editor {
+	display: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .edit-post-header .edit-post-header-toolbar {
+	visibility: hidden;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .components-popover.nux-dot-tip {
+	display: none;
+}
+
+body.block-editor-page #normal-sortables .postbox:last-child {
+	margin-bottom: 0;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #normal-sortables .postbox#avia_builder:first-child {
+	margin-top: 0;
+	width: 100%;
+	padding-bottom: 24px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #avia_builder #post-body-content {
+	width: 100%;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #avia_builder .avia-builder-main-wrap {
+	width: 100%;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia-expanded .avia-builder-main-wrap {
+	padding: 70px 0 0 0;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia-expand-button {
+	display: none;
+	right: 30px;
+	bottom: 19px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia-template-save-button-container {
+	bottom: 16px;
+	right: 25px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .edit-post-layout__metaboxes {
+	position: absolute;
+	width: 100%;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded #titlediv {
+	z-index: 1000;
+	width: calc(100% + 28px);
+	left: -13px;
+	top: -10px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded #titlediv:before {
+	content: '';
+	width: calc(100% + 30px);
+	height: 79px;
+	display: block;
+	position: absolute;
+	left: -20px;
+	top: -20px;
+	z-index: -1;
+	background: #F8F8F8;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded .avia-fixed-controls {
+	top: 110px;
+	padding-top: 80px;
+	width: calc(100% - 20px);
+	box-shadow: 0 4px 4px 0px rgb(0 0 0 / 10%)
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded #avia-sort-list-dropdown {
+	top: 191px;
+	right: 50px;
+	left: auto;
+	z-index: 1000;
+	position: fixed;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded .avia-hotkey-info {
+	top: 198px;
+	right: 20px;
+	z-index: 500;
+	position: fixed;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded #avia-sort-list-dropdown, body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded .avia-fixed-controls,
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded .avia-hotkey-info {
+	transition: top 0.2s ease-in-out;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded.avia-sticky-fixed-controls #avia-sort-list-dropdown {
+	top: 71px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded.avia-sticky-fixed-controls .avia-hotkey-info {
+	top: 77px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-expanded.avia-sticky-fixed-controls .avia-fixed-controls {
+	top: 60px;
+	padding-top: 10px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand.is-fullscreen-mode .interface-interface-skeleton__sidebar{
+	display: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .avia-template-save-button-container {
+	right: 24px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled.avia-block-editor-expand .edit-post-text-editor {
+	display: none;
+}
+
+body.block-editor-page #avia_builder #post-body-content {
+	height: 40px;
+}
+
+body.block-editor-page #avia_builder:not(.avia-expanded) #post-body-content {
+	position: relative;
+	z-index: 100;
+}
+
+body.block-editor-page #avia_builder .avia_inner_shortcode textarea {
+	display: none;
+}
+
+body.block-editor-page .edit-post-meta-boxes-area #avia_alb_actions .av-metabox-no-editing,
+body.block-editor-page.avia-advanced-editor-enabled .edit-post-meta-boxes-area #avia_alb_actions .av-metabox-no-editing {
+	display: none;
+}
+
+/* hide gutenberg elements when editing the pretty permalink */
+body.block-editor-page.avia-edit-permalink .edit-post-layout .editor-block-list__layout,
+body.block-editor-page.avia-edit-permalink .edit-post-layout .editor-writing-flow__click-redirect {
+	display: none;
+}
+
+body.block-editor-page.avia-edit-permalink .edit-post-header .edit-post-header-toolbar {
+	visibility: hidden;
+}
+
+
+/* improve visual appearance in backend. added 4.5.1 by kriesi */
+body.block-editor-page.avia-advanced-editor-enabled #poststuff #avia_builder .hndle {
+	box-sizing: content-box;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #poststuff #avia_builder .hndle span {
+	font-size: 20px;
+	font-weight: normal;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .edit-post-layout__content .edit-post-visual-editor+.edit-post-layout__metaboxes {
+	border-top: none;
+	margin-top: -10px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #poststuff #avia_builder.postbox .handlediv {
+	height: 55px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia_meta_box.avia_meta_box_visual_editor {
+	margin: 32px 0px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia_meta_box #titlediv #title-prompt-text {
+	padding: 4px 10px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia_layout_builder,
+body.block-editor-page.avia-advanced-editor-enabled .avia-controll-bar {
+	box-sizing: border-box;
+	left: 0;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia-controll-bar {
+	height: 32px;
+	line-height: 32px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled div#titlewrap+.inside {
+	padding: 3px 0;
+	border: none;
+	margin: 0;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled div#titlewrap input {
+	border-color: #dadada;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled div#titlewrap+.inside #edit-slug-box {
+	display: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia-hotkey-info {
+	top: 68px;
+	right: 25px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #avia-sort-list-dropdown {
+	top: 61px;
+	right: 55px;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .edit-post-sidebar__panel-tab[data-label="Block"] {
+	display: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .avia_sorthandle {
+	box-sizing: content-box;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #avia_builder>.inside {
+	border: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .edit-post-layout .interface-interface-skeleton__content {
+	background: #e6e6e6;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .interface-interface-skeleton__content #avia_builder .postbox-header .handle-actions {
+	display: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #avia_builder .postbox-header,
+body.block-editor-page.avia-advanced-editor-enabled #avia_sc_parser .postbox-header {
+	border-bottom: 1px solid #e2e2e2;
+	padding: 15px 0;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #avia_sc_parser .postbox-header {
+	padding: 5px 0;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled #avia_builder>.inside {
+	display: block;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .postbox-header .handle-order-higher,
+body.block-editor-page.avia-advanced-editor-enabled .postbox-header .handle-order-lower {
+	display: none;
+}
+
+body.block-editor-page.avia-advanced-editor-enabled .postbox-header .handlediv:focus {
+	box-shadow: none;
+}
+
+body.block-editor-page .postbox.avia-expanded {
+	position: relative;
+}
+
+.components-editor-notices__dismissible, .components-editor-notices__pinned {
+	z-index: 20000;
+}
