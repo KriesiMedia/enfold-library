@@ -1,5 +1,9 @@
 <?php
 /**
+ * **********************************************************************************************
+ * @since 5.6.9 integrated as a core feature
+ * **********************************************************************************************
+ * 
  * @snippet  Duplicate posts and pages without plugins
  * @author   Misha Rudrastyh
  * @url      https://rudrastyh.com/wordpress/duplicate-post.html
