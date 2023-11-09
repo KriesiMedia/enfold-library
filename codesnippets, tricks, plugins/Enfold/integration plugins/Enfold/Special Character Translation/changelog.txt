@@ -1,3 +1,8 @@
+
+9.11.2023 - Version 1.1.2
+
+added: filter 'avf_sc_attr_value' - allows to translate e.g. shortcode attribute content used in js
+
 24.2.2023 - Version 1.1.1
 
 added: hooked into filter avf_contact_form_autoresponder_mail
