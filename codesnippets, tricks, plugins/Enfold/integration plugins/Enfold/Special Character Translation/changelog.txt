@@ -1,7 +1,12 @@
+24.11.2323 - Version 1.1.3
+
+added: filter 'avf_template_builder_content' - allows to translate special characters also in ALB codeblock element (suggested by Guenni007)
+
 
 9.11.2023 - Version 1.1.2
 
 added: filter 'avf_sc_attr_value' - allows to translate e.g. shortcode attribute content used in js
+
 
 24.2.2023 - Version 1.1.1
 
