@@ -1,0 +1,1338 @@
+/* FORM ELEMENTS */
+.avia-style{
+	line-height: 1.5em;
+}
+
+.avia-style input[type="text"],
+.avia-style input[type="input"],
+.avia-style input[type="password"],
+.avia-style input[type="email"],
+.avia-style textarea,
+.avia-style select {
+	-webkit-appearance: none;
+	border: 1px solid #e1e1e1;
+	padding: 6px 4px;
+	outline: none;
+	font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #777;
+	margin: 0;
+	width: 95%;
+	max-width: 100%;
+	margin-bottom: 5px;
+	background: #fff;
+	-webkit-font-smoothing: antialiased;
+	border-radius: 0;
+	display: inline;
+	height: auto;
+}
+
+.avia-style input[type="text"]:disabled{
+	background: #f8f8f8;
+	border: 1px solid #e1e1e1;
+	color: #aaa;
+}
+
+.avia-style textarea{
+	box-sizing: border-box;
+	width:95%;
+	padding:15px;
+	height:150px;
+}
+
+.avia-style input[type="text"]:focus,
+.avia-style input[type="password"]:focus,
+.avia-style input[type="email"]:focus,
+.avia-style textarea:focus,
+.avia-style select:focus {
+	border: 1px solid #ccc;
+	color: #555;
+	box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+
+.avia-style select,
+.avia-style select:disabled{
+	padding: 6px 35px 6px 4px;
+	background-image: url(../../images/select.png);
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+/*firefox hack*/
+@-moz-document url-prefix() {
+	.avia-style select {
+		padding: 6px 6px 6px 4px;
+		/*background-image: none;*/
+	}
+}
+
+
+.avia-style select[multiple] {
+    background-image: none;
+    line-height: 25px;
+    padding:0;
+}
+
+.avia-form-element option{
+	padding:4px 6px;
+}
+
+.avia-style small{
+	color:#999;
+	font-size: 11px;
+	font-style: italic;
+}
+
+
+/*tinymce form elements*/
+.avia-style .avia_advanced_textarea{
+	height:auto;
+}
+
+div .avia_advanced_textarea.avia_tinymce.wp-editor-area{
+	margin-bottom: -4px;
+	border: none;
+}
+
+/*
+.avia-form-element .mceEditor{
+	display: block;
+	margin-right: -1px;
+}
+*/
+
+.avia-form-element.avia-has-critical-character input,
+.avia-form-element.avia-has-critical-character input:focus,
+.avia-form-element.avia-has-critical-character textarea{
+	border-color: red;
+}
+
+.avia-form-element .avia-critical-char-msg{
+	display: none;
+}
+
+.avia-form-element.avia-has-critical-character .avia-critical-char-msg{
+	display: block;
+	color: red;
+	font-weight: 700;
+}
+
+/*Icon Selector*/
+.avia_icon_select_container {
+	height: 221px;
+	overflow: auto;
+	width: 100%;
+	border: 1px solid #AAA;
+	overflow-x: hidden;
+}
+
+.avia_icon_preview{
+	position:relative;
+	font-size:30px;
+	line-height:1.5em;
+	width:1.5em;
+	color:#494949;
+	background:#fff;
+	display:block;
+	text-align:center;
+	float:left;
+	border:1px solid #e1e1e1;
+	margin-left:-1px;
+	margin-top: -1px;
+	transition: all 0.1s ease-out;
+	cursor:pointer;
+}
+
+.avia_icon_preview:not(.avia-locked-data-value):hover{
+	color: #278AB7;
+	z-index: 3;
+	transform: scale(1.3);
+}
+
+.avia_icon_preview.avia-locked-data-value:hover{
+	cursor: default;
+}
+
+.avia_icon_select_container .avia-active-element,
+.avia_icon_select_container .avia-active-element:hover{
+	color:#D54E21;
+}
+
+.av-iconselect-heading{
+	clear:both;
+	padding:10px;
+	color:#666;
+	width:100%;
+}
+
+/*	colorpicker	*/
+.avia-style .wp-picker-container{
+	position: relative;
+	width: 100%;
+}
+
+.avia-style .wp-picker-holder{
+	position: absolute;
+	z-index: 1001;
+}
+
+.avia-style .iris-picker{
+	box-shadow: 0 1px 27px 0px rgba(0,0,0,0.3);
+}
+
+.avia-style .wp-picker-input-wrap,
+.avia-style .wp-picker-input-wrap.hidden{
+	display: block;
+	overflow: hidden;
+}
+
+.avia-style .wp-picker-input-wrap input{
+	display: inline-block !important;
+	width: 69px;
+	padding: 6px 4px 6px 4px;
+}
+
+.avia-style .wp-color-result{
+	top: 0px;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	float: left;
+	height: 27px;
+	min-width: 79px;
+}
+
+.avia-style .wp-color-result:after{
+	line-height: 27px;
+}
+
+.avia-style .wp-picker-input-wrap .button{
+	line-height: 29px;
+	height: 29px;
+	margin-left: 5px;
+	padding: 0;
+}
+
+.avia-style .wp-picker-input-wrap .colorpicker{
+	margin-right: 6px;
+	position: relative;
+}
+
+.avia-style .iris-picker,
+.avia-style .wp-color-result,
+.avia-style .wp-color-result:after,
+.avia-style .wp-picker-input-wrap .button{
+	border-color: #e1e1e1;
+	color: #444;
+	border-radius: 0;
+}
+
+
+/*	multi line color palette	*/
+.avia-style .avia-multiline-palette .iris-picker{
+	height: 245px !important;
+}
+
+.avia-style .avia-multiline-palette .wp-picker-holder,
+.avia-style .avia-multiline-palette .iris-picker.av-iris-picker-rgba{
+	height: 275px !important;
+}
+
+.avia-style .avia-multiline-palette .iris-picker-inner,
+.avia-style .avia-multiline-palette .iris-slider.iris-strip{
+	height: 182px !important;
+}
+
+.avia-style .avia-multiline-palette .iris-palette-container{
+	width: calc(100% - 20px) !important;
+	display: flex !important;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
+
+.avia-style .avia-multiline-palette .iris-picker.av-iris-picker-rgba .iris-palette-container{
+	bottom: 42px;
+}
+
+.avia-style .avia-multiline-palette .iris-palette{
+	width: 19px !important;
+	height: 19px !important;
+	margin: 1px !important;
+	padding: 0;
+}
+
+/*rgba color picker*/
+.av-iris-picker-rgba{
+	margin-bottom: 5px;
+}
+
+.av-iris-picker-rgba.iris-border .iris-palette-container {
+	bottom: 47px;
+}
+
+.av-alpha-wrap {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: -1px;
+	width: 235px;
+	padding: 9px 10px;
+	border: 1px solid #dfdfdf;
+	z-index: 0;
+	background-color: #fff;
+}
+
+.av-alpha-slider {
+	position: absolute;
+	width: 190px;
+	margin-left: 2px;
+	height: 18px;
+}
+
+.av-alpha-slider .ui-slider-handle {
+	position: absolute;
+	top: -3px;
+	bottom: -3px;
+	z-index: 5;
+	border-color: #aaa;
+	border-style: solid;
+	border-width: 4px 3px;
+	width: 10px;
+	height: 16px;
+	margin: 0 -5px;
+	background: none;
+	cursor: ew-resize;
+	opacity: 0.9;
+	border-radius: 4px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.av-alpha-slider .ui-slider-handle:before {
+	content: " ";
+	position: absolute;
+	left: -2px;
+	right: -2px;
+	top: -3px;
+	bottom: -3px;
+	border: 2px solid #fff;
+	border-radius: 3px;
+}
+
+.av-alpha-slider-offset {
+	height: 18px;
+	width: 200px;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAASCAYAAAAe/ZHXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkNEQUQ0ODM4RUE0MTFFNEExOEJFN0E5M0VFOTg0QUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkNEQUQ0ODQ4RUE0MTFFNEExOEJFN0E5M0VFOTg0QUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2Q0RBRDQ4MThFQTQxMUU0QTE4QkU3QTkzRUU5ODRBRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2Q0RBRDQ4MjhFQTQxMUU0QTE4QkU3QTkzRUU5ODRBRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/r/N8AAAWYSURBVHjarFvvR3VBEN45JZGIPkREHyIiIhJJf3qUSERE9CGiDxERkcg9z9u92uucvTszz5z7xnHPj93Z2d359cxscn5+jpTS+EoiMr3/+51cZ2dn4+e29i2/u7y8RKf/pO3vc+o+n5ycoNK31+f6+jrfZ37yuG2mf3R01H3fa5N/b29vU6dP5qft0G4PDg5MGuPr/v4+jz1t27mfvN/b21P75+fHx8eZfiV/Ozs7rUJnSu/5+RlFv+m6ZJpbW1s1PnrvXl9fZ/qX89zY2LB4mfy+v7/nsdV1XltbK/dr5vnz87OcV5bJabuVlRVLBifjfX9/l/xkGtM+S0tLNXnu0szfU/P3IMn/k0678h6ddqjQFGccVL6hoCsVfsq+NZ5QtCv5rfFS41sq37W+UPhMyhxEWTetvce3NR8oewqD39qalXuGAK/WPltjajIC4x2c9Ye1f43SGcqGwRBeTZjhMNntL4pCWZMQYhE05RVl02EovRgC4RkCbUNSQAGhGB/GsKG4h6FQoigDa2i8fRBy3uLMXYIG3Vr3aZvRaCRdBYlYIMZywhBGCVhgzzOlgRuUSOvC0GMEWxOM/+EtQFh1OIIXtfwg1tRaayGjg5px0jyZKEaTle3e+AsLCygVRAh3FlEgKbReE3oYGj9EgIR00QiEgKw3ZBQbRGjBeAMtDETQmHiKDsezJNLgCTFGItZXlAgCSiQggblP+9c8SDI0lXWlFv5g3K63KZ51FOcZzthQ3LomoNHwJmKIQISI3vqzSpwIQ8liSjGMFQjDpoVgaQ6cWgvLhOC7qiAwiHrWbEg4JMSmeUrBuHoYwioOQNXmhmAcrs096s1gJCGi3hSEVU8DQxYElYHhKwUUGAa+NqOBMsSSAQJuhQhCAH4vxozExsxiihPuaIrjCVYKWlYEsjSM52G8Kxxryngl5j0j+EyGTIiED4s1Itm0ZGWxMFCLJaBAcEI6OBkmFgNBoc8Cait2ZnENE/6wQN8LJSJeSMNAjKVm+LUMAIt3PR5AQgIGp1Z5zxhE8PtXUYReYeXi4mKmOPNXBMzt2tPT07LIUtJqr66uusXEbkFnWiQ6Pj72ikrtzc1NKopuvbbj58PDwxqNHp27u7tuYWumUDV+v7+/Xyu6pc59+/DwUCsC9ujt7u6qRbt8//T01C3elbyN70fb29uZ/1FSincvLy/lPGb42tzc9IqJeHt7q61Pr2C6vr7u7tfHx8fMPhV0sLq6WhZtU0n36+uru8elPE7aLi8v1wqJPXn++fmZKYgX8ozFxcXJb0NaQTHClZT8+gBjsYdaFc+zWcUkGTCWENY66ta92oSVzo3WI6IZKGtukeyfBLFKBNAj6bUOBgaoe9wE4n04IBNkLMoC7+Skj630ZlTJMYdyMsU2T8AwpzALkVFilZgJcT2l9PCWDDSAMBSjVlJgZNk0lE1AIby0qCiCnBQNj6aBGQslZIZJ5hB6D/AzQHto5Z9Nk8tARdN4q2ExBnsyIJ311EymShyjan2rKk0zh1Ay1oQVWAZQRnkUA8RFw7TahjBnmNgMVMQrsCGZJezRtGlU0cUZ1zuaxGZPpbhApM+ZpFQqQ6xadoMtBrEKpBVo4GRXvNSxpaRixKiR+TChCYhsDwZkfFj8IkErjAHejcUI0XQrgwehhNSMHAz21E0wZ23FcCAmj8Sd/PXy2xLYLAuwRw4IMsqjFaWYOpMEhDySAPFCWyFkgAHrEcA+BNeJ4UE8HCzJPpCrerUmQIx1pWJkjqxJD8EikUo2c5aI8ZYgsAkM4WQtnHd0ns0ORgVTBghy5ISy928SGsbTMqYg523RUY8oNYG4FIYiyRyZCnFCJC87IoRAIMVOqQ7BKexxCS2hYVl9JhvlpYjnAe4MhmRPMWhhvLfXINaI9WKM0Zu0+SfAAFLE1EgfVSv7AAAAAElFTkSuQmCC);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+	border-radius: 2px;
+}
+
+.av-alpha-text {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	font-size: 12px;
+	text-align: center;
+	color: #999;
+}
+
+
+/*checkbox*/
+.avia-element-checkbox{
+	position: relative;
+}
+
+.avia-element-checkbox .avia-name-description > div,
+.avia-name-description > label{
+	padding-left:20px;
+}
+
+.avia-element-checkbox .avia-form-element{
+	position: absolute;top:37px;
+}
+
+
+/*AVIA MODAL*/
+body.avia-noscroll{
+	overflow: hidden;
+}
+
+.avia-modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	min-height: 360px;
+	background: black;
+	opacity: .7;
+	z-index: 14000;
+}
+
+.avia-modal {
+	position: fixed;
+	top: 30px;
+	left: 15%;
+	right: 15%;
+	z-index: 15000;
+	background: #fff;
+	min-height: 210px;
+	overflow: auto;
+	bottom: 30px;
+	animation: avia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+}
+
+@keyframes avia_modal_pop {
+  0%   { transform:scale(0.8); opacity:0; }
+  100% { transform:scale(1); opacity:1;  }
+}
+
+
+.avia-modal.bigscreen{
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+}
+
+.avia-modal.mediumscreen{
+	top:20%;
+	left: 20%;
+	right: 20%;
+	bottom: 20%;
+}
+
+.avia-modal.highscreen{
+	top:5%;
+	left: 20%;
+	right: 20%;
+	bottom: 5%;
+}
+
+.avia-modal.smallscreen, .avia-modal.flexscreen{
+	top:35%;
+	left: 30%;
+	right: 30%;
+	bottom: auto;
+}
+
+.avia-modal.flexscreen{
+	min-height:0;
+}
+
+.avia-modal.flexscreen .avia-modal-inner-content{
+	position: relative;
+	padding-bottom: 50px;
+	top:0;
+}
+
+.avia-modal-inner-header{
+	height: 50px;
+	border-bottom: 1px solid #DFDFDF;
+	box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
+.avia-modal-inner-footer {
+	height: 50px;
+	border-top: 1px solid #DFDFDF;
+	box-shadow: inset 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	bottom: 0;
+	background: #FCFCFC;
+	width: 100%;
+}
+
+div.avia-modal .avia-modal-inner-footer .button-large {
+	position: absolute;
+	right: 12px;
+	top: 10px;
+	padding: 0 35px 2px;
+}
+
+.avia-modal-inner-content {
+	position: absolute;
+	overflow: auto;
+	padding: 0;
+	top: 52px;
+	left: 0;
+	right: 0;
+	bottom: 50px;
+}
+
+.avia-modal-close{
+	transition-duration: 0s;
+	height:24px;
+	width:24px;
+	position: absolute;
+	top:14px;
+	right:14px;
+	background: transparent url(../../images/icon-trash.png) top left no-repeat;
+	overflow: hidden;
+	text-indent: 200%;
+}
+
+.avia-modal-close:hover{
+	background: transparent url(../../images/icon-trash.png) bottom left no-repeat;
+}
+
+.avia-modal-title {
+	position: absolute;
+	top: 0;
+	margin: 0;
+	line-height: 53px;
+	left: 14px;
+	color: #555;
+	padding: 0;
+	font-size: 22px;
+	font-weight: 200;
+}
+
+.avia-msg-error{
+	color: #D54E21;
+}
+
+.avia-msg-success{
+	color:#8AB83A;
+}
+
+.avia-msg-attention{
+	color:#4BA7D3;
+}
+
+.avia-modal-inner-content.preloading{
+	background: transparent url(../../images/loading.gif) center 100px  no-repeat;
+}
+
+.smallscreen .avia-modal-inner-content.preloading{
+	background: transparent url(../../images/loading.gif) center center  no-repeat;
+}
+
+.avia-modal-inner-footer.preloading{
+	background: #FCFCFC url(../../images/loading.gif) 15px center  no-repeat;
+}
+
+.avia-form-element-container{
+	padding:8px;
+}
+
+.avia-modal .avia-form-element-container{
+	padding:18px 20px;
+	box-sizing: border-box;
+	border-bottom:1px dashed #e1e1e1;
+	position: relative;
+	background: #fff;
+	clear: both;
+}
+
+.avia-modal .avia-modal-toggle-container-inner .avia-form-element-container{
+	border-bottom:none;
+	border-top:1px dashed #e1e1e1;
+}
+
+.avia-modal .avia-modal-toggle-container-inner .avia-form-element-container:first-child,
+.avia-modal .avia-modal-toggle-container-inner .avia-toggle-description + .avia-form-element-container{
+	border-top:none;
+}
+
+.avia-modal .avia-form-element-container > p{
+	color: #777;
+}
+
+.avia-modal .avia-form-element-container:hover,
+.smallscreen .avia-modal-inner-content:hover{
+	background: #fcfcfc;
+}
+
+.smallscreen .avia-form-element-container{
+	border-bottom:none;
+}
+
+/*
+.avia-form-element-container:nth-child(even){background: #f8f8f8;}
+.avia-form-element-container:nth-child(odd){clear:both;}
+.avia-form-element-container:last-child{border:none;}
+*/
+
+.avia-name-description > strong{
+	display:block;
+}
+
+.avia-name-description > div,
+.avia-name-description > label{
+	display: block;
+	margin-bottom: 4px;
+	color: #777;
+}
+
+.avia-name-description > div > ul li{
+	list-style-type: disc;
+	list-style-position: outside;
+	margin-left: 20px;
+}
+
+
+/*inside modal use half with for element + description*/
+
+.avia-modal .avia-form-element{
+	width:49%;
+	float:left;
+}
+.avia-modal .avia-name-description{
+	width:49%;
+	float:right;
+}
+
+/*checkbox needs another width*/
+.avia-modal .avia-element-checkbox .avia-form-element{
+	width:30px;
+}
+
+.avia-modal .avia-element-checkbox .avia-name-description{
+	width:100%;
+}
+
+
+/*use full width for those exceptions:*/
+
+.avia-element-iconfont .avia-form-element,
+.avia-element-iconfont .avia-name-description,
+.avia-element-tiny_mce .avia-form-element,
+.avia-element-tiny_mce .avia-name-description,
+.avia-element-heading .avia-form-element,
+.avia-element-heading .avia-name-description,
+.avia-element-fullwidth .avia-form-element,
+.avia-element-fullwidth .avia-name-description
+{
+	float:none;
+	width:100%;
+}
+
+.avia-modal .avia-form-element-container.av_group_prev{
+	margin-top:-20px;
+}
+
+.avia-modal .avia-form-element-container.av_no_bottom{
+	border:none;
+}
+
+
+/*half sized elements*/
+.avia-modal .av_half {
+	width:50%;
+	float:left;
+	position: relative;
+	clear:none;
+}
+
+.avia-modal .av_half_first {
+	clear:both;
+}
+
+.avia-modal .av_half .avia-form-element,
+.avia-modal .av_half .avia-name-description{
+	width:100%;
+	float:none;
+}
+
+
+/*third sized elements*/
+.avia-modal .av_third {
+	width:33%;
+	float:left;
+	position: relative;
+	clear:none;
+}
+
+.avia-modal .av_third_first {
+	clear:both;
+}
+
+.avia-modal .av_third .avia-form-element,
+.avia-modal .av_third .avia-name-description{
+	width:100%;
+	float:none;
+}
+
+/*2 third sized elements*/
+.avia-modal .av_2_third {
+	width:66%;
+	float:left;
+	position: relative;
+	clear:none;
+}
+
+.avia-modal .av_2_third_first {
+	clear:both;
+}
+
+.avia-modal .av_2_third .avia-form-element,
+.avia-modal .av_2_third .avia-name-description{
+	width:100%;
+	float:none;
+}
+
+
+/*google maps*/
+.avia-modal .av-gmap-field {
+	font-weight: bold;
+}
+
+.avia-modal .av-gmap-field input[type="text"]{
+	width: 100%;
+}
+
+.avia-modal .av-gmap-field.av_first input[type="text"]{
+	width: 98%;
+}
+
+.av-gmap-coordinates{
+	visibility: hidden;
+}
+
+.av-gmap-coordinates.av-visible{
+	visibility: visible;
+}
+
+#wpwrap .av-google-fetch-button{
+	margin-bottom: 11px;
+}
+
+
+/*fullwidth and no border bottom*/
+.avia-form-element-container.avia-element-heading{
+	border-bottom:none;
+}
+
+
+/*mailchimp*/
+.av-mailchimp-btn-label,
+.avia-id-av-button .av-mailchimp-el-label{
+	display:none;
+}
+
+.avia-id-av-button .av-mailchimp-btn-label{
+	display: inline;
+}
+
+.av-required-indicator{
+	color:#2EA2CC;
+}
+
+.avia-check- .av-required-indicator{
+	display: none;
+}
+
+
+/*multi input for tables*/
+.av-multi-input-table{
+	display: table;
+}
+
+.av-multi-input-cell{
+	display: table-cell;
+}
+
+.av-multi-input-label{
+	font-size: 10px;
+	color: #999;
+}
+
+
+/*multi checkbox*/
+.avia-modal .av-multi-checkbox {
+	border: none;
+	padding: 4px 20px;
+	font-weight: bold;
+}
+
+.avia-modal .avia-modal-toggle-container-inner .avia-form-element-container.av-multi-checkbox{
+	border:none;
+}
+
+.avia-modal  .av-multi-checkbox .avia-form-element{
+	top:3px;
+}
+
+.avia-modal .av-multi-checkbox .avia-name-description > label{
+	padding-left:30px;
+	color: #454545;
+}
+
+.av-builder-note.av-neutral{
+	border: 1px solid #e1e1e1;
+    background-color: #f8f8f8;
+}
+
+#wpwrap .av-neutral strong,
+#wpwrap .av-neutral div{
+	color:#333;
+}
+
+div .av-builder-note > div{
+	margin:0;
+}
+
+
+/*datepicker*/
+.avia-modal .av_third.avia-element-datepicker{
+	z-index: auto;
+}
+
+.wp-admin .avia-datepicker-div{
+	background: #fff;
+	border:1px solid #e1e1e1;
+	border-radius:0;
+}
+
+.wp-admin .avia-datepicker-div table a{
+	color:#333;
+	background: #f8f8f8;
+}
+
+.wp-admin .avia-datepicker-div table a.ui-state-active{
+	color:#fff;
+	background: #1E8CBE;
+}
+
+.wp-admin .avia-datepicker-div table a.ui-state-highlight{
+	color:#1E8CBE;
+	background: #f8f8f8;
+	border-color:#1E8CBE;
+}
+
+.wp-admin .avia-datepicker-div table a.ui-state-hover{
+	color:#FFF;
+	background: #1E8CBE;
+	border-color:#1E8CBE;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker {
+	width: 300px;
+	padding: 20px;
+	display: none;
+	box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 0.2);
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-header {
+	position: relative;
+	padding: .2em 0;
+	border: none;
+	background: #f8f8f8;
+	border-radius: 0;
+	top: -20px;
+	padding: 13px;
+	left: -20px;
+	width: calc(100% + 14px);
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-prev,
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-next {
+	position:absolute;
+	top: 0px;
+	width: 80px;
+	height: 100%;
+	text-align: center;
+	/*line-height: 47px;*/
+	cursor: pointer;
+	border:none;
+	border-radius:0;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-prev span,
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-next span{
+	text-indent: unset;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-header a{
+	background: transparent;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-header a:hover{
+	background: #ffffff;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-prev {
+	left:0px;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-next {
+	right:0px;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-title {
+	margin: 0 2.3em;
+	line-height: 1.8em;
+	text-align: center;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-title select {
+	font-size:1em;
+	margin:1px 0;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker select.ui-datepicker-month-year {
+	width: 100%;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker select.ui-datepicker-month,
+.wp-admin .avia-datepicker-div.ui-datepicker select.ui-datepicker-year {
+	width: 49%;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker table {
+	width: 100%;
+	font-size: .9em;
+	border-collapse: collapse;
+	margin:0 0 .4em;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker th {
+	padding: .7em .3em;
+	text-align: center;
+	font-weight: bold;
+	border: 0;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker td {
+	border: 0;
+	padding: 1px;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker td span, .wp-admin .ui-datepicker td a {
+	display: block;
+	padding: .5em;
+	text-align: center;
+	text-decoration: none;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane {
+	background-image: none;
+	margin: .7em 0 0 0;
+	padding:0 .2em;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane button {
+	float: right;
+	margin: .5em .2em .4em;
+	cursor: pointer;
+	padding: 10px 20px;
+	width:auto;
+	overflow:visible;
+	border: none;
+	border-radius: 3px;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+	float:left;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker.select_dates_30 select.ui-datepicker-month,
+.wp-admin .avia-datepicker-div.ui-datepicker.select_dates_30 select.ui-datepicker-year {
+	width: 30%;
+}
+
+
+/* RTL support */
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl {
+	direction: rtl;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-prev {
+	right: 2px; left: auto;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-next {
+	left: 2px; right: auto;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-prev:hover {
+	right: 1px;
+	left: auto;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-next:hover {
+	left: 1px;
+	right: auto;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-buttonpane {
+	clear:right;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+	float: left;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current {
+	float:right;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-group {
+	float:right;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header {
+	border-right-width:0;
+	border-left-width:1px;
+}
+
+.wp-admin .avia-datepicker-div.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+	border-right-width:0;
+	border-left-width:1px;
+}
+
+
+/*BACKWARDS COMPAT*/
+/*legacy thickbox scripts should be displayed above modal window*/
+body #TB_overlay,
+body>.ui-widget-overlay{
+	z-index: 1000 !important;
+}
+
+body #TB_window,
+body>.ui-dialog.ui-widget{
+	z-index: 15005;
+}
+
+/*hide tinymce fullscreen editor and more tag when in modal window*/
+body div.avia-modal .mce_wp_fullscreen,
+body div.avia-modal .mce_wp_more{
+	display:none;
+}
+
+
+/*GENERIC STUFF*/
+.avia_clearfix:after{
+	content: '.';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	clear:both;
+}
+
+body .avia-hidden{
+	display:none;
+}
+
+.avia-noselect{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+/* MEDIA QUERIES*/
+
+/* TinyMce Breakpoint (inside modal windows) */
+@media only screen and (max-width: 979px)
+{
+	.avia-modal{
+		left:30px;
+		right:30px;
+	}
+}
+
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px)
+{
+	.avia-modal.smallscreen,
+	.avia-modal.flexscreen,
+	.avia-modal.mediumscreen{
+		left: 10%;
+		right: 10%;
+		top:10px;
+	}
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px)
+{
+	.avia-modal .avia-form-element,
+	.avia-modal .avia-name-description{
+		width:100%;
+		float:none;
+	}
+}
+
+
+.wp-fullscreen-active input[type=text].wp-fullscreen-title{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/*modal preview window*/
+
+.avia-modal.modal-preview-active{
+	left: 10%;
+	right: 10%;
+}
+
+.avia-modal.modal-preview-active.modal-preview-large{
+	left:4%;
+	right:4%;
+}
+
+.avia-modal.modal-preview-active.modal-preview-xlarge{
+	left:2%;
+	right:2%;
+}
+
+.modal-preview-active .avia-modal-inner-content{
+	right:400px;
+}
+
+.modal-preview-active .avia-modal-inner-header{
+	margin-right: 400px;
+}
+
+.modal-preview-active .avia-modal-inner-footer{
+	left: 0;
+	right: 400px;
+	width: auto;
+}
+
+.modal-preview-active.modal-preview-large .avia-modal-inner-content{
+	right:600px;
+}
+
+.modal-preview-active.modal-preview-large .avia-modal-inner-header{
+	margin-right: 600px;
+}
+
+.modal-preview-active.modal-preview-large .avia-modal-inner-footer{
+	right: 600px;
+}
+
+.modal-preview-active.modal-preview-xlarge .avia-modal-inner-content{
+	right:780px;
+}
+
+.modal-preview-active.modal-preview-xlarge .avia-modal-inner-header{
+	margin-right: 780px;
+}
+
+.modal-preview-active.modal-preview-xlarge .avia-modal-inner-footer{
+	right: 780px;
+}
+
+.avia-modal-preview{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 400px;
+	bottom: 0;
+	background: #f1f1f1;
+	z-index: 2;
+	border-left: 1px solid #e1e1e1;
+}
+
+.modal-preview-large .avia-modal-preview{
+	width:600px;
+}
+
+.modal-preview-xlarge .avia-modal-preview{
+	width:780px;
+}
+
+.avia-modal-preview-header{
+	height: 50px;
+	border-bottom: 1px solid #DFDFDF;
+	box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+	background: #fff;
+	position: relative;
+	z-index: 2;
+}
+
+.avia-modal-preview-content{
+	position: absolute;
+	top:50px;
+	bottom: 50px;
+	width: 100%;
+}
+
+.avia-modal-preview-footer{
+	height: 50px;
+	border-top: 1px solid #DFDFDF;
+	box-shadow: inset 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	bottom: 0;
+	background: #FCFCFC;
+	width: 100%;
+	line-height: 50px;
+	text-align: center;
+}
+
+.avia-modal-preview-footer span{
+	padding:0 10px;
+	display: inline-block;
+	color:#aaa;
+}
+
+.avia-modal-preview-footer a{
+	display: inline-block;
+	height:24px;
+	width:24px;
+	border:1px solid #e1e1e1;
+	margin:0 5px 0 0;
+	position: relative;
+    top: 8px;
+    border-radius: 2px;
+}
+
+.avia-modal-preview-footer a:hover{
+	border:1px solid #b1b1b1;
+}
+
+.avia-modal-preview iframe{
+	position: absolute;
+	height:100%;
+	width:100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.avia-modal-preview-header .avia_loading{
+	left: auto;
+    right: 11px;
+    top: 23px;
+}
+
+.avia-modal-preview-header.loading .avia_loading{
+	visibility: visible;
+}
+
+/*	==================================
+		SVG Divider Preview window
+	==================================
+*/
+.avia-modal .avia-svg-divider-section{
+	width: 100%;
+	border: 1px solid #e1e1e1;
+	min-height: 150px;
+	background-color: #fff;
+}
+
+.avia-modal .avia-element-divider_preview .avia-name-description{
+	display: none;
+}
+
+.avia-modal .avia-element-divider_preview .avia-form-element{
+	width: 100%;
+}
+
+.avia-modal .avia-svg-divider-section.loading .avia_loading{
+	left: 50%;
+	top: 50%;
+	visibility: visible;
+}
+
+.avia-modal .avia-svg-divider-section .avia-svg-divider-inner{
+	width: 100%;
+	position: relative;
+	display: block;
+}
+
+.avia-modal .avia-svg-divider-section .svg-shape-container{
+	width: auto;
+	min-height: 150px;
+	display: block;
+	position: relative;
+}
+
+.avia-modal .avia-svg-divider-section .svg-shape-container .av-dummy-text{
+	position: absolute;
+	width: 80%;
+	left: 10%;
+	height: 50px;
+	padding: 10px;
+	border: 3px solid #e1e1e1;
+	box-shadow: 0 0 10px 0 #777;
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+}
+
+.avia-modal .avia-svg-divider-section .svg-shape-container .av-dummy-text p{
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+}
+
+.avia-modal .svg-shape-container.avia-section{
+	float: none;
+}
+
+
+@media only screen and (max-width: 1240px)
+{
+	.modal-preview-xlarge .avia-modal-preview{
+		width:500px;
+	}
+
+	.modal-preview-active.modal-preview-xlarge .avia-modal-inner-content{
+		right:500px;
+	}
+
+	.modal-preview-active.modal-preview-xlarge .avia-modal-inner-header{
+		margin-right: 500px;
+	}
+
+	.modal-preview-active.modal-preview-xlarge .avia-modal-inner-footer{
+		right: 500px;
+	}
+
+	.modal-preview-large .avia-modal-preview{
+		width:400px;
+	}
+
+	.modal-preview-active.modal-preview-large .avia-modal-inner-content{
+		right:400px;
+	}
+
+	.modal-preview-active.modal-preview-large .avia-modal-inner-header{
+		margin-right: 400px;
+	}
+
+	.modal-preview-active.modal-preview-large .avia-modal-inner-footer{
+		right: 400px;
+	}
+}
+
+@media only screen and (max-width: 979px)
+{
+	.avia-modal .avia-modal-preview{
+		display:none;
+	}
+
+	.avia-modal.modal-preview-active .avia-modal-inner-content{
+		right:0;
+	}
+
+	.avia-modal.modal-preview-active .avia-modal-inner-header{
+		margin-right: 0;
+	}
+
+	.avia-modal.modal-preview-active .avia-modal-inner-footer{
+		right: 0;
+	}
+}
+
+.avia-modal .avia-save_video_thumbnails .avia-notification-success{
+	color: green;
+}
+
+.avia-modal .avia-save_video_thumbnails .avia-notification-error{
+	color: red;
+}
+
