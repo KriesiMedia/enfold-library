@@ -1,0 +1,262 @@
+/* ======================================================================================================================================================
+Accordion/Toggle
+====================================================================================================================================================== */
+
+
+/*toggle*/
+.js_active .toggle_wrap,
+.avia-admin-preview-container .toggle_wrap{
+	visibility: hidden;
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	left: 120%;
+}
+
+.active_tc.toggle_wrap{
+	position: static;
+	visibility: visible;
+	left: 0;
+	width: auto;
+	z-index: 1;
+	display: none;
+}
+
+.js_active .toggler,
+.avia-admin-preview-container .toggler{
+	cursor: pointer;
+	display: block;
+	margin:0;
+	padding: 9px 3px 9px 35px;
+	position: relative;
+	top: 1px;
+	border-style:solid;
+	border-width:1px;
+	line-height: 1.65em;
+	-webkit-touch-callout: none;			/*	non standard	*/
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.togglecontainer{
+	margin:30px 0;
+	position: relative;
+	clear: both;
+	display: flex;
+	flex-direction: column;
+}
+
+.togglecontainer .taglist{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.togglecontainer .single_toggle:first-child .toggler,
+.togglecontainer .taglist + .single_toggle .toggler{
+	border-top-left-radius:  2px;
+	border-top-right-radius: 2px;
+}
+
+.togglecontainer > div:last-of-type .toggler{
+	border-bottom-left-radius:  2px;
+	border-bottom-right-radius: 2px;
+}
+
+.togglecontainer > p.activeTitle{
+	border-radius: 0;
+}
+
+.toggle_content{
+	padding: 12px 30px 11px 30px;
+	margin: 0px 0 5px 0;
+	border-style:solid;
+	border-width:1px;
+	border-top:none;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	overflow: hidden;
+}
+
+.toggle_icon{
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	border-style: solid;
+	border-width: 1px;
+	top: 50%;
+	left: 10px;
+	margin-top: -8px;
+}
+
+.toggle_icon .vert_icon{
+	border-left-style:solid;
+	border-left-width:3px;
+	position: absolute;
+	left:5px;
+	top:1px;
+	height:11px;
+}
+
+.toggle_icon .hor_icon{
+	border-top-style:solid;
+	border-top-width:3px;
+	position: absolute;
+	top:5px;
+	left:1px;
+	width:11px;
+}
+
+.activeTitle .toggle_icon .vert_icon{
+	border:none;
+}
+
+
+.hasCurrentStyle .toggle_icon,
+.hasCurrentStyle .toggle_icon > span{
+    border-color: inherit !important;
+}
+
+/* removed, otherwise opening animation does not work
+.active_tc.toggle_wrap{
+display:block;
+}
+*/
+#top .av_toggle_section .av-inherit-border-color *{
+	border-color: inherit;
+}
+
+#top .av_toggle_section .av-inherit-font-color *{
+	color: inherit;
+}
+
+.toggler .toggle_icon,
+.toggler:hover .toggle_icon *{
+	transition: all 0.4s ease-in-out;
+}
+
+/*sorting*/
+.taglist {
+	margin-bottom:5px;
+}
+
+.taglist .tag-tab:last-child .tag-seperator{
+	display: none;
+}
+
+.taglist .tag-seperator{
+	padding: 0px 4px;
+}
+
+.single_toggle{
+	width:100%;
+	/* @since 5.6.7 - fixes chrome bug https://kriesi.at/support/topic/bug-in-chrome-for-accordion-toggles/  */
+	/* float:left; */
+	display: block;
+	margin: 0 0 -2px 0;
+	padding-bottom: 1px;
+	overflow: hidden;
+	position: relative;
+}
+
+/*minimal toggle*/
+.av-minimal-toggle.togglecontainer .single_toggle .toggler{
+	border-radius:0;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+	font-size: 1.1em;
+}
+
+.av-minimal-toggle .toggle_content{
+	border-radius:0;
+	border:none;
+	padding:12px 35px 11px 35px;
+}
+
+.av-minimal-toggle .single_toggle{
+	margin: 0 0 7px 0;
+	padding-bottom: 0px;
+}
+
+.av-minimal-toggle .toggle_icon {
+	margin-top: -7px;
+	border: none;
+}
+
+.av-minimal-toggle .toggler:hover {
+	opacity: 0.8;
+}
+
+.av-minimal-toggle .activeTitle.toggler:hover {
+	opacity: 1;
+}
+
+
+/* elegant toggle */
+.av-elegant-toggle.togglecontainer .single_toggle:first-child .toggler,
+.av-elegant-toggle.togglecontainer .taglist + .single_toggle .toggler{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.av-elegant-toggle.togglecontainer .av_toggle_section:first-of-type .toggler{
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.js_active .av-elegant-toggle .toggler,
+.avia-admin-preview-container .av-elegant-toggle .toggler{
+    padding: 35px 55px 30px 35px;
+    font-size: 17px;
+    top: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.av-elegant-toggle .toggle_icon{
+    width: 32px;
+    height: 32px;
+    border-radius: 40px;
+    left: auto;
+    right: 20px;
+    margin-top: -16px;
+    border-width: 2px;
+    opacity: 0.4;
+    /*transition: all 0.2s ease-in;   removed 4.8.6.1 - replaced for all icons*/
+}
+
+.av-elegant-toggle .activeTitle .toggle_icon,
+.av-elegant-toggle .single_toggle:hover .toggle_icon {
+    opacity: 1;
+}
+
+.av-elegant-toggle .toggle_icon .hor_icon,
+.av-elegant-toggle .toggle_icon .vert_icon{
+    border-width: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.av-elegant-toggle .toggle_content{
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 1.4;
+    padding: 20px 35px 30px 35px;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+}
+
+.av-elegant-toggle .single_toggle{
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+    float: none;
+}
