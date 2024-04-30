@@ -21,6 +21,14 @@ function custom_avf_post_ingnore_featured_image_link( $ignore_image_links = fals
 		$ignore_image_links = true;
 	}
 
+	 //  e.g. remove link for posts:
+//	$postIDs = [ 36011, 45175 ];
+//	$ignore_image_links = in_array( $current_post['the_id'], $postIDs ) ? true : false;
+
+	//  no image links on posts inside a given category 
+//	$ignore_image_links = in_category( array( 1, 'grafik' ) ) ? true : false;
+	
+
 	return $ignore_image_links;
 }
 
