@@ -145,8 +145,10 @@
 				heading.each( function( i )
 				{
 					let $heading = $(this),
-						title_open = $heading.data( 'title-open' ),
-						title = $heading.data( 'title' ),
+						title_open = $heading.attr( 'data-title-open' ),
+						title = $heading.attr( 'data-title' ),
+						aria_collapsed = $heading.attr( 'data-aria_collapsed' ),
+						aria_expanded = $heading.attr( 'data-aria_expanded' ),
 						content = $heading.hasClass( 'av-title-below' ) ? $heading.prev( options.content, container ) : $heading.next( options.content, container ),
 						titleHasHtml = false,
 						currentTitle = $heading.contents()[0].data;
@@ -154,6 +156,16 @@
 					if( ! title )
 					{
 						title = '***';
+					}
+
+					if( ! aria_collapsed )
+					{
+						aria_collapsed = 'Expand Toggle';
+					}
+
+					if( ! aria_expanded )
+					{
+						aria_expanded = 'Collapse Toggle';
 					}
 
 					//	limitation - html markup breaks exchange logic because contents()[0] ends with first markup
@@ -166,6 +178,7 @@
 							$heading.contents()[0].data = title_open;
 						}
 						$heading.attr( 'aria-expanded', 'true' );
+						$heading.attr( 'aria-label', aria_expanded );
 						content.attr( { 'aria-hidden': 'false', tabindex: 0 } );
 					}
 					else
@@ -176,6 +189,7 @@
 						}
 
 						$heading.attr( 'aria-expanded', 'false' );
+						$heading.attr( 'aria-label', aria_collapsed );
 						content.attr( { 'aria-hidden': 'true', tabindex: -1 } );
 					}
 				});
