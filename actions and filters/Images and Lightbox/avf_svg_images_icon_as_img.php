@@ -1,7 +1,7 @@
 <?php
 /**
  * Filter to return svg in <img src=""> tag - could be needed for colored icons with same named classes
- * in multiple svg
+ * in multiple svg. It might be necessary to modify CSS.
  *
  * @since 7.0
  * @param boolean $svg_as_img
