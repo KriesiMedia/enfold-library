@@ -2,7 +2,8 @@
 /**
  * Filter to return svg in <img src=""> tag - could be needed for colored icons with same named classes
  * in multiple svg overriding each other. It might be necessary to modify CSS to position the img tag.
- * <img> tag will have additional attribute is-svg-img='true'.
+ *  - <img> tag will have additional attribute is-svg-img='true'
+ *  - CSS selector:  .avia-svg-icon img[is-svg-img="true"]
  * 
  * THIS FILTER IS NOT INTENDED TO MODIFY ALL SVG ICONS - Be selective which icons to replace.
  *
