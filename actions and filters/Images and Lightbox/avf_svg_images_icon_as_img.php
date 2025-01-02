@@ -5,7 +5,7 @@
  *  - <img> tag will have additional attribute is-svg-img='true'
  *  - CSS selector:  .avia-svg-icon img[is-svg-img="true"]
  * 
- * THIS FILTER IS NOT INTENDED TO MODIFY ALL SVG ICONS - Be selective which icons to replace.
+ * THIS FILTER IS NOT INTENDED TO MODIFY ALL SVG ICONS (especially not the included font svg_entypo-fontello) - Be selective which icons to replace.
  *
  * @since 7.0
  * @param boolean $svg_as_img
@@ -17,14 +17,19 @@
  */
 function custom_svg_images_icon_as_img( $svg_as_img, $icon_char, $font, $isColoredSVG, $svg )
 {
-	$my_font = 'your_svg_font';
+	$my_fonts = [ 'your_svg_font', 'your_svg_font1' ];
 	$my_chars = [ 'icon1', 'icon2' ];		// array of icons to replace
 
-	if( $font != $my_font )
+	// bail if not a svg font we want to change
+	if( ! in_array( $font, $my_fonts ) )
 	{
 		return $svg_as_img;
 	}
 
+	// in case you want to change all icons of a font
+	// return true;
+
+	// check for single icons you want to change
 	if( in_array( $icon_char, $my_chars ) )
 	{
 		return true;
