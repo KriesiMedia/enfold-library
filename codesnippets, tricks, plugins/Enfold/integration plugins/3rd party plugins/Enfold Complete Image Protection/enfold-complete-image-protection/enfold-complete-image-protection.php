@@ -1,5 +1,4 @@
 <?php 
-
 /**
  * Plugin Name: Enfold Complete Images Protection
  * Description: Complete image protection + multilingual warning popup - Enfold theme
